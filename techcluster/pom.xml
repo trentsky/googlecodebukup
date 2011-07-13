@@ -876,64 +876,6 @@
 		</profile>
 
 		<profile>
-			<id>product</id>
-			<properties>
-				<maven.test.skip>true</maven.test.skip>
-				<tlot.id.prefix>ZS</tlot.id.prefix>
-				<database.url>jdbc:oracle:thin:@192.168.102.202:1521:jrtdb2</database.url>
-				<database.driverClassName>oracle.jdbc.OracleDriver</database.driverClassName>
-				<database.username>jrtsch</database.username>
-				<database.password>jrtsch</database.password>
-				<database.initialSize>5</database.initialSize>
-				<database.maxActive>300</database.maxActive>
-				<database.maxIdle>50</database.maxIdle>
-				<database.minIdle>5</database.minIdle>
-				<database.maxWait>10000</database.maxWait>
-				<database.removeAbandoned>true</database.removeAbandoned>
-				<database.removeAbandonedTimeout>60</database.removeAbandonedTimeout>
-				<database.logAbandoned>true</database.logAbandoned>
-				<database.validationQuery>select 1 from dual</database.validationQuery>
-				<database.testOnBorrow>true</database.testOnBorrow>
-				<tomcat.manager.url>http://192.168.102.109:8081/manager</tomcat.manager.url>
-				<liquibase.promptOnNonLocalDatabase>false</liquibase.promptOnNonLocalDatabase>
-				<jms.new-issue.brokerURL>tcp://192.168.102.100:61616</jms.new-issue.brokerURL>
-				<jms.new-issue.topic.name>new-issue</jms.new-issue.topic.name>
-				<dyj.wTrayUrl>http://i.zc310.net:8089/bin/LotSaleHttp.dll?</dyj.wTrayUrl>
-				<log4j.rootCategory>INFO, logfile</log4j.rootCategory>
-				<nm.front.address>http://192.168.102.106:8080/lmFront/services/PreLotteryWebService</nm.front.address>
-				<ruyicaiUserno>00808738</ruyicaiUserno>
-				<sms.defaultSMSChannel>menWangSMSServiceProvider</sms.defaultSMSChannel>
-				<sms.kaiguan>1</sms.kaiguan>
-				<nm.wsdlsoap.address>http://192.168.102.109:8080/lottery/services/DocProce</nm.wsdlsoap.address>
-				<nm.download.filepath>/var/ftp/pub/upload/lottery/lmFront</nm.download.filepath>
-				<hitbigamountmail>10000000</hitbigamountmail>
-				<orderhitbigamount>10000000</orderhitbigamount>
-				<caitong.check.filepath>/home/appusr/upload/lmFront</caitong.check.filepath>
-				<caitongtc.key>0102030405060708</caitongtc.key>
-				<caitongtc.venderId>BJJR</caitongtc.venderId>
-				<caitongtc.url>http://123.233.112.21:8082/aat/aat2.dll/Execute</caitongtc.url>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>com.ruyicai.sms</groupId>
-					<artifactId>smsmenwang</artifactId>
-					<version>0.1.1</version>
-				</dependency>
-				<dependency>
-					<groupId>com.ruyicai.sms</groupId>
-					<artifactId>smsmock</artifactId>
-					<version>0.2.0</version>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>com.ruyicai.sms</groupId>
-					<artifactId>smsussd</artifactId>
-					<version>0.1.5</version>
-				</dependency>
-			</dependencies>
-		</profile>
-
-		<profile>
 			<id>update-db</id>
 			<build>
 				<plugins>
