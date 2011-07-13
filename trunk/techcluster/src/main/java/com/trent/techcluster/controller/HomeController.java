@@ -1,4 +1,4 @@
-package com.trent.techcluster;
+package com.trent.techcluster.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
