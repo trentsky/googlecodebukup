@@ -47,7 +47,7 @@
 		<dependency>
 			<groupId>com.dbluethink</groupId>
 			<artifactId>test</artifactId>
-			<version>0.0.6</version>
+			<version>0.0.15</version>
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
@@ -462,7 +462,6 @@
 			<version>1.1</version>
 		</dependency>
 	</dependencies>
-	
 	<build>
 		<finalName>techcluster</finalName>
 		<resources>
@@ -477,7 +476,7 @@
 				<artifactId>momo-test-plugin</artifactId>
 				<version>0.0.8</version>
 				<configuration>
-					<fixturePackage>classpath:/com/ruyicai/fixtures/**/*.class</fixturePackage>
+					<fixturePackage>classpath:/com/techcluster/fixtures/**/*.class</fixturePackage>
 					<springConfiguration>
 						<param>classpath:/META-INF/spring/applicationContext.xml</param>
 					</springConfiguration>
@@ -539,84 +538,6 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.4.2</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-				<executions>
-					<execution>
-						<id>generateConst</id>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<phase>generate-sources</phase>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/main/javatemplate</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-							<outputDirectory>${basedir}/src/main/java</outputDirectory>
-						</configuration>
-					</execution>
-					<execution>
-						<id>generateWsdl</id>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<phase>generate-sources</phase>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/main/wsdl</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-							<outputDirectory>${basedir}/src/main/webapp/wsdl</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.7.1</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.surefire</groupId>
-						<artifactId>surefire-junit47</artifactId>
-						<version>2.8</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<excludes>
-						<exclude>**/*_Roo_*</exclude>
-						<exclude>**/webdriver/*.java</exclude>
-					</excludes>
-					<forkMode>always</forkMode>
-				</configuration>
-				<executions>
-					<execution>
-						<id>integration test</id>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>test</goal>
-						</goals>
-						<configuration>
-							<excludes>
-								<exclude>none</exclude>
-							</excludes>
-							<includes>
-								<include>**/webdriver/*.java</include>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.2-beta-5</version>
 				<configuration>
@@ -675,7 +596,7 @@
 					<url>${tomcat.manager.url}</url>
 					<username>tomcat</username>
 					<password>tomcat</password>
-					<path>/lottery</path>
+					<path>/techcluster</path>
 					<port>9080</port>
 					<update>true</update>
 				</configuration>
@@ -756,7 +677,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	
 	<profiles>
 		<profile>
 			<id>local-recreate-db</id>
@@ -778,8 +698,8 @@
 								identified BY jrtsch default tablespace users Temporary
 								TABLESPACE Temp;
 								grant connect,resource,dba to jrtsch;
-								commit; 
-	 						</sqlCommand>
+								commit;
+							</sqlCommand>
 						</configuration>
 						<dependencies>
 							<dependency>
@@ -796,7 +716,6 @@
 				<database.driver>oracle.jdbc.OracleDriver</database.driver>
 			</properties>
 		</profile>
-		
 		<profile>
 			<id>migrate-db</id>
 			<build>
@@ -830,7 +749,6 @@
 				<database.driver>oracle.jdbc.OracleDriver</database.driver>
 			</properties>
 		</profile>
-
 		<profile>
 			<id>local</id>
 			<activation>
@@ -854,24 +772,29 @@
 				<database.testOnBorrow>true</database.testOnBorrow>
 				<database.systemUser>system</database.systemUser>
 				<database.systemPassword>123456</database.systemPassword>
-				<tomcat.manager.url>http://192.168.0.191:8080/manager</tomcat.manager.url>
+				<!-- <tomcat.manager.url>http://dev:8080/manager</tomcat.manager.url> -->
 				<liquibase.promptOnNonLocalDatabase>false</liquibase.promptOnNonLocalDatabase>
 				<jms.new-issue.brokerURL>vm://localhost</jms.new-issue.brokerURL>
 				<jms.new-issue.topic.name>new-issue</jms.new-issue.topic.name>
-				<dyj.wTrayUrl>http://192.168.0.191:9080/SinoLot/TcBetServlet?</dyj.wTrayUrl>
 				<log4j.rootCategory>INFO, stdout</log4j.rootCategory>
-				<nm.front.address>http://219.148.162.70:8080/lmFront/services/PreLotteryWebService</nm.front.address>
-				<ruyicaiUserno>123456789</ruyicaiUserno>
 				<sms.defaultSMSChannel>mockSMSServiceProvider</sms.defaultSMSChannel>
 				<sms.kaiguan>0</sms.kaiguan>
-				<nm.wsdlsoap.address>http://localhost:6088/lottery/services/DocProce</nm.wsdlsoap.address>
-				<nm.download.filepath>/home/appusr/upload/lmFront</nm.download.filepath>
 				<hitbigamountmail>500</hitbigamountmail>
 				<orderhitbigamount>500</orderhitbigamount>
-				<caitong.check.filepath>/home/appusr/upload/lmFront</caitong.check.filepath>
 				<caitongtc.key>0102030405060708</caitongtc.key>
 				<caitongtc.venderId>BJJR</caitongtc.venderId>
 				<caitongtc.url>http://123.233.112.21:8082/aat/aat2.dll/Execute</caitongtc.url>
+				<caitongtc.ftpdown.hostname>123.233.112.21</caitongtc.ftpdown.hostname>
+				<caitongtc.ftpdown.port>22421</caitongtc.ftpdown.port>
+				<caitongtc.ftpdown.user>tcbjjr</caitongtc.ftpdown.user>
+				<caitongtc.ftpdown.pwd>123456</caitongtc.ftpdown.pwd>
+				<caitongfc.key>EA0DAC0708BA0B01</caitongfc.key>
+				<caitongfc.venderId>RUICAI</caitongfc.venderId>
+				<caitongfc.url>http://123.233.112.21:10251/extern</caitongfc.url>
+				<caitongfc.ftpdown.hostname>123.233.112.21</caitongfc.ftpdown.hostname>
+				<caitongfc.ftpdown.port>10221</caitongfc.ftpdown.port>
+				<caitongfc.ftpdown.user>ftpruicai</caitongfc.ftpdown.user>
+				<caitongfc.ftpdown.pwd>ftpruicai</caitongfc.ftpdown.pwd>
 			</properties>
 		</profile>
 
@@ -926,8 +849,8 @@
 							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								drop user jrtsch cascade;  
-	 						</sqlCommand>
+								drop user jrtsch cascade;
+							</sqlCommand>
 						</configuration>
 						<dependencies>
 							<dependency>
@@ -962,8 +885,8 @@
 								tablespace users Temporary
 								TABLESPACE Temp;
 								grant
-								connect,resource,dba to jrtsch; 
-	 						</sqlCommand>
+								connect,resource,dba to jrtsch;
+							</sqlCommand>
 						</configuration>
 						<dependencies>
 							<dependency>
@@ -1013,8 +936,8 @@
 								<configuration>
 									<target>
 										<echo>${project.basedir} init.</echo>
-										<delete dir="${project.basedir}/wars/" />
-										<copy todir="${project.basedir}/wars" file="${project.basedir}/target/techcluster.war" />
+										<delete dir="${project.basedir}/wars/"/>
+										<copy file="${project.basedir}/target/techcluster.war" todir="${project.basedir}/wars"/>
 									</target>
 								</configuration>
 								<goals>
@@ -1027,15 +950,14 @@
 								<configuration>
 									<target>
 										<echo>${project.basedir} ${SVN.revision}</echo>
-										<mkdir
-											dir="${project.basedir}/wars/lottery/${SVN.revision}/product" />
-										<mkdir
-											dir="${project.basedir}/wars/lottery/${SVN.revision}/prelaunch" />
-										<move file="${project.basedir}/wars/lottery.war"
-											tofile="${project.basedir}/wars/lottery/${SVN.revision}/prelaunch/techcluster.war" />
-										<copy
-											todir="${project.basedir}/wars/lottery/${SVN.revision}/product"
-											file="${project.basedir}/target/techcluster.war" />
+										<mkdir dir="${project.basedir}/wars/lottery/${SVN.revision}/product"/>
+										<mkdir dir="${project.basedir}/wars/lottery/${SVN.revision}/src/main/db"/>
+										<mkdir dir="${project.basedir}/wars/lottery/${SVN.revision}/prelaunch"/>
+											
+										<move file="${project.basedir}/wars/lottery.war" tofile="${project.basedir}/wars/lottery/${SVN.revision}/prelaunch/lottery.war"/>
+										<copy file="${project.basedir}/target/lottery.war" todir="${project.basedir}/wars/lottery/${SVN.revision}/product"/>
+										<copyfile src="${project.basedir}/src/main/db/changelog.xml" dest="${project.basedir}/wars/lottery/${SVN.revision}/src/main/db/changelog.xml"/>
+										<copyfile src="${project.basedir}/src/main/db/jttsch.sql" dest="${project.basedir}/wars/lottery/${SVN.revision}/src/main/db/jttsch.sql"/>
 									</target>
 								</configuration>
 								<goals>
@@ -1050,6 +972,7 @@
 				<maven.test.skip>true</maven.test.skip>
 			</properties>
 		</profile>
+
 	</profiles>
 </project>
   
