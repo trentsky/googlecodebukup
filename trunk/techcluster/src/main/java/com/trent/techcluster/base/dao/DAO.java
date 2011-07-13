@@ -26,6 +26,8 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.stereotype.Component;
+
 import com.trent.techcluster.base.domain.base.BaseEO;
 
 /**
@@ -34,6 +36,7 @@ import com.trent.techcluster.base.domain.base.BaseEO;
  * @version 2.0
  * @since 2.0 泛型T挪到方法声明出,声明对象时不需要指定泛型.
  */
+@Component
 public interface DAO {
 
 	/**
