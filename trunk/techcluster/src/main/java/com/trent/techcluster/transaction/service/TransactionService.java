@@ -4,5 +4,5 @@ import com.trent.techcluster.transaction.domain.Transaction;
 
 public interface TransactionService {
 
-	public Transaction findTransactions();
+	public Transaction findTransactions(String id);
 }

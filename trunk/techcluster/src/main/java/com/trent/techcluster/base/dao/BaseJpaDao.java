@@ -21,6 +21,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trent.techcluster.base.domain.base.BaseEO;
@@ -30,6 +31,7 @@ import com.trent.techcluster.base.domain.base.BaseEO;
  * @version 2.0
  * @since 2.0 泛型T挪到方法声明出,声明对象时不需要指定泛型.
  */
+@Component
 @SuppressWarnings("unchecked")
 public abstract class BaseJpaDao implements DAO {
 

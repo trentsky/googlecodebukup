@@ -1,19 +1,21 @@
 package com.trent.techcluster.transaction.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.trent.techcluster.base.dao.DAO;
+import com.trent.techcluster.base.dao.BaseJpaDao;
 import com.trent.techcluster.base.service.BaseService;
 import com.trent.techcluster.transaction.domain.Transaction;
 import com.trent.techcluster.transaction.service.TransactionService;
 
+@Component
 public class TransactionServiceImpl extends BaseService implements TransactionService{
 
 	@Autowired
-	DAO dao;
+	BaseJpaDao baseJpaDao;
 	
-	public Transaction findTransactions() {
-		return dao.find(Transaction.class, "id"); 
+	public Transaction findTransactions(String id) {
+		return baseJpaDao.find(Transaction.class, id); 
 	}
 
 }
