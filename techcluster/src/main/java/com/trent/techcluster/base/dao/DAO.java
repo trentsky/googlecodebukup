@@ -24,6 +24,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 
 import com.trent.techcluster.base.domain.base.BaseEO;
@@ -34,6 +35,7 @@ import com.trent.techcluster.base.domain.base.BaseEO;
  * @version 2.0
  * @since 2.0 泛型T挪到方法声明出,声明对象时不需要指定泛型.
  */
+@Resource
 public interface DAO {
 
 	/**
