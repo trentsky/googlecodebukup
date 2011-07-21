@@ -12,21 +12,22 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
 import com.dbluethink.test.SaveFixturesListener;
-import com.trent.techcluster.transaction.service.impl.TransactionServiceImpl;
+import com.trent.techcluster.transaction.service.TransactionService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
 		SaveFixturesListener.class, DirtiesContextTestExecutionListener.class })
 @ContextConfiguration(locations = {
-		"classpath:/META-INF/spring/applicationContext.xml" })
+		"classpath:/META-INF/spring/applicationContext.xml",
+		"classpath:/META-INF/spring/applicationContext-test.xml"})
 @DirtiesContext
 public class TransactionServcieTest {
 
 	@Autowired
-	TransactionServiceImpl transactionServiceImpl;
+	TransactionService transactionService;
 	
 	@Test
 	public void testFindTransactionById(){
-		Assert.assertNotNull(transactionServiceImpl.findTransactions("20110527000000000000000000000004"));
+		Assert.assertNotNull(transactionService.findTransactions("20110527000000000000000000000004"));
 	}
 }
