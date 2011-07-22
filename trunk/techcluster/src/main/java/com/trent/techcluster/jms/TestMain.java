@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestMain {
 	
 	public static String[] config = new String[] {
-		"classpath:/META-INF/spring/applicationContext-activemq.xml" };
+		"classpath:/META-INF/spring/applicationContext-jms.xml" };
 		static ApplicationContext ac = new ClassPathXmlApplicationContext(config);
 	public static void main(String[] args) {
 		
