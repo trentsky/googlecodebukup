@@ -32,6 +32,7 @@ import com.trent.techcluster.base.domain.base.BaseEO;
  * @since 2.0 泛型T挪到方法声明出,声明对象时不需要指定泛型.
  */
 @Component
+@SuppressWarnings("unchecked")
 public abstract class BaseJpaDao implements DAO {
 
 	private QLBuilder sqlBuilder = new QLBuilder();

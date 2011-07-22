@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Component;
 
 @Component
+@SuppressWarnings("unchecked")
 public class BaseDaoImpl implements IBaseDao {
 
 	@PersistenceContext(unitName = "persistenceUnit")
