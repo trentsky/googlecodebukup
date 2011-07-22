@@ -16,15 +16,16 @@
 		<amq:persistenceAdapter>
 			<amq:amqPersistenceAdapter directory="d:/amq"/>
 		</amq:persistenceAdapter>
-		<amq:transportConnectors>
-			<amq:transportConnector uri="tcp://localhost:0" />
-		</amq:transportConnectors>
+		 <amq:transportConnectors>  
+             <amq:transportConnector uri="vm://localhost:0" />  
+        </amq:transportConnectors>  
 	</amq:broker>
 	
-     <!-- 连接外部的activeMQ
+     <!-- 连接外部的activeMQ ActiveMQ connectionFactory  -->
 	<amq:connectionFactory id="jmsConnectionFactory" brokerURL="tcp://localhost:61616?wireFormat.maxInactivityDuration=0" />
-	  ActiveMQ connectionFactory  -->
-	<amq:connectionFactory id="jmsConnectionFactory" brokerURL="vm://localhost" />
+	 
+	 <!--  
+	<amq:connectionFactory id="jmsConnectionFactory" brokerURL="tcp://127.0.0.1:8161" />  -->
 
     <!--  ActiveMQ destinations  -->
 	<!--  使用topic方式-->
