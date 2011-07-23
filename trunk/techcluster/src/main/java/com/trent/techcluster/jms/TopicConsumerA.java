@@ -10,7 +10,7 @@ import org.springframework.jms.support.converter.SimpleMessageConverter;
  */
 public class TopicConsumerA {
 
-	ExecutorService exec = Executors.newFixedThreadPool(10);
+	ExecutorService exec = Executors.newFixedThreadPool(5);
 	SimpleMessageConverter simpleMessageConverter;
 
 	public void receive(final FooMessage message) {
