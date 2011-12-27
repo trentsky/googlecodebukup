@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="tsoufu/list">
+        <put-attribute name="body" value="/WEB-INF/views/tsoufu/list.jspx"/>
+    </definition>
+<definition extends="default" name="tsoufu/show">
+        <put-attribute name="body" value="/WEB-INF/views/tsoufu/show.jspx"/>
+    </definition>
+<definition extends="default" name="tsoufu/create">
+        <put-attribute name="body" value="/WEB-INF/views/tsoufu/create.jspx"/>
+    </definition>
+<definition extends="default" name="tsoufu/update">
+        <put-attribute name="body" value="/WEB-INF/views/tsoufu/update.jspx"/>
+    </definition>
+<definition extends="default" name="tsoufu/findTuserinfoesByMobileid">
+        <put-attribute name="body" value="/WEB-INF/views/tsoufu/findTuserinfoesByMobileid.jspx"/>
+    </definition>
+<definition extends="default" name="tsoufu/findTuserinfoesByEmail">
+        <put-attribute name="body" value="/WEB-INF/views/tsoufu/findTuserinfoesByEmail.jspx"/>
+    </definition>
+<definition extends="default" name="tsoufu/findTuserinfoesByUserName">
+        <put-attribute name="body" value="/WEB-INF/views/tsoufu/findTuserinfoesByUserName.jspx"/>
+    </definition>
+</tiles-definitions>

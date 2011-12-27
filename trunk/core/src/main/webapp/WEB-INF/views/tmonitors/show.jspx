@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ruyicai_lottery_domain_Tmonitor" object="${tmonitor}" path="/tmonitors" z="A+09OD9cVIqo4GWSQMzp4g2iBXU=">
+        <field:display field="msgtype" id="s_com_ruyicai_lottery_domain_Tmonitor_msgtype" object="${tmonitor}" z="b8K73aCJGw/hhr+caCM2hS3qnAQ="/>
+        <field:display field="retcode" id="s_com_ruyicai_lottery_domain_Tmonitor_retcode" object="${tmonitor}" z="YgbgN4bgieAa9rufJzrRdWPdg8Y="/>
+        <field:display field="src" id="s_com_ruyicai_lottery_domain_Tmonitor_src" object="${tmonitor}" z="fyJ2VX09fxcpR5GWjrvggG9sBLs="/>
+        <field:display field="memo" id="s_com_ruyicai_lottery_domain_Tmonitor_memo" object="${tmonitor}" z="s00Jwe+sOU/QTYPxe+VO8lFepzs="/>
+        <field:display date="true" dateTimePattern="${tmonitor_starttime_date_format}" field="starttime" id="s_com_ruyicai_lottery_domain_Tmonitor_starttime" object="${tmonitor}" z="w2vXlCz+n700B2zypVFp+8bN9sU="/>
+        <field:display date="true" dateTimePattern="${tmonitor_endtime_date_format}" field="endtime" id="s_com_ruyicai_lottery_domain_Tmonitor_endtime" object="${tmonitor}" z="4r1LIzD48QuijisS3qwgZoejOK8="/>
+        <field:display field="errormsg" id="s_com_ruyicai_lottery_domain_Tmonitor_errormsg" object="${tmonitor}" z="Afg8HBByx6319S1zvXxffQZQ2aI="/>
+    </page:show>
+</div>
