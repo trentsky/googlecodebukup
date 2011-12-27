@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ruyicai_lottery_domain_Tuserinfo" object="${tuserinfo}" path="/tuserinfoes" z="SrUFvNENts9xdeHvi8XpJti7ph4=">
+        <field:display field="phone" id="s_com_ruyicai_lottery_domain_Tuserinfo_phone" object="${tuserinfo}" z="7kyxCIisRBiZlT24dTAoFC9MjWU="/>
+        <field:display date="true" dateTimePattern="${tuserinfo_modtime_date_format}" field="modtime" id="s_com_ruyicai_lottery_domain_Tuserinfo_modtime" object="${tuserinfo}" z="07nMdOGzJR7CtvvD69ycoBhW1+c="/>
+        <field:display field="channel" id="s_com_ruyicai_lottery_domain_Tuserinfo_channel" object="${tuserinfo}" z="5YCvzuIKWmjMPgdZBWoCe6Vdcgo="/>
+        <field:display field="type" id="s_com_ruyicai_lottery_domain_Tuserinfo_type" object="${tuserinfo}" z="lE/dwoKjgVMtMLPZNboWdlvvXjQ="/>
+        <field:display field="password" id="s_com_ruyicai_lottery_domain_Tuserinfo_password" object="${tuserinfo}" z="RGdQplusTKp3ncl4W94Nr/PX6wE="/>
+        <field:display date="true" dateTimePattern="${tuserinfo_regtime_date_format}" field="regtime" id="s_com_ruyicai_lottery_domain_Tuserinfo_regtime" object="${tuserinfo}" z="jI5sLTyoeGoD3ted8Anvn4GOwZU="/>
+        <field:display field="agencyno" id="s_com_ruyicai_lottery_domain_Tuserinfo_agencyno" object="${tuserinfo}" z="TLDwZ1ue7NHVEvFVVI0w97s6QLc="/>
+        <field:display field="accesstype" id="s_com_ruyicai_lottery_domain_Tuserinfo_accesstype" object="${tuserinfo}" z="y7EPhc4OspNaWACKmqTbo6z97Pc="/>
+        <field:display field="name" id="s_com_ruyicai_lottery_domain_Tuserinfo_name" object="${tuserinfo}" z="Fi2DLQ1iwdXHFZwpo5wARbpjETo="/>
+        <field:display field="qq" id="s_com_ruyicai_lottery_domain_Tuserinfo_qq" object="${tuserinfo}" z="qmfoe6SjIaw5v2Sjp7w1N58SyYY="/>
+        <field:display field="leave" id="s_com_ruyicai_lottery_domain_Tuserinfo_leave" object="${tuserinfo}" z="LzyANDbpmfpXukGBH1a0XeGWEqk="/>
+        <field:display field="msn" id="s_com_ruyicai_lottery_domain_Tuserinfo_msn" object="${tuserinfo}" z="8GelwUETPbuRZB0K6o3sYJ964To="/>
+        <field:display field="nickname" id="s_com_ruyicai_lottery_domain_Tuserinfo_nickname" object="${tuserinfo}" z="krsyPtkzoguU0u4G8zD4Pncb8tk="/>
+        <field:display field="state" id="s_com_ruyicai_lottery_domain_Tuserinfo_state" object="${tuserinfo}" z="zqdD3vR2vxjbEb/xnAFQd+/+Mcw="/>
+        <field:display field="email" id="s_com_ruyicai_lottery_domain_Tuserinfo_email" object="${tuserinfo}" z="DeDnbcmnlJLY622P4tkaQC2VCZU="/>
+        <field:display field="mac" id="s_com_ruyicai_lottery_domain_Tuserinfo_mac" object="${tuserinfo}" z="JrEReyhIqN+BxF6zHxS49s+sviY="/>
+        <field:display field="address" id="s_com_ruyicai_lottery_domain_Tuserinfo_address" object="${tuserinfo}" z="Y2R7zqKfq0LXDcjwKowOZt0DKQs="/>
+        <field:display field="certid" id="s_com_ruyicai_lottery_domain_Tuserinfo_certid" object="${tuserinfo}" z="5T8TBXooSzd9wiPR0eWfBX5QgOo="/>
+        <field:display field="info" id="s_com_ruyicai_lottery_domain_Tuserinfo_info" object="${tuserinfo}" z="ncwnZF3KEGAzxECGWWbtQqRumPM="/>
+        <field:display field="mobileid" id="s_com_ruyicai_lottery_domain_Tuserinfo_mobileid" object="${tuserinfo}" z="C0R9h9x//kHOL7MQdC6cbym7PBU="/>
+    <field:display field="userName" id="s_com_ruyicai_lottery_domain_Tuserinfo_userName" object="${tuserinfo}" z="jXE41Y0y7gYvjtOct9fSrIrDQZY="/>
+    <field:display field="subChannel" id="s_com_ruyicai_lottery_domain_Tuserinfo_subChannel" object="${tuserinfo}" z="42T1dXidBUyAEQi9fpuapjyqP6A="/>
+    </page:show>
+</div>

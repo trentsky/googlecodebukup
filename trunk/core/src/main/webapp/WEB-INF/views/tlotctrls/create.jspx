@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_ruyicai_lottery_domain_Tlotctrl" modelAttribute="tlotctrl" path="/tlotctrls" render="${empty dependencies}" z="BBBVOCPa0aAG+caazOfuvol7En4=">
+        <field:input field="state" id="c_com_ruyicai_lottery_domain_Tlotctrl_state" required="true" validationMessageCode="field_invalid_number" z="G01r0Vk5OViF+0ZNcTAb2KBuOxg="/>
+        <field:input field="agencyno" id="c_com_ruyicai_lottery_domain_Tlotctrl_agencyno" required="true" z="K/SavpwHg9XOsRN70P9V4Duf7eE="/>
+        <field:datetime dateTimePattern="${tlotctrl_starttime_date_format}" field="starttime" id="c_com_ruyicai_lottery_domain_Tlotctrl_starttime" required="true" z="gLJZJrwNabUjm3maspSUmz9+zbA="/>
+        <field:datetime dateTimePattern="${tlotctrl_endtime_date_format}" field="endtime" id="c_com_ruyicai_lottery_domain_Tlotctrl_endtime" required="true" z="UjYUcz+bgRqY7LCCMdqM7XMrHUo="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_ruyicai_lottery_domain_Tlotctrl" render="${not empty dependencies}" z="VEfLKhIT52OXV5xPfAbjCYd2PQw="/>
+</div>

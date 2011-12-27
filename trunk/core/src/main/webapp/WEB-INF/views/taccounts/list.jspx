@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ruyicai_lottery_domain_Taccount" items="${taccounts}" z="MIW6HN++ro2VsF/2Aed/Yt5U5F8=">
+        <table:table data="${taccounts}" id="l_com_ruyicai_lottery_domain_Taccount" path="/taccounts" typeIdFieldName="userno" z="PIRiKJ1CdHtP6nrwsW54hzwBiRw=">
+            <table:column id="c_com_ruyicai_lottery_domain_Taccount_totalprizeamt" property="totalprizeamt" z="1mnucDVFuov+EullImlU4tkzkzo="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Taccount_lastprizetime" property="lastprizetime" z="avCUJ6X2G6RtuBX3rKYO4+Av0ls="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Taccount_totalbetamt" property="totalbetamt" z="S+MWSnCzRp8rz6UsPEa6BrBWpnk="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Taccount_lastbetamt" property="lastbetamt" z="l3hBdgQWkmctaZnBVv5Ez4UNWds="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Taccount_totaldrawamt" property="totaldrawamt" z="qVVpXx0zyGc6p18SIjY9J+rF4Ug="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Taccount_lastdepositamt" property="lastdepositamt" z="8X4I9hK+mWqQAbQOq2sZRLuT/Vc="/>
+        </table:table>
+    </page:list>
+</div>

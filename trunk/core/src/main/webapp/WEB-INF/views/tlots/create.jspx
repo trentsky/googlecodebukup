@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_ruyicai_lottery_domain_Tlot" modelAttribute="tlot" path="/tlots" render="${empty dependencies}" z="MRXFkMenvHhIZuZKnCxVGUlRmLQ=">
+        <field:input field="lotno" id="c_com_ruyicai_lottery_domain_Tlot_lotno" required="true" z="R8nO9rRL/EOW2SULL1LqdZwvIeQ="/>
+        <field:input field="prizelittle" id="c_com_ruyicai_lottery_domain_Tlot_prizelittle" required="true" validationMessageCode="field_invalid_number" z="jioj0PIjjYkXLX78U31du7nAD/8="/>
+        <field:input field="betnum" id="c_com_ruyicai_lottery_domain_Tlot_betnum" required="true" validationMessageCode="field_invalid_number" z="Lf1VOco7bWptr5W5qBs7MMeIt+U="/>
+        <field:input field="validcode" id="c_com_ruyicai_lottery_domain_Tlot_validcode" required="true" z="1oERZ72JHdHmIb+3EtmYbx2l7y8="/>
+        <field:input field="transferstate" id="c_com_ruyicai_lottery_domain_Tlot_transferstate" required="true" validationMessageCode="field_invalid_number" z="oOzd2olx6mfuqyIbRINiXGsUb+s="/>
+        <field:input field="agencyno" id="c_com_ruyicai_lottery_domain_Tlot_agencyno" required="true" z="8n8S8aRApSljoerkYB6dVu+h+0g="/>
+        <field:datetime dateTimePattern="${tlot_ordertime_date_format}" field="ordertime" id="c_com_ruyicai_lottery_domain_Tlot_ordertime" required="true" z="R9rkUyUwHJ9NRT5W2UvGhfU5MrU="/>
+        <field:input field="sellway" id="c_com_ruyicai_lottery_domain_Tlot_sellway" required="true" validationMessageCode="field_invalid_number" z="DkaLroaJtB+p4iKctQL3i+hS/b0="/>
+        <field:input field="batchcode" id="c_com_ruyicai_lottery_domain_Tlot_batchcode" required="true" z="XsMYcDuYX34xYEgyfFF9SgOZX2I="/>
+        <field:input field="runcode" id="c_com_ruyicai_lottery_domain_Tlot_runcode" required="true" z="pOzn7Xsxo8wzGnxE/Fll+YpKq2w="/>
+        <field:input field="machineno" id="c_com_ruyicai_lottery_domain_Tlot_machineno" required="true" z="VaPfzLOshtg+RMX0ApmTTi6B8f4="/>
+        <field:input field="bettype" id="c_com_ruyicai_lottery_domain_Tlot_bettype" required="true" validationMessageCode="field_invalid_number" z="ZaBSs9LElvFtAFf7leeRd+dqXAk="/>
+        <field:input field="amt" id="c_com_ruyicai_lottery_domain_Tlot_amt" required="true" validationMessageCode="field_invalid_number" z="aCM52ukkxqDBYUipMbKrhj6TOlk="/>
+        <field:input field="userno" id="c_com_ruyicai_lottery_domain_Tlot_userno" required="true" z="E2+kRjQEkNjS/70i4E+fi8sHUmo="/>
+        <field:input field="pbatchcode" id="c_com_ruyicai_lottery_domain_Tlot_pbatchcode" required="true" z="tQ8tPZbujWWoe/CevL+ODmnP33Q="/>
+        <field:input field="lotpwd" id="c_com_ruyicai_lottery_domain_Tlot_lotpwd" required="true" z="Vby03hx5s3Mgq5Rf6O8flfYuTMo="/>
+        <field:input field="prizeinfo" id="c_com_ruyicai_lottery_domain_Tlot_prizeinfo" required="true" z="AVOg6LkBpFXk5aOfKhJ+us4DiN8="/>
+        <field:datetime dateTimePattern="${tlot_prizetime_date_format}" field="prizetime" id="c_com_ruyicai_lottery_domain_Tlot_prizetime" required="true" z="9YM/GHvc5cuaKI/Uhg9wJ/5YjtE="/>
+        <field:input field="drawway" id="c_com_ruyicai_lottery_domain_Tlot_drawway" required="true" validationMessageCode="field_invalid_number" z="qwB60hfSkcLc2lVPVXijjImgHAI="/>
+        <field:input field="subscribeno" id="c_com_ruyicai_lottery_domain_Tlot_subscribeno" required="true" z="HpN9iEhMdAauhM8vhuvXxwf4DnM="/>
+        <field:input field="caseid" id="c_com_ruyicai_lottery_domain_Tlot_caseid" required="true" z="yk4Nx8wOiNeCXb+vC7r9PaSmBN4="/>
+        <field:input field="mac" id="c_com_ruyicai_lottery_domain_Tlot_mac" required="true" z="eRB+Hj0yaPFiGGcfBaomqqc9238="/>
+        <field:input field="state" id="c_com_ruyicai_lottery_domain_Tlot_state" required="true" validationMessageCode="field_invalid_number" z="XqrJI6YgmobIcwOR1s6AgDSj7CE="/>
+        <field:input field="betcode" id="c_com_ruyicai_lottery_domain_Tlot_betcode" required="true" z="cRZV1fu+p/4nUFRosPdDL6HXFEU="/>
+        <field:datetime dateTimePattern="${tlot_giveuptime_date_format}" field="giveuptime" id="c_com_ruyicai_lottery_domain_Tlot_giveuptime" required="true" z="Sg4PsjwNiHG7aXDKtZ6Grv91US4="/>
+        <field:input field="checkcode" id="c_com_ruyicai_lottery_domain_Tlot_checkcode" required="true" z="wD4Gh5FO/8JefBdL32B/AeOaz1I="/>
+        <field:input field="settleflag" id="c_com_ruyicai_lottery_domain_Tlot_settleflag" required="true" validationMessageCode="field_invalid_number" z="ZoKsbfGiuZXozFSIUQzYLLCF0O0="/>
+        <field:input field="prizeamt" id="c_com_ruyicai_lottery_domain_Tlot_prizeamt" required="true" validationMessageCode="field_invalid_number" z="2U2jN4b8grcaVggJmecywhPxeTk="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_ruyicai_lottery_domain_Tlot" render="${not empty dependencies}" z="AzosLCOYjEjmz0QKoigfy8wKfZo="/>
+</div>

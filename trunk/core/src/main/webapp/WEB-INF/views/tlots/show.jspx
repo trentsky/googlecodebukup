@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_ruyicai_lottery_domain_Tlot" object="${tlot}" path="/tlots" z="rXLExnHfTriUxm2u0SuFj7o+ivE=">
+        <field:display field="lotno" id="s_com_ruyicai_lottery_domain_Tlot_lotno" object="${tlot}" z="7lWK8b1/ZTJJf+Uchi3KeR/lNL8="/>
+        <field:display field="prizelittle" id="s_com_ruyicai_lottery_domain_Tlot_prizelittle" object="${tlot}" z="hBIAYojJxDBCBca63mAJt5heyxI="/>
+        <field:display field="betnum" id="s_com_ruyicai_lottery_domain_Tlot_betnum" object="${tlot}" z="nNHDgBj0f/18mUeK7AcyNVBl02w="/>
+        <field:display field="validcode" id="s_com_ruyicai_lottery_domain_Tlot_validcode" object="${tlot}" z="sma2FXMaI8zy3NI5f6lr0Gs122c="/>
+        <field:display field="transferstate" id="s_com_ruyicai_lottery_domain_Tlot_transferstate" object="${tlot}" z="IVjn9FdVUkVZ4kavedYMTO7I+tU="/>
+        <field:display field="agencyno" id="s_com_ruyicai_lottery_domain_Tlot_agencyno" object="${tlot}" z="r0Jt2i6EhTWxrPUU9iUpT+8tym8="/>
+        <field:display date="true" dateTimePattern="${tlot_ordertime_date_format}" field="ordertime" id="s_com_ruyicai_lottery_domain_Tlot_ordertime" object="${tlot}" z="AVhQMZ9nG7mpxA1FrE74CeSwfoc="/>
+        <field:display field="sellway" id="s_com_ruyicai_lottery_domain_Tlot_sellway" object="${tlot}" z="eUgnnutnV4RoQaCslpAGJv/HoyA="/>
+        <field:display field="batchcode" id="s_com_ruyicai_lottery_domain_Tlot_batchcode" object="${tlot}" z="Fn7pmQtziBk4KMtgZMtBb1u5HtM="/>
+        <field:display field="runcode" id="s_com_ruyicai_lottery_domain_Tlot_runcode" object="${tlot}" z="onPZrWKZr+l9PzNw4wzq84s5dr4="/>
+        <field:display field="machineno" id="s_com_ruyicai_lottery_domain_Tlot_machineno" object="${tlot}" z="ihdN8AOUIWkXAo2uJW+5WZKQlWk="/>
+        <field:display field="bettype" id="s_com_ruyicai_lottery_domain_Tlot_bettype" object="${tlot}" z="9jiiI+lgGSCpcbsorta7h/3kgAA="/>
+        <field:display field="amt" id="s_com_ruyicai_lottery_domain_Tlot_amt" object="${tlot}" z="c5JXtCJnsAnJCaizrYI7QI/vUU4="/>
+        <field:display field="userno" id="s_com_ruyicai_lottery_domain_Tlot_userno" object="${tlot}" z="PJb0YexN9EtnpBP+Owqs26yuwAw="/>
+        <field:display field="pbatchcode" id="s_com_ruyicai_lottery_domain_Tlot_pbatchcode" object="${tlot}" z="eEzv351hTY6fuBImwvVtFXpEad0="/>
+        <field:display field="lotpwd" id="s_com_ruyicai_lottery_domain_Tlot_lotpwd" object="${tlot}" z="wwhmlIz9GAQ/Kf88XmRVKPayvjg="/>
+        <field:display field="prizeinfo" id="s_com_ruyicai_lottery_domain_Tlot_prizeinfo" object="${tlot}" z="0ZxX4KTORK2nk1Z35YIqHOw6tvg="/>
+        <field:display date="true" dateTimePattern="${tlot_prizetime_date_format}" field="prizetime" id="s_com_ruyicai_lottery_domain_Tlot_prizetime" object="${tlot}" z="iyMa1rnlpko8BEX1aEACDj9bqmk="/>
+        <field:display field="drawway" id="s_com_ruyicai_lottery_domain_Tlot_drawway" object="${tlot}" z="frBIQ7QGyePsstt+Uyrmxk0uYpA="/>
+        <field:display field="subscribeno" id="s_com_ruyicai_lottery_domain_Tlot_subscribeno" object="${tlot}" z="ZupnUMOkbcfO9upRoM9yNVr0B9A="/>
+        <field:display field="caseid" id="s_com_ruyicai_lottery_domain_Tlot_caseid" object="${tlot}" z="hKxmzuYNXfoyQRzMtfA9L6l0VJY="/>
+        <field:display field="mac" id="s_com_ruyicai_lottery_domain_Tlot_mac" object="${tlot}" z="LRIpv2uEQLNh16jDQMShi2ypkq4="/>
+        <field:display field="state" id="s_com_ruyicai_lottery_domain_Tlot_state" object="${tlot}" z="HVmvqRDhknczUoKpmy786/Oh0P8="/>
+        <field:display field="betcode" id="s_com_ruyicai_lottery_domain_Tlot_betcode" object="${tlot}" z="vw27k1BzaAooLlDws8owf+E2/50="/>
+        <field:display date="true" dateTimePattern="${tlot_giveuptime_date_format}" field="giveuptime" id="s_com_ruyicai_lottery_domain_Tlot_giveuptime" object="${tlot}" z="aDcmPjE9hFUHbElTJ0DjcEBylC8="/>
+        <field:display field="checkcode" id="s_com_ruyicai_lottery_domain_Tlot_checkcode" object="${tlot}" z="hSMcdFmMk8OxG6lFavjCkdhl3Pw="/>
+        <field:display field="settleflag" id="s_com_ruyicai_lottery_domain_Tlot_settleflag" object="${tlot}" z="L6jt2vOMqtWeJVeuOwLA9Ye6iCE="/>
+        <field:display field="prizeamt" id="s_com_ruyicai_lottery_domain_Tlot_prizeamt" object="${tlot}" z="p3BW55hA+rA6chFiICKsdQ3R/Z4="/>
+    </page:show>
+</div>
