@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="dyjlogfile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/dyj.log</File>
+		<encoder>
+			<pattern>%-20(%d{yyyy-MM-dd HH:mm:ss.SSS}) %-5level %logger{80}.%method - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.dir}/dyj.log%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	<appender name="caitongtclogfile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/caitongtc.log</File>
+		<encoder>
+			<pattern>%-20(%d{yyyy-MM-dd HH:mm:ss.SSS}) %-5level %logger{80}.%method - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.dir}/caitongtc.log%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	<appender name="nmlogfile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/neimen.log</File>
+		<encoder>
+			<pattern>%-20(%d{yyyy-MM-dd HH:mm:ss.SSS}) %-5level %logger{80}.%method - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.dir}/neimen.log%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	<appender name="caitongfclogfile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/caitongfc.log</File>
+		<encoder>
+			<pattern>%-20(%d{yyyy-MM-dd HH:mm:ss.SSS}) %-5level %logger{80}.%method - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.dir}/caitongfc.log%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	<appender name="activedlqlog"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/activedlq.log</File>
+		<encoder>
+			<pattern>%-20(%d{yyyy-MM-dd HH:mm:ss.SSS}) %-5level %logger{80}.%method - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="nmencashlog"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/neimenencash.log</File>
+		<encoder>
+			<pattern>%-20(%d{yyyy-MM-dd HH:mm:ss.SSS}) %-5level %logger{80}.%method - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="logfile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.dir}/lottery.log</File>
+		<encoder>
+			<pattern>%-20(%d{yyyy-MM-dd HH:mm:ss.SSS}) %-5level %logger{80}.%method - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.dir}/lottery.log%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	
+	<logger name="com.ruyicai.lotcenter.dyj" additivity="false"
+		level="info">
+		<appender-ref ref="dyjlogfile" />
+	</logger>
+	<logger name="com.ruyicai.lotcenter.caitongtc" additivity="false"
+		level="info">
+		<appender-ref ref="caitongtclogfile" />
+	</logger>
+	<logger name="com.ruyicai.lotcenter.nmfc" additivity="false"
+		level="info">
+		<appender-ref ref="nmlogfile" />
+	</logger>
+	<logger name="com.ruyicai.lotcenter.caitongfc" additivity="false"
+		level="info">
+		<appender-ref ref="caitongfclogfile" />
+	</logger>
+	<logger name="activedlq" additivity="false" level="INFO">
+		<appender-ref ref="activedlqlog" />
+	</logger>
+	<logger name="nmencash" additivity="false" level="INFO">
+		<appender-ref ref="nmencashlog" />
+	</logger>
+	<logger name="org.apache" level="ERROR" />
+	<logger name="org.hibernate.SQL" level="ERROR" />
+	<logger name="org.hibernate" level="ERROR" />
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="net.sf" level="ERROR" />
+	<root level="INFO">
+		<appender-ref ref="logfile" />
+	</root>
+</configuration>

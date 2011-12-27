@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_ruyicai_lottery_domain_Tuserinfo" items="${tuserinfoes}" z="3vnVYurK/gHKzmoWUfyY4xHVAQI=">
+        <table:table data="${tuserinfoes}" id="l_com_ruyicai_lottery_domain_Tuserinfo" path="/tbiguserinfoes" typeIdFieldName="userno" z="8Iv8aay1egeUY+MRk03VkobuUdk=">
+            <table:column id="c_com_ruyicai_lottery_domain_Tuserinfo_modtime" property="modtime" z="sDbgFCRIMNNFYOYfTxIERKcO3Cw="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Tuserinfo_phone" property="phone" z="9ukrF+FcmHx9RSLreoAMRSrImTY="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Tuserinfo_channel" property="channel" z="4GL5nz40YzrSlp9/FpOOqKJzgCA="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Tuserinfo_type" property="type" z="IJd3FNj0z/8f4LGsky/lsOB/dFI="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Tuserinfo_password" property="password" z="z4flI7MR3RL50bxxIVkVpgyup+A="/>
+            <table:column id="c_com_ruyicai_lottery_domain_Tuserinfo_regtime" property="regtime" z="V7UlC1PCmf78y1aGKQbdIDub+f0="/>
+        </table:table>
+    </page:list>
+</div>
