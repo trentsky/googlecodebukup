@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.trent</groupId>
@@ -10,27 +11,29 @@
 	<properties>
 		<spring.version>3.1.0.RELEASE</spring.version>
 		<aspectj.version>1.6.11.M2</aspectj.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>
+			UTF-8
+		</project.build.sourceEncoding>
 		<logback.version>0.9.30</logback.version>
 		<log4jConfigures></log4jConfigures>
 		<log.dir></log.dir>
 		<logback.appender>logfile</logback.appender>
 	</properties>
 	<!--
-	<repositories>
+		<repositories>
 		<repository>
-			<id>ruyicai</id>
-			<name>Ruyicai Repository</name>
-			<url>http://202.43.151.3:8181/nexus/content/repositories/public/</url>
+		<id>ruyicai</id>
+		<name>Ruyicai Repository</name>
+		<url>http://202.43.151.3:8181/nexus/content/repositories/public/</url>
 		</repository>
-	</repositories>
-	<pluginRepositories>
+		</repositories>
+		<pluginRepositories>
 		<pluginRepository>
-			<id>ruyicai</id>
-			<name>Ruyicai Repository</name>
-			<url>http://202.43.151.3:8181/nexus/content/repositories/public/</url>
+		<id>ruyicai</id>
+		<name>Ruyicai Repository</name>
+		<url>http://202.43.151.3:8181/nexus/content/repositories/public/</url>
 		</pluginRepository>
-	</pluginRepositories>
+		</pluginRepositories>
 	-->
 	<dependencies>
 		<dependency>
@@ -45,6 +48,12 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.9</version>
+		</dependency>
+
 		<!-- General dependencies for standard applications -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -424,9 +433,13 @@
 				<artifactId>momo-test-plugin</artifactId>
 				<version>0.0.8</version>
 				<configuration>
-					<fixturePackage>classpath:/com/ruyicai/fixtures/**/*.class</fixturePackage>
+					<fixturePackage>
+						classpath:/com/ruyicai/fixtures/**/*.class
+					</fixturePackage>
 					<springConfiguration>
-						<param>classpath:/META-INF/spring/applicationContext.xml</param>
+						<param>
+							classpath:/META-INF/spring/applicationContext.xml
+						</param>
 					</springConfiguration>
 				</configuration>
 			</plugin>
@@ -501,11 +514,15 @@
 						<configuration>
 							<resources>
 								<resource>
-									<directory>src/main/javatemplate</directory>
+									<directory>
+										src/main/javatemplate
+									</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
-							<outputDirectory>${basedir}/src/main/java</outputDirectory>
+							<outputDirectory>
+								${basedir}/src/main/java
+							</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
@@ -552,7 +569,9 @@
 				<version>2.2-beta-5</version>
 				<configuration>
 					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
+						<descriptorRef>
+							jar-with-dependencies
+						</descriptorRef>
 					</descriptorRefs>
 				</configuration>
 			</plugin>
@@ -575,17 +594,27 @@
 						<buildCommand>
 							<name>org.eclipse.ajdt.core.ajbuilder</name>
 							<arguments>
-								<aspectPath>org.springframework.aspects</aspectPath>
+								<aspectPath>
+									org.springframework.aspects
+								</aspectPath>
 							</arguments>
 						</buildCommand>
 						<buildCommand>
-							<name>org.springframework.ide.eclipse.core.springbuilder</name>
+							<name>
+								org.springframework.ide.eclipse.core.springbuilder
+							</name>
 						</buildCommand>
 					</additionalBuildcommands>
 					<additionalProjectnatures>
-						<projectnature>org.eclipse.ajdt.ui.ajnature</projectnature>
-						<projectnature>com.springsource.sts.roo.core.nature</projectnature>
-						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+						<projectnature>
+							org.eclipse.ajdt.ui.ajnature
+						</projectnature>
+						<projectnature>
+							com.springsource.sts.roo.core.nature
+						</projectnature>
+						<projectnature>
+							org.springframework.ide.eclipse.core.springnature
+						</projectnature>
 					</additionalProjectnatures>
 				</configuration>
 			</plugin>
@@ -595,7 +624,9 @@
 				<version>2.2</version>
 				<configuration>
 					<downloadSources>true</downloadSources>
-					<dependenciesAsLibraries>true</dependenciesAsLibraries>
+					<dependenciesAsLibraries>
+						true
+					</dependenciesAsLibraries>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -626,9 +657,13 @@
 				<artifactId>selenium-maven-plugin</artifactId>
 				<version>1.1</version>
 				<configuration>
-					<suite>src\main\webapp\selenium\test-suite.xhtml</suite>
+					<suite>
+						src\main\webapp\selenium\test-suite.xhtml
+					</suite>
 					<browser>*firefox</browser>
-					<results>${project.build.directory}/selenium.html</results>
+					<results>
+						${project.build.directory}/selenium.html
+					</results>
 					<startURL>http://localhost:4444/</startURL>
 				</configuration>
 			</plugin>
@@ -645,12 +680,16 @@
 					</container>
 					<configuration>
 						<properties>
-							<cargo.servlet.port>6088</cargo.servlet.port>
+							<cargo.servlet.port>
+								6088
+							</cargo.servlet.port>
 						</properties>
 						<deployables>
 							<deployable>
 								<properties>
-									<context>${project.artifactId}</context>
+									<context>
+										${project.artifactId}
+									</context>
 								</properties>
 							</deployable>
 						</deployables>
@@ -700,16 +739,18 @@
 							<driver>${database.driver}</driver>
 							<url>${database.url}</url>
 							<username>${database.systemUser}</username>
-							<password>${database.systemPassword}</password>
+							<password>
+								${database.systemPassword}
+							</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
 								<!-- 
-								drop user jrtsch cascade;
-								create user jrtsch
-								identified BY jrtsch default tablespace users Temporary
-								TABLESPACE Temp;
-								grant connect,resource,dba to jrtsch;
-								commit; -->
+									drop user jrtsch cascade;
+									create user jrtsch
+									identified BY jrtsch default tablespace users Temporary
+									TABLESPACE Temp;
+									grant connect,resource,dba to jrtsch;
+									commit; -->
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -724,7 +765,9 @@
 				</plugins>
 			</build>
 			<properties>
-				<database.driver>oracle.jdbc.OracleDriver</database.driver>
+				<database.driver>
+					oracle.jdbc.OracleDriver
+				</database.driver>
 			</properties>
 		</profile>
 		<profile>
@@ -742,7 +785,9 @@
 							<password>${database.password}</password>
 							<autocommit>true</autocommit>
 							<srcFiles>
-								<srcFile>src/main/db/migrate/migrateForOldDB.sql</srcFile>
+								<srcFile>
+									src/main/db/migrate/migrateForOldDB.sql
+								</srcFile>
 							</srcFiles>
 						</configuration>
 						<dependencies>
@@ -757,7 +802,9 @@
 				</plugins>
 			</build>
 			<properties>
-				<database.driver>oracle.jdbc.OracleDriver</database.driver>
+				<database.driver>
+					oracle.jdbc.OracleDriver
+				</database.driver>
 			</properties>
 		</profile>
 		<profile>
@@ -770,7 +817,9 @@
 						<version>1.4</version>
 						<configuration>
 							<driver>oracle.jdbc.OracleDriver</driver>
-							<url>jdbc:oracle:thin:@localhost:1521:xe</url>
+							<url>
+								jdbc:oracle:thin:@localhost:1521:xe
+							</url>
 							<username>system</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
@@ -800,16 +849,16 @@
 						<version>1.4</version>
 						<configuration>
 							<driver>oracle.jdbc.OracleDriver</driver>
-							<url>jdbc:oracle:thin:@localhost:1521:xe</url>
+							<url>
+								jdbc:oracle:thin:@localhost:1521:xe
+							</url>
 							<username>system</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								create user jrtsch
-								identified BY jrtsch default
-								tablespace users Temporary
-								TABLESPACE Temp;
-								grant
+								create user jrtsch identified BY jrtsch
+								default tablespace users Temporary
+								TABLESPACE Temp; grant
 								connect,resource,dba to jrtsch;
 							</sqlCommand>
 						</configuration>
@@ -835,18 +884,32 @@
 						<version>2.0.1</version>
 						<configuration>
 							<maven.test.skip>true</maven.test.skip>
-							<changeLogFile>src/main/db/changelog.xml</changeLogFile>
-							<diffChangeLogFile>src/main/db/changelog-${project.version}.xml</diffChangeLogFile>
+							<changeLogFile>
+								src/main/db/changelog.xml
+							</changeLogFile>
+							<diffChangeLogFile>
+								src/main/db/changelog-${project.version}.xml
+							</diffChangeLogFile>
 							<driver>${database.driverClassName}</driver>
 							<url>${database.url}</url>
 							<baseUrl>${database.baseUrl}</baseUrl>
-							<baseUsername>${database.username}</baseUsername>
-							<basePassword>${database.password}</basePassword>
-							<baseDriver>${database.driverClassName}</baseDriver>
+							<baseUsername>
+								${database.username}
+							</baseUsername>
+							<basePassword>
+								${database.password}
+							</basePassword>
+							<baseDriver>
+								${database.driverClassName}
+							</baseDriver>
 							<username>${database.username}</username>
 							<password>${database.password}</password>
-							<defaultSchemaName>jrtsch</defaultSchemaName>
-							<promptOnNonLocalDatabase>${liquibase.promptOnNonLocalDatabase}</promptOnNonLocalDatabase>
+							<defaultSchemaName>
+								jrtsch
+							</defaultSchemaName>
+							<promptOnNonLocalDatabase>
+								${liquibase.promptOnNonLocalDatabase}
+							</promptOnNonLocalDatabase>
 						</configuration>
 						<executions>
 							<execution>
