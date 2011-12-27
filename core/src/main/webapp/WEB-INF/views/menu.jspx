@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>
+
+<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+    <menu:category id="c_tuserinfo" z="B1bjdoL7QODJAyNHLap/0Bxn9HY=">
+            <menu:item id="i_tuserinfo_new" messageCode="global_menu_new" url="/tuserinfoes?form" z="v2wUS0AbR37rTfIQ6pTu2HcYDL0="/>
+        <menu:item id="i_tuserinfo_list" messageCode="global_menu_list" url="/tuserinfoes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="AC7tuIw9RJmabPJDQrS2qk8XbPw="/>
+        <menu:item id="fi_tuserinfo_email" messageCode="global_menu_find" url="/tuserinfoes?find=ByEmail&amp;form" z="mK7E6V3REPc8h1IZNro0JEAShJ8="/>
+        <menu:item id="fi_tuserinfo_mobileid" messageCode="global_menu_find" url="/tuserinfoes?find=ByMobileid&amp;form" z="ZvQqP3rlnRC2hxpDRl/aA4MO97U="/>
+        <menu:item id="fi_tuserinfo_username" messageCode="global_menu_find" url="/tuserinfoes?find=ByUserName&amp;form" z="/ntUWVU0Wo4SQ6HjBn+Z59YA9pI="/>
+        </menu:category>
+    <menu:category id="c_tlottc" z="3dgqII9TfHvr8WzuzEcmtR3TTz8=">
+            <menu:item id="i_tlottc_new" messageCode="global_menu_new" url="/tlottcs?form" z="N7U+unZNKaiYAzwWya3Gjlq6N2c="/>
+        <menu:item id="i_tlottc_list" messageCode="global_menu_list" url="/tlottcs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nvDBeKfgX/FZSENUhdbpk/GeebI="/>
+        </menu:category>
+    <menu:category id="c_tlotctrl" z="DPNwVv7BwjMhL+jfvao1uVT15j0=">
+            <menu:item id="i_tlotctrl_new" messageCode="global_menu_new" url="/tlotctrls?form" z="dHBoO4FGjFZjBA9OmJi6A+mTYTg="/>
+        <menu:item id="i_tlotctrl_list" messageCode="global_menu_list" url="/tlotctrls?page=1&amp;size=${empty param.size ? 10 : param.size}" z="+Fs2RtIlQQbh1QcJf0cyeOWB7HM="/>
+        </menu:category>
+    <menu:category id="c_tmonitor" z="YHbFZX+6UYve0FjmX6oIxZku42k=">
+            <menu:item id="i_tmonitor_new" messageCode="global_menu_new" url="/tmonitors?form" z="OPTD7ceE8MK4uCKCcHqM00ChxVE="/>
+        <menu:item id="i_tmonitor_list" messageCode="global_menu_list" url="/tmonitors?page=1&amp;size=${empty param.size ? 10 : param.size}" z="L4twJKdA1MfrxvIlQ70KZmAyBw0="/>
+        </menu:category>
+    <menu:category id="c_tuserchannel" z="t78kd2wo3COntkOzLcmDBVogi3w=">
+            <menu:item id="i_tuserchannel_new" messageCode="global_menu_new" url="/tuserchannels?form" z="Zm9nbvV/Dvd42On1Us9peJhitHs="/>
+        <menu:item id="i_tuserchannel_list" messageCode="global_menu_list" url="/tuserchannels?page=1&amp;size=${empty param.size ? 10 : param.size}" z="oYlTvjYFS/iO3PlGUSb7d547qL8="/>
+        </menu:category>
+    <menu:category id="c_taccount" z="RiRJ9fvY2WeOs2oTGhtkXz1KuKY=">
+            <menu:item id="i_taccount_new" messageCode="global_menu_new" url="/taccounts?form" z="eLUhgqj6Jm5cRlWZIlKqh3E0LbA="/>
+        <menu:item id="i_taccount_list" messageCode="global_menu_list" url="/taccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="7nvdbFOLRdk7w3CL0eYZKcOTpuA="/>
+        </menu:category>
+    <menu:category id="c_tlot" z="Nl0ZRKQTcakmS+4dmPlLuqB2nMw=">
+            <menu:item id="i_tlot_new" messageCode="global_menu_new" url="/tlots?form" z="H7bLWpPRrkurLq7Mz8Ax13DjSKo="/>
+        <menu:item id="i_tlot_list" messageCode="global_menu_list" url="/tlots?page=1&amp;size=${empty param.size ? 10 : param.size}" z="6gpsHpubehl+ZHA0qNbJ2j1pzYk="/>
+        </menu:category>
+    </menu:menu>
+</div>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+	    <encoder>
+	      <pattern>%-20(%d{yyyy-MM-dd HH:mm:ss.SSS}) %-5level %logger{80}.%method - %msg%n</pattern>
+	    </encoder>
+	</appender>
+	<logger name="org.apache" level="ERROR" />
+	<logger name="org.hibernate.SQL" level="ERROR" />
+	<logger name="org.hibernate" level="ERROR" />
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="net.sf" level="ERROR" />
+	<logger name="com.dbluethink.test" level="info"></logger>
+	<root level="INFO">
+		<appender-ref ref="stdout" />
+	</root>
+</configuration>
