@@ -15,8 +15,7 @@
 			UTF-8
 		</project.build.sourceEncoding>
 		<logback.version>0.9.30</logback.version>
-		<log4jConfigures></log4jConfigures>
-		<log.dir></log.dir>
+		<log.dir>f:/logs</log.dir>
 		<logback.appender>logfile</logback.appender>
 	</properties>
 		<repositories>
