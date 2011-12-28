@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>com.dbluethink</groupId>
 			<artifactId>test</artifactId>
-			<version>0.0.15</version>
+			<version>0.0.17</version>
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
