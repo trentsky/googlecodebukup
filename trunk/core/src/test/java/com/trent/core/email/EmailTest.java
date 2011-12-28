@@ -19,7 +19,7 @@ public class EmailTest {
 	@Test
 	public void sendEmail(){
 		User user = new User();
-		user.setEmail("tqha@sina.com");
+		user.setEmail("aaa");
 		user.setName("Tom");
 		notifyMessageProducer.sendQueue(user);
 	}
