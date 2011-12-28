@@ -99,7 +99,7 @@ public class MimeMailService {
 	 */
 	private File generateAttachment() throws MessagingException {
 		try {
-			Resource resource = new ClassPathResource("/email/mailAttachment.txt");
+			Resource resource = new ClassPathResource("/META-INF/email/mailAttachment.txt");
 			return resource.getFile();
 		} catch (IOException e) {
 			logger.error("构造邮件失败,附件文件不存在", e);

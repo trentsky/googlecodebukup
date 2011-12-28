@@ -38,6 +38,6 @@
 
 	<!-- 用于生成HTML邮件内容的Freemarker配置 -->
 	<bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
-		<property name="templateLoaderPath" value="classpath:/email" />
+		<property name="templateLoaderPath" value="classpath:/META-INF/email" />
 	</bean>
 </beans>

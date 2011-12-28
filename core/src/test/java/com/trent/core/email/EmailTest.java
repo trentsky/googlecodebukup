@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.trent.core.common.User;
+import com.trent.core.jms.advanced.AdvancedNotifyMessageProducer;
 import com.trent.core.jms.simple.NotifyMessageProducer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -16,11 +17,14 @@ public class EmailTest {
 	@Autowired
 	private NotifyMessageProducer notifyMessageProducer;
 	
+	@Autowired
+	private AdvancedNotifyMessageProducer advancedNotifyMessageProducer;
+	
 	@Test
 	public void sendEmail(){
 		User user = new User();
 		user.setEmail("aaa");
 		user.setName("Tom");
-		notifyMessageProducer.sendQueue(user);
+		advancedNotifyMessageProducer.sendQueue(user);
 	}
 }
