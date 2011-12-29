@@ -25,6 +25,7 @@ public class EmailTest {
 		User user = new User();
 		user.setEmail("aaa");
 		user.setName("Tom");
+		System.out.println(user.toString());
 		advancedNotifyMessageProducer.sendQueue(user);
 	}
 }
