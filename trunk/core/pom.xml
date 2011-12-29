@@ -442,7 +442,7 @@
 				<version>0.0.8</version>
 				<configuration>
 					<fixturePackage>
-						classpath:/com/ruyicai/fixtures/**/*.class
+						classpath:/com/trent/fixtures/**/*.class
 					</fixturePackage>
 					<springConfiguration>
 						<param>
