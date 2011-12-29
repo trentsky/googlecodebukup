@@ -1,5 +1,7 @@
 package com.trent.core.common;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 public class User {
 	
 	private String loginName;
@@ -50,5 +52,9 @@ public class User {
 	}
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+	
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
 	}
 }
