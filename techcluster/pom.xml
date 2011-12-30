@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.trent</groupId>
@@ -11,31 +12,43 @@
 		<spring.version>3.0.5.RELEASE</spring.version>
 		<aspectj.version>1.6.11.M2</aspectj.version>
 		<slf4j.version>1.6.1</slf4j.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>
+			UTF-8
+		</project.build.sourceEncoding>
 		<database.initialSize>0</database.initialSize>
 		<database.maxActive>20</database.maxActive>
 		<database.maxIdle>100</database.maxIdle>
 		<database.minIdle>0</database.minIdle>
 		<database.maxWait>10000</database.maxWait>
 		<database.removeAbandoned>true</database.removeAbandoned>
-		<database.removeAbandonedTimeout>60</database.removeAbandonedTimeout>
+		<database.removeAbandonedTimeout>
+			60
+		</database.removeAbandonedTimeout>
 		<database.logAbandoned>true</database.logAbandoned>
-		<database.validationQuery>select 1 from dual</database.validationQuery>
+		<database.validationQuery>
+			select 1 from dual
+		</database.validationQuery>
 		<database.testOnBorrow>true</database.testOnBorrow>
-		<liquibase.promptOnNonLocalDatabase>true</liquibase.promptOnNonLocalDatabase>
+		<liquibase.promptOnNonLocalDatabase>
+			true
+		</liquibase.promptOnNonLocalDatabase>
 	</properties>
 	<repositories>
 		<repository>
 			<id>ruyicai</id>
 			<name>Ruyicai Repository</name>
-			<url>http://202.43.151.3:8181/nexus/content/repositories/public/</url>
+			<url>
+				http://202.43.151.3:8181/nexus/content/repositories/public/
+			</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>ruyicai</id>
 			<name>Ruyicai Repository</name>
-			<url>http://202.43.151.3:8181/nexus/content/repositories/public/</url>
+			<url>
+				http://202.43.151.3:8181/nexus/content/repositories/public/
+			</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<dependencies>
@@ -476,9 +489,13 @@
 				<artifactId>momo-test-plugin</artifactId>
 				<version>0.0.8</version>
 				<configuration>
-					<fixturePackage>classpath:/com/techcluster/fixtures/**/*.class</fixturePackage>
+					<fixturePackage>
+						classpath:/com/techcluster/fixtures/**/*.class
+					</fixturePackage>
 					<springConfiguration>
-						<param>classpath:/META-INF/spring/applicationContext.xml</param>
+						<param>
+							classpath:/META-INF/spring/applicationContext.xml
+						</param>
 					</springConfiguration>
 				</configuration>
 			</plugin>
@@ -542,7 +559,9 @@
 				<version>2.2-beta-5</version>
 				<configuration>
 					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
+						<descriptorRef>
+							jar-with-dependencies
+						</descriptorRef>
 					</descriptorRefs>
 				</configuration>
 			</plugin>
@@ -565,17 +584,27 @@
 						<buildCommand>
 							<name>org.eclipse.ajdt.core.ajbuilder</name>
 							<arguments>
-								<aspectPath>org.springframework.aspects</aspectPath>
+								<aspectPath>
+									org.springframework.aspects
+								</aspectPath>
 							</arguments>
 						</buildCommand>
 						<buildCommand>
-							<name>org.springframework.ide.eclipse.core.springbuilder</name>
+							<name>
+								org.springframework.ide.eclipse.core.springbuilder
+							</name>
 						</buildCommand>
 					</additionalBuildcommands>
 					<additionalProjectnatures>
-						<projectnature>org.eclipse.ajdt.ui.ajnature</projectnature>
-						<projectnature>com.springsource.sts.roo.core.nature</projectnature>
-						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+						<projectnature>
+							org.eclipse.ajdt.ui.ajnature
+						</projectnature>
+						<projectnature>
+							com.springsource.sts.roo.core.nature
+						</projectnature>
+						<projectnature>
+							org.springframework.ide.eclipse.core.springnature
+						</projectnature>
 					</additionalProjectnatures>
 				</configuration>
 			</plugin>
@@ -585,7 +614,9 @@
 				<version>2.2</version>
 				<configuration>
 					<downloadSources>true</downloadSources>
-					<dependenciesAsLibraries>true</dependenciesAsLibraries>
+					<dependenciesAsLibraries>
+						true
+					</dependenciesAsLibraries>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -616,9 +647,13 @@
 				<artifactId>selenium-maven-plugin</artifactId>
 				<version>1.1</version>
 				<configuration>
-					<suite>src\main\webapp\selenium\test-suite.xhtml</suite>
+					<suite>
+						src\main\webapp\selenium\test-suite.xhtml
+					</suite>
 					<browser>*firefox</browser>
-					<results>${project.build.directory}/selenium.html</results>
+					<results>
+						${project.build.directory}/selenium.html
+					</results>
 					<startURL>http://localhost:4444/</startURL>
 				</configuration>
 			</plugin>
@@ -635,12 +670,16 @@
 					</container>
 					<configuration>
 						<properties>
-							<cargo.servlet.port>6088</cargo.servlet.port>
+							<cargo.servlet.port>
+								6088
+							</cargo.servlet.port>
 						</properties>
 						<deployables>
 							<deployable>
 								<properties>
-									<context>${project.artifactId}</context>
+									<context>
+										${project.artifactId}
+									</context>
 								</properties>
 							</deployable>
 						</deployables>
@@ -679,6 +718,23 @@
 	</build>
 	<profiles>
 		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.jdbc.url>
+					jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf-8
+				</sonar.jdbc.url>
+				<sonar.jdbc.driver>
+					com.mysql.jdbc.Driver
+				</sonar.jdbc.driver>
+				<sonar.jdbc.username>sonar</sonar.jdbc.username>
+				<sonar.jdbc.password>sonar</sonar.jdbc.password>
+				<sonar.host.url>http://localhost:9000</sonar.host.url>
+			</properties>
+		</profile>
+		<profile>
 			<id>local-recreate-db</id>
 			<build>
 				<plugins>
@@ -690,15 +746,16 @@
 							<driver>${database.driver}</driver>
 							<url>${database.url}</url>
 							<username>${database.systemUser}</username>
-							<password>${database.systemPassword}</password>
+							<password>
+								${database.systemPassword}
+							</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								drop user jrtsch cascade;
-								create user jrtsch
-								identified BY jrtsch default tablespace users Temporary
-								TABLESPACE Temp;
-								grant connect,resource,dba to jrtsch;
-								commit;
+								drop user jrtsch cascade; create user
+								jrtsch identified BY jrtsch default
+								tablespace users Temporary TABLESPACE
+								Temp; grant connect,resource,dba to
+								jrtsch; commit;
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -713,7 +770,9 @@
 				</plugins>
 			</build>
 			<properties>
-				<database.driver>oracle.jdbc.OracleDriver</database.driver>
+				<database.driver>
+					oracle.jdbc.OracleDriver
+				</database.driver>
 			</properties>
 		</profile>
 		<profile>
@@ -731,7 +790,9 @@
 							<password>${database.password}</password>
 							<autocommit>true</autocommit>
 							<srcFiles>
-								<srcFile>src/main/db/migrate/migrateForOldDB.sql</srcFile>
+								<srcFile>
+									src/main/db/migrate/migrateForOldDB.sql
+								</srcFile>
 							</srcFiles>
 						</configuration>
 						<dependencies>
@@ -746,7 +807,9 @@
 				</plugins>
 			</build>
 			<properties>
-				<database.driver>oracle.jdbc.OracleDriver</database.driver>
+				<database.driver>
+					oracle.jdbc.OracleDriver
+				</database.driver>
 			</properties>
 		</profile>
 		<profile>
@@ -756,8 +819,12 @@
 			</activation>
 			<properties>
 				<tlot.id.prefix>TE</tlot.id.prefix>
-				<database.url>jdbc:oracle:thin:@localhost:1521:xe</database.url>
-				<database.driverClassName>oracle.jdbc.OracleDriver</database.driverClassName>
+				<database.url>
+					jdbc:oracle:thin:@localhost:1521:xe
+				</database.url>
+				<database.driverClassName>
+					oracle.jdbc.OracleDriver
+				</database.driverClassName>
 				<database.username>jrtsch</database.username>
 				<database.password>jrtsch</database.password>
 				<database.initialSize>0</database.initialSize>
@@ -765,35 +832,61 @@
 				<database.maxIdle>100</database.maxIdle>
 				<database.minIdle>0</database.minIdle>
 				<database.maxWait>10000</database.maxWait>
-				<database.removeAbandoned>true</database.removeAbandoned>
-				<database.removeAbandonedTimeout>60</database.removeAbandonedTimeout>
+				<database.removeAbandoned>
+					true
+				</database.removeAbandoned>
+				<database.removeAbandonedTimeout>
+					60
+				</database.removeAbandonedTimeout>
 				<database.logAbandoned>true</database.logAbandoned>
-				<database.validationQuery>select 1 from dual</database.validationQuery>
+				<database.validationQuery>
+					select 1 from dual
+				</database.validationQuery>
 				<database.testOnBorrow>true</database.testOnBorrow>
 				<database.systemUser>system</database.systemUser>
-				<database.systemPassword>123456</database.systemPassword>
+				<database.systemPassword>
+					123456
+				</database.systemPassword>
 				<!-- <tomcat.manager.url>http://dev:8080/manager</tomcat.manager.url> -->
-				<liquibase.promptOnNonLocalDatabase>false</liquibase.promptOnNonLocalDatabase>
-				<jms.new-issue.brokerURL>vm://localhost</jms.new-issue.brokerURL>
-				<jms.new-issue.topic.name>new-issue</jms.new-issue.topic.name>
+				<liquibase.promptOnNonLocalDatabase>
+					false
+				</liquibase.promptOnNonLocalDatabase>
+				<jms.new-issue.brokerURL>
+					vm://localhost
+				</jms.new-issue.brokerURL>
+				<jms.new-issue.topic.name>
+					new-issue
+				</jms.new-issue.topic.name>
 				<log4j.rootCategory>INFO, stdout</log4j.rootCategory>
-				<sms.defaultSMSChannel>mockSMSServiceProvider</sms.defaultSMSChannel>
+				<sms.defaultSMSChannel>
+					mockSMSServiceProvider
+				</sms.defaultSMSChannel>
 				<sms.kaiguan>0</sms.kaiguan>
 				<hitbigamountmail>500</hitbigamountmail>
 				<orderhitbigamount>500</orderhitbigamount>
 				<caitongtc.key>0102030405060708</caitongtc.key>
 				<caitongtc.venderId>BJJR</caitongtc.venderId>
-				<caitongtc.url>http://123.233.112.21:8082/aat/aat2.dll/Execute</caitongtc.url>
-				<caitongtc.ftpdown.hostname>123.233.112.21</caitongtc.ftpdown.hostname>
+				<caitongtc.url>
+					http://123.233.112.21:8082/aat/aat2.dll/Execute
+				</caitongtc.url>
+				<caitongtc.ftpdown.hostname>
+					123.233.112.21
+				</caitongtc.ftpdown.hostname>
 				<caitongtc.ftpdown.port>22421</caitongtc.ftpdown.port>
 				<caitongtc.ftpdown.user>tcbjjr</caitongtc.ftpdown.user>
 				<caitongtc.ftpdown.pwd>123456</caitongtc.ftpdown.pwd>
 				<caitongfc.key>EA0DAC0708BA0B01</caitongfc.key>
 				<caitongfc.venderId>RUICAI</caitongfc.venderId>
-				<caitongfc.url>http://123.233.112.21:10251/extern</caitongfc.url>
-				<caitongfc.ftpdown.hostname>123.233.112.21</caitongfc.ftpdown.hostname>
+				<caitongfc.url>
+					http://123.233.112.21:10251/extern
+				</caitongfc.url>
+				<caitongfc.ftpdown.hostname>
+					123.233.112.21
+				</caitongfc.ftpdown.hostname>
 				<caitongfc.ftpdown.port>10221</caitongfc.ftpdown.port>
-				<caitongfc.ftpdown.user>ftpruicai</caitongfc.ftpdown.user>
+				<caitongfc.ftpdown.user>
+					ftpruicai
+				</caitongfc.ftpdown.user>
 				<caitongfc.ftpdown.pwd>ftpruicai</caitongfc.ftpdown.pwd>
 			</properties>
 		</profile>
@@ -808,18 +901,32 @@
 						<version>2.0.1</version>
 						<configuration>
 							<maven.test.skip>true</maven.test.skip>
-							<changeLogFile>src/main/db/changelog.xml</changeLogFile>
-							<diffChangeLogFile>src/main/db/changelog-${project.version}.xml</diffChangeLogFile>
+							<changeLogFile>
+								src/main/db/changelog.xml
+							</changeLogFile>
+							<diffChangeLogFile>
+								src/main/db/changelog-${project.version}.xml
+							</diffChangeLogFile>
 							<driver>${database.driverClassName}</driver>
 							<url>${database.url}</url>
 							<baseUrl>${database.baseUrl}</baseUrl>
-							<baseUsername>${database.username}</baseUsername>
-							<basePassword>${database.password}</basePassword>
-							<baseDriver>${database.driverClassName}</baseDriver>
+							<baseUsername>
+								${database.username}
+							</baseUsername>
+							<basePassword>
+								${database.password}
+							</basePassword>
+							<baseDriver>
+								${database.driverClassName}
+							</baseDriver>
 							<username>${database.username}</username>
 							<password>${database.password}</password>
-							<defaultSchemaName>jrtsch</defaultSchemaName>
-							<promptOnNonLocalDatabase>${liquibase.promptOnNonLocalDatabase}</promptOnNonLocalDatabase>
+							<defaultSchemaName>
+								jrtsch
+							</defaultSchemaName>
+							<promptOnNonLocalDatabase>
+								${liquibase.promptOnNonLocalDatabase}
+							</promptOnNonLocalDatabase>
 						</configuration>
 						<executions>
 							<execution>
@@ -844,7 +951,9 @@
 						<version>1.4</version>
 						<configuration>
 							<driver>oracle.jdbc.OracleDriver</driver>
-							<url>jdbc:oracle:thin:@localhost:1521:xe</url>
+							<url>
+								jdbc:oracle:thin:@localhost:1521:xe
+							</url>
 							<username>system</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
@@ -875,16 +984,16 @@
 						<version>1.4</version>
 						<configuration>
 							<driver>oracle.jdbc.OracleDriver</driver>
-							<url>jdbc:oracle:thin:@localhost:1521:xe</url>
+							<url>
+								jdbc:oracle:thin:@localhost:1521:xe
+							</url>
 							<username>system</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								create user jrtsch
-								identified BY jrtsch default
-								tablespace users Temporary
-								TABLESPACE Temp;
-								grant
+								create user jrtsch identified BY jrtsch
+								default tablespace users Temporary
+								TABLESPACE Temp; grant
 								connect,resource,dba to jrtsch;
 							</sqlCommand>
 						</configuration>
@@ -906,8 +1015,12 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>com.google.code.maven-svn-revision-number-plugin</groupId>
-						<artifactId>maven-svn-revision-number-plugin</artifactId>
+						<groupId>
+							com.google.code.maven-svn-revision-number-plugin
+						</groupId>
+						<artifactId>
+							maven-svn-revision-number-plugin
+						</artifactId>
 						<version>1.6</version>
 						<executions>
 							<execution>
@@ -935,9 +1048,14 @@
 								<phase>pre-clean</phase>
 								<configuration>
 									<target>
-										<echo>${project.basedir} init.</echo>
-										<delete dir="${project.basedir}/wars/"/>
-										<copy file="${project.basedir}/target/techcluster.war" todir="${project.basedir}/wars"/>
+										<echo>
+											${project.basedir} init.
+										</echo>
+										<delete
+											dir="${project.basedir}/wars/" />
+										<copy
+											file="${project.basedir}/target/techcluster.war"
+											todir="${project.basedir}/wars" />
 									</target>
 								</configuration>
 								<goals>
@@ -949,15 +1067,29 @@
 								<phase>package</phase>
 								<configuration>
 									<target>
-										<echo>${project.basedir} ${SVN.revision}</echo>
-										<mkdir dir="${project.basedir}/wars/lottery/${SVN.revision}/product"/>
-										<mkdir dir="${project.basedir}/wars/lottery/${SVN.revision}/src/main/db"/>
-										<mkdir dir="${project.basedir}/wars/lottery/${SVN.revision}/prelaunch"/>
-											
-										<move file="${project.basedir}/wars/lottery.war" tofile="${project.basedir}/wars/lottery/${SVN.revision}/prelaunch/lottery.war"/>
-										<copy file="${project.basedir}/target/lottery.war" todir="${project.basedir}/wars/lottery/${SVN.revision}/product"/>
-										<copyfile src="${project.basedir}/src/main/db/changelog.xml" dest="${project.basedir}/wars/lottery/${SVN.revision}/src/main/db/changelog.xml"/>
-										<copyfile src="${project.basedir}/src/main/db/jttsch.sql" dest="${project.basedir}/wars/lottery/${SVN.revision}/src/main/db/jttsch.sql"/>
+										<echo>
+											${project.basedir}
+											${SVN.revision}
+										</echo>
+										<mkdir
+											dir="${project.basedir}/wars/lottery/${SVN.revision}/product" />
+										<mkdir
+											dir="${project.basedir}/wars/lottery/${SVN.revision}/src/main/db" />
+										<mkdir
+											dir="${project.basedir}/wars/lottery/${SVN.revision}/prelaunch" />
+
+										<move
+											file="${project.basedir}/wars/lottery.war"
+											tofile="${project.basedir}/wars/lottery/${SVN.revision}/prelaunch/lottery.war" />
+										<copy
+											file="${project.basedir}/target/lottery.war"
+											todir="${project.basedir}/wars/lottery/${SVN.revision}/product" />
+										<copyfile
+											src="${project.basedir}/src/main/db/changelog.xml"
+											dest="${project.basedir}/wars/lottery/${SVN.revision}/src/main/db/changelog.xml" />
+										<copyfile
+											src="${project.basedir}/src/main/db/jttsch.sql"
+											dest="${project.basedir}/wars/lottery/${SVN.revision}/src/main/db/jttsch.sql" />
 									</target>
 								</configuration>
 								<goals>
@@ -975,4 +1107,3 @@
 
 	</profiles>
 </project>
-  
