@@ -1,4 +1,4 @@
-package com.trent.core.common;
+package com.trent.core.common.entity;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
