@@ -9,7 +9,7 @@ import javax.jms.Session;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
-import com.trent.core.common.User;
+import com.trent.core.common.entity.User;
 
 /**
  * JMS用户变更消息生产者.

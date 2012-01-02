@@ -7,7 +7,7 @@ import javax.jms.Destination;
 
 import org.springframework.jms.core.JmsTemplate;
 
-import com.trent.core.common.User;
+import com.trent.core.common.entity.User;
 
 /**
  * JMS用户变更消息生产者.
