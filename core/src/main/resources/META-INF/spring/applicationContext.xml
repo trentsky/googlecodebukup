@@ -51,23 +51,77 @@
 			expression="org.springframework.stereotype.Controller"
 			type="annotation" />
 	</context:component-scan>
-	<!-- 
-		<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
+	<!--BoneCP数据源 -->
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
 		destroy-method="close">
-		<property name="driverClass" value="${database.driverClassName}" />
+		<property name="driverClass"
+			value="${database.driverClassName}" />
 		<property name="jdbcUrl" value="${database.url}" />
 		<property name="username" value="${database.username}" />
 		<property name="password" value="${database.password}" />
-		<property name="idleConnectionTestPeriod" value="60" />
-		<property name="idleMaxAge" value="240" />
+		<property name="idleConnectionTestPeriodInMinutes" value="60" />
+		<property name="idleMaxAgeInMinutes" value="240" />
 		<property name="maxConnectionsPerPartition" value="20" />
 		<property name="minConnectionsPerPartition" value="5" />
-		<property name="partitionCount" value="${database.partitionCount}" />
+		<property name="partitionCount"
+			value="${database.partitionCount}" />
 		<property name="acquireIncrement" value="5" />
 		<property name="statementsCacheSize" value="10" />
 		<property name="releaseHelperThreads" value="3" />
-		</bean>
-		
+	</bean> 
+	
+	<!-- C3p0数据源 
+	<bean id="dataSource"
+        class="com.mchange.v2.c3p0.ComboPooledDataSource"
+        destroy-method="close">
+        <property name="driverClass" value="${database.driverClassName}"></property>
+        <property name="jdbcUrl" value="${database.url}"></property>
+        <property name="user" value="${database.username}"></property>
+        <property name="password" value="${database.password}"></property>
+        
+        <property name="acquireIncrement"><value>5</value></property>
+        <property name="initialPoolSize"><value>10</value></property>
+        <property name="maxIdleTime"><value>100</value></property>
+        <property name="maxPoolSize"><value>30</value></property>
+        <property name="minPoolSize"><value>5</value></property>
+        
+        <property name="acquireRetryAttempts" value="10"></property>
+        <property name="breakAfterAcquireFailure" value="false"></property>
+    </bean>-->
+	
+	<!-- 配置数据源 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${database.driverClassName}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.username}" />
+		<property name="password" value="${database.password}" />
+		<property name="initialSize" value="10" />
+		<property name="maxActive" value="100" />
+		<property name="maxIdle" value="100" />
+		<property name="minIdle" value="10" />
+		<property name="maxWait" value="1000" />
+		<property name="poolPreparedStatements" value="true" />
+		<property name="defaultAutoCommit" value="false" />
+	</bean>-->
+	
+	<!--session工厂，里面可以配置Hibernate的映射文件，使用annotatedClasses-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+
+		<!--主键Bean类		-->
+		<property name="annotatedClasses">
+			<list>
+				<value>com.trent.core.common.entity.Student</value>
+				<value>com.trent.core.common.entity.Teacher</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!--
 		<bean id="twodataSource" class="com.jolbox.bonecp.BoneCPDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="${twodatabase.driverClassName}" />
@@ -83,18 +137,21 @@
 		<property name="statementsCacheSize" value="10" />
 		<property name="releaseHelperThreads" value="3" />
 		</bean>
-		
-		<bean class="org.springframework.orm.jpa.JpaTransactionManager"
+	-->
+	<bean class="org.springframework.orm.jpa.JpaTransactionManager"
 		id="transactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-		</bean>
-		<tx:annotation-driven mode="aspectj"
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	<tx:annotation-driven mode="aspectj"
 		transaction-manager="transactionManager" />
-		<bean
+	<bean
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		id="entityManagerFactory">
 		<property name="dataSource" ref="dataSource" />
-		</bean>
+	</bean>
+
+	<!-- 
 		<bean id="taskExecutor"
 		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor"
 		destroy-method="destroy">
