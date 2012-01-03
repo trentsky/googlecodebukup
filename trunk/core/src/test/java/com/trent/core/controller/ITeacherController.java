@@ -2,7 +2,6 @@ package com.trent.core.controller;
 
 import java.net.URL;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +25,8 @@ import com.gargoylesoftware.htmlunit.WebRequest;
 public class ITeacherController {
 	private Logger logger = LoggerFactory.getLogger(ITeacherController.class);
 	
-	private String baseUrl = "http://localhost:9080/core";
+	@Value("${test.baseUrl}")
+	private String baseUrl;
 	
 	@Test
 	public void testGetTeachers() throws Exception{
@@ -35,8 +35,7 @@ public class ITeacherController {
 		WebRequest request = new WebRequest(new URL(baseUrl + "/teacher/getAllTeacher"), HttpMethod.POST);
 		//request.getRequestParameters().add(new NameValuePair("page", "2"));
 		Page page = client.getPage(request);
-		JSONArray js = new JSONArray();
-		js.put(page.getWebResponse().getContentAsString());
-		logger.info(js.toString());
+		JSONObject jo = new JSONObject(page.getWebResponse().getContentAsString());
+		logger.info(jo.toString());
 	}
 }
