@@ -12,7 +12,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 public class BaseController {
 
 	protected int maxResult = 5;
-	private int page = 1;
 	
 	public int getPage(){
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
