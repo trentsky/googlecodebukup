@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.trent.core.base.hibernate.page.PageView;
 import com.trent.core.common.entity.Teacher;
 import com.trent.core.common.service.ITeacherService;
+import com.trent.core.common.util.JsonUtil;
 
 @Controller
 @RequestMapping("/teacher")
@@ -23,14 +24,17 @@ public class TeacherController{
 	@Autowired
 	private ITeacherService teacherService;
 	
-	@RequestMapping(value = "/getAllTeacher", method = RequestMethod.POST)
-	public @ResponseBody void getAllTeacher(HttpServletRequest request,
+	@RequestMapping(value = "/getAllTeacher", method = RequestMethod.GET)
+	public @ResponseBody
+	String getAllTeacher(HttpServletRequest request,
 			@RequestParam(value = "page", required = true, defaultValue = "1") Integer page) {
 		logger.info("获取teacher列表");
-		
 		int maxResult = 5;
 		PageView<Teacher> pageView = new PageView<Teacher>(maxResult, page);
 		pageView.setQueryResult(teacherService.getScrollData(pageView.getFirstResult(), maxResult));
 		request.setAttribute("pageView", pageView);
+		ResponseData rd = new ResponseData();
+		rd.setValue(pageView);
+		return JsonUtil.toJson(rd);
 	}
 }
