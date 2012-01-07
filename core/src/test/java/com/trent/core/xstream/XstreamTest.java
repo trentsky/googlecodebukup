@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import com.trent.core.common.entity.User;
 
@@ -91,9 +92,10 @@ public class XstreamTest {
 	 */
 	@Test
 	public void readJSON2Object() {
-		xstream = new XStream(new JsonHierarchicalStreamDriver());
+		xstream = new XStream(new JettisonMappedXmlDriver());
 		String jsonStr = "{com.trent.core.common.entity.User: {loginName:'admin',plainPassword:'123456',shaPassword:'123456',name:'Tom',email:'aaa',status:'1',version:3}}";
-		logger.info(xstream.toXML(jsonStr));
+		User user2 = (User)xstream.fromXML(jsonStr);
+		logger.info(user2.toString());
 	}
 
 }
