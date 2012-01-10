@@ -9,5 +9,5 @@ public interface ITeacherService extends IBaseDao<Teacher> {
 	
 	public abstract List<Teacher> findByPositional(String value);
 	
-	public abstract Teacher findById(String id);
+	public abstract Teacher findByName(String name);
 }

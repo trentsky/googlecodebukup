@@ -22,14 +22,15 @@ public class TeacherServiceImpl extends BaseDaoSupport<Teacher> implements
 		return super.findByProperty("positional", value);
 	}
 	
-	public Teacher findById(String id){
-		Teacher teacher = cacheService.get(StringUtil.join("_",id));
+	public Teacher findByName(String name){
+		Teacher teacher = cacheService.get(StringUtil.join("_","teacher",name));
 		logger.info("query from cache!!");
 		if (null == teacher) {
 			logger.info("query from db!!");
-			teacher = super.find(id);
+			List<Teacher> list = super.findByProperty("name", name);
+			teacher = list.get(0);
 			if (null != teacher) {
-				cacheService.set(StringUtil.join("_", teacher.getId().toString()), 0, teacher);
+				cacheService.set(StringUtil.join("_", "teacher", teacher.getName()), 0, teacher);
 			}
 		}
 		return teacher;
