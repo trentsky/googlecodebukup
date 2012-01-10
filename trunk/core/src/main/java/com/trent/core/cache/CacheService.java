@@ -1,8 +1,6 @@
 package com.trent.core.cache;
 
-import org.springframework.stereotype.Service;
 
-@Service
 public interface CacheService {
 
 	public abstract <T> void set(String key, T t);
