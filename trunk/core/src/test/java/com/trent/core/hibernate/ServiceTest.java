@@ -17,7 +17,8 @@ import com.trent.core.common.entity.Teacher;
 import com.trent.core.common.service.ITeacherService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/META-INF/spring/applicationContext.xml" })
+@ContextConfiguration(locations = { "classpath:/META-INF/spring/applicationContext.xml",
+									"classpath:/META-INF/spring/applicationContext-cache.xml"})
 public class ServiceTest {
 
 	Logger logger = LoggerFactory.getLogger(ServiceTest.class);
@@ -57,7 +58,7 @@ public class ServiceTest {
 		Nano.bench().measurements(measurements).threads(threads).measure(
 				"cache测试:", new Runnable() {
 					public void run() {
-						Teacher teacher = teacherService.findById("1");
+						Teacher teacher = teacherService.findByName("Teacher1");
 						logger.info(teacher.toString());
 					}
 				});
