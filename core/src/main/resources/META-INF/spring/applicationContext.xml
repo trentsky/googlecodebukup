@@ -54,8 +54,7 @@
 	<!--BoneCP数据源 -->
 	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
 		destroy-method="close">
-		<property name="driverClass"
-			value="${database.driverClassName}" />
+		<property name="driverClass" value="${database.driverClassName}" />
 		<property name="jdbcUrl" value="${database.url}" />
 		<property name="username" value="${database.username}" />
 		<property name="password" value="${database.password}" />
@@ -63,8 +62,7 @@
 		<property name="idleMaxAgeInMinutes" value="240" />
 		<property name="maxConnectionsPerPartition" value="20" />
 		<property name="minConnectionsPerPartition" value="5" />
-		<property name="partitionCount"
-			value="${database.partitionCount}" />
+		<property name="partitionCount" value="${database.partitionCount}" />
 		<property name="acquireIncrement" value="5" />
 		<property name="statementsCacheSize" value="10" />
 		<property name="releaseHelperThreads" value="3" />
@@ -112,7 +110,7 @@
 			<ref bean="dataSource" />
 		</property>
 
-		<!--主键Bean类		-->
+		<!--主键Bean类-->
 		<property name="annotatedClasses">
 			<list>
 				<value>com.trent.core.common.entity.Student</value>
