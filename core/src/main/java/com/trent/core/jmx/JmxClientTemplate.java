@@ -25,9 +25,6 @@ import org.springframework.util.Assert;
  * 1.负责连接和关闭远程JMX Server,并持有连接.
  * 2.创建可操作远程MBean的本地MBean代理.
  * 3.按属性名直接读取或设置远程MBean属性(无MBean的Class文件时使用).
- * 
- * @author ben
- * @author calvin
  */
 public class JmxClientTemplate {
 

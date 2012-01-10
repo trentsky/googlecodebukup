@@ -116,13 +116,10 @@ public abstract class BaseDaoSupport<T> extends HibernateDaoSupport implements
 						+ buildOrderby(orderby);
 				Query query = session.createQuery(hql);
 				setQueryParams(query, queryParams);// where
-				queryResult.setTotalRecord(query.list().size());// first get
-																// size
-
+				queryResult.setTotalRecord(query.list().size());// first get // size
 				if (firstindex != -1 && maxresult != -1)
 					query.setFirstResult(firstindex).setMaxResults(maxresult);// last
 																				// page
-
 				queryResult.setResultList(query.list());
 
 				return null;
