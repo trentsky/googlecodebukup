@@ -11,7 +11,7 @@
 		class="net.rubyeye.xmemcached.utils.XMemcachedClientFactoryBean"
 		destroy-method="shutdown">
 		<property name="servers">
-			<value>${memcache.client.ip}</value>
+			<value>127.0.0.1:11211</value>
 		</property>                 <!-- server's weights -->
 		<property name="connectionPoolSize" value="2"></property>
 	</bean>
