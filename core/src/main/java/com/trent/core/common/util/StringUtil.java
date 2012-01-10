@@ -24,7 +24,7 @@ public class StringUtil {
 		return str.matches("^[0-9]*$");
 	}
 
-	// 嗖付支付传过来的金额是"分"
+	// 校验金额是"分"
 	public static boolean isFen(String str) {
 		return str.matches("^[0-9]+$");
 	}
