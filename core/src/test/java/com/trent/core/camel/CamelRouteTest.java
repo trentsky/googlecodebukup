@@ -3,10 +3,8 @@ package com.trent.core.camel;
 import javax.annotation.Resource;
 
 import org.apache.camel.CamelContext;
-import org.apache.camel.EndpointInject;
 import org.apache.camel.Route;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.mock.MockEndpoint;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,8 +36,6 @@ public class CamelRouteTest {
 
 	private static Logger logger = LoggerFactory
 			.getLogger(CamelRouteTest.class);
-	@EndpointInject(uri = "mock:result")
-	protected MockEndpoint resultEndpoint;
 
 	@Resource(name = "lotteryCamelContext")
 	CamelContext camelContext;
@@ -49,33 +45,42 @@ public class CamelRouteTest {
 
 	@Autowired
 	private CamelMessageProducer camelMessageProducer;
+	
+	User user;
 
 	@Before
 	public void initRoute() throws Exception {
 		camelContext.addRoutes(new RouteBuilder() {
 			public void configure() {
-				// from("jms:topic:sendMailTopic").to("mock:result");
-				from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
+				//send to queue
+				//from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
+				//send to topic
+				from("jms:queue:VirtualTopicConsumers.sendMailTopic?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("拆票服务");
 			}
 		});
 		camelContext.start();
 		for (Route route : camelContext.getRoutes()) {
-			logger.info("启动路由:" + route.getId());
+			logger.info("启动camel路由:" + route.getId());
 			camelContext.startRoute(route.getId());
 		}
-	}
-
-	@Test
-	public void testCamelRoute() {
-
-		User user = new User();
+		
+		user = new User();
 		user.setLoginName("admin");
 		user.setPlainPassword("123456");
 		user.setShaPassword("123456");
 		user.setStatus("1");
 		user.setVersion(3);
-		user.setEmail("aaa");
+		user.setEmail("aaa@sina.com");
 		user.setName("Tom");
-		camelMessageProducer.sendMessage(user);
+	}
+
+	@Test //send to queue
+	public void testQueueCamelRoute() {
+		camelMessageProducer.sendQueueMessage(user);
+	}
+	
+	@Test //send to topic
+	public void testTopicCamelRoute() {
+		camelMessageProducer.sendQueueMessage(user);
 	}
 }
