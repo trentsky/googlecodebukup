@@ -15,6 +15,6 @@
 		</property>                 <!-- server's weights -->
 		<property name="connectionPoolSize" value="2"></property>
 	</bean>
-	<bean name="cacheService" class="com.ruyicai.cache.MemCachedCacheService"></bean>
+	<bean name="cacheService" class="com.trent.core.cache.MemCachedCacheService"></bean>
 
 </beans>
