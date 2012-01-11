@@ -14,18 +14,26 @@ import com.trent.core.common.entity.User;
 public class CamelMessageProducer {
 
 	private Logger logger = LoggerFactory.getLogger(CamelMessageProducer.class);
+	
 	@Produce(uri = "jms:queue:sendMailQueue")
-	ProducerTemplate mailProducer;
+	ProducerTemplate mailQueueProducer;
+	
+	@Produce(uri = "jms:topic:sendMailTopic")
+	ProducerTemplate mailTopicProducer;
 
-	/**
-	 * 使用ProducerTemplate的sendBodyAndHeaders发送Map类型的消息并在Message中附加属性用于消息过滤.
-	 */
-	@SuppressWarnings("unused")
-	public void sendMessage(User user) {
+	public void sendQueueMessage(User user) {
 		HashMap<String, Object> headers = new HashMap<String, Object>();
 		headers.put("userName", user.getName());
 		headers.put("email", user.getEmail());
 		logger.info(user.toString());
-		mailProducer.sendBodyAndHeaders(null, headers);
+		mailQueueProducer.sendBodyAndHeaders(null, headers);
+	}
+	
+	public void sendTopicMessage(User user) {
+		HashMap<String, Object> headers = new HashMap<String, Object>();
+		headers.put("userName", user.getName());
+		headers.put("email", user.getEmail());
+		logger.info(user.toString());
+		mailTopicProducer.sendBodyAndHeaders(null, headers);
 	}
 }
