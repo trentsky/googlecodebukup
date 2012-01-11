@@ -11,7 +11,9 @@ import com.trent.core.common.entity.User;
 import com.trent.core.jms.advanced.AdvancedNotifyMessageProducer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/META-INF/spring/applicationContext.xml" })
+@ContextConfiguration(locations = {  "classpath:/META-INF/jms/applicationContext-jms.xml",
+		"classpath:/META-INF/spring/applicationContext.xml",
+		"classpath:/META-INF/spring/applicationContext-cache.xml"})
 public class EmailTest {
 
 	// @Autowired
