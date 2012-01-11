@@ -19,8 +19,8 @@ public class RoutesConfiguration implements ApplicationListener<ContextRefreshed
 	@Resource(name="lotteryCamelContext")
 	private CamelContext camelContext;
 	
-	@Value("${orderbetQueue}")
-	private String orderbetQueue;
+	@Value("${mailQueue}")
+	private String mailQueue;
 	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -29,9 +29,8 @@ public class RoutesConfiguration implements ApplicationListener<ContextRefreshed
 			camelContext.addRoutes(new RouteBuilder() {
 				@Override
 				public void configure() throws Exception {
-					deadLetterChannel("jms:queue:dead").maximumRedeliveries(-1)
-					.redeliveryDelay(3000);
-					from("jms:queue:VirtualTopicConsumers.orderbet.orderbetTopic?concurrentConsumers=" + orderbetQueue).to("bean:torderService?method=orderbet").routeId("拆票服务");
+					deadLetterChannel("jms:queue:dead").maximumRedeliveries(-1).redeliveryDelay(3000);
+					from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
 				}
 			});
 		} catch (Exception e) {
