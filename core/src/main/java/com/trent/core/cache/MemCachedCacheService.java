@@ -15,7 +15,7 @@ public class MemCachedCacheService implements CacheService {
 	MemcachedClient memcachedClient;
 
 	/* (non-Javadoc)
-	 * @see com.ruyicai.lottery.service.CacheService#set(java.lang.String, T)
+	 * @see com.trent.core.cache.CacheService#set(java.lang.String, T)
 	 */
 	@Override
 	public <T> void  set(String key, T t) {
@@ -31,7 +31,7 @@ public class MemCachedCacheService implements CacheService {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.ruyicai.lottery.service.CacheService#set(java.lang.String, java.lang.Integer, T)
+	 * @see com.trent.core.cache.CacheService#set(java.lang.String, java.lang.Integer, T)
 	 */
 	@Override
 	public <T> void set(String key, Integer exp, T t) {
@@ -50,7 +50,7 @@ public class MemCachedCacheService implements CacheService {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.ruyicai.lottery.service.CacheService#get(java.lang.String)
+	 * @see com.trent.core.cache.CacheService#get(java.lang.String)
 	 */
 	@Override
 	public <T> T get(String key) {
@@ -68,7 +68,7 @@ public class MemCachedCacheService implements CacheService {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.ruyicai.lottery.service.CacheService#checkToSet(java.lang.String, T)
+	 * @see com.trent.core.cache.CacheService#checkToSet(java.lang.String, T)
 	 */
 	@Override
 	public <T> void checkToSet(String key, T t) {
@@ -88,7 +88,7 @@ public class MemCachedCacheService implements CacheService {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.ruyicai.lottery.service.CacheService#delete(java.lang.String)
+	 * @see com.trent.core.cache.CacheService#delete(java.lang.String)
 	 */
 	@Override
 	public void delete(String key) {
@@ -102,7 +102,7 @@ public class MemCachedCacheService implements CacheService {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.ruyicai.lottery.service.CacheService#flushAll()
+	 * @see com.trent.core.cache.CacheService#flushAll()
 	 */
 	@Override
 	public void flushAll() {
