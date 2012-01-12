@@ -37,4 +37,13 @@ public class TeacherController{
 		rd.setValue(pageView);
 		return JsonUtil.toJson(rd);
 	}
+	
+	@RequestMapping(value = "/getTeacherName", method = RequestMethod.GET)
+	public @ResponseBody
+	String getTeacherByName(HttpServletRequest request,
+			@RequestParam(value = "name", required = true) String name) {
+		logger.info("根据name查询teacher");
+		Teacher teacher = teacherService.findByName(name);
+		return JsonUtil.toJson(teacher);
+	}
 }
