@@ -53,9 +53,11 @@ public class CamelRouteTest {
 		camelContext.addRoutes(new RouteBuilder() {
 			public void configure() {
 				//send to queue
-				//from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
+				from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
 				//send to topic
-				from("jms:queue:VirtualTopicConsumers.sendMailTopic?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("拆票服务");
+				//from("jms:queue:VirtualTopicConsumers.sendMailTopic?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
+				//send to file
+				//from("jms:queue:VirtualTopicConsumers.sendMailTopic?concurrentConsumers=" + mailQueue).to("file:target/report.txt").routeId("邮件服务");
 			}
 		});
 		camelContext.start();
@@ -81,6 +83,6 @@ public class CamelRouteTest {
 	
 	@Test //send to topic
 	public void testTopicCamelRoute() {
-		camelMessageProducer.sendQueueMessage(user);
+		camelMessageProducer.sendTopicMessage(user);
 	}
 }
