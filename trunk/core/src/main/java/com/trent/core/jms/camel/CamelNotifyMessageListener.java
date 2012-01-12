@@ -1,5 +1,6 @@
 package com.trent.core.jms.camel;
 
+import org.apache.camel.Body;
 import org.apache.camel.Header;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +18,9 @@ public class CamelNotifyMessageListener{
 	private MimeMailService mimeMailService;
 
 	public void process(@Header("userName") String username,
-			@Header("email") String email) {
+			@Header("email") String email,@Body String body) {
 		try {
-			logger.info("UserName:" + username + ", Email:" + email);
+			logger.info("UserName:" + username + ", Email:" + email+", Body:"+body);
 			if (mimeMailService != null) {
 				mimeMailService.sendNotificationMail(username); //发送邮件
 			}

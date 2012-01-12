@@ -26,7 +26,7 @@ public class CamelMessageProducer {
 		headers.put("userName", user.getName());
 		headers.put("email", user.getEmail());
 		logger.info(user.toString());
-		mailQueueProducer.sendBodyAndHeaders(null, headers);
+		mailQueueProducer.sendBodyAndHeaders("邮件", headers);
 	}
 	
 	public void sendTopicMessage(User user) {
@@ -34,6 +34,6 @@ public class CamelMessageProducer {
 		headers.put("userName", user.getName());
 		headers.put("email", user.getEmail());
 		logger.info(user.toString());
-		mailTopicProducer.sendBodyAndHeaders(null, headers);
+		mailTopicProducer.sendBodyAndHeaders("邮件", headers);
 	}
 }
