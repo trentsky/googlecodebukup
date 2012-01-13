@@ -18,18 +18,15 @@
 		<log.dir>f:/logs</log.dir>
 		<logback.appender>logfile</logback.appender>
 	</properties>
-	<!-- 
-		<repositories>
-		
+	<repositories>
 		<repository>
-		<id>ruyicai</id>
-		<name>Ruyicai Repository</name>
-		<url>
-		http://202.43.151.3:8181/nexus/content/repositories/public/
-		</url>
+			<id>ruyicai</id>
+			<name>Ruyicai Repository</name>
+			<url>
+				http://202.43.151.3:8181/nexus/content/repositories/public/
+			</url>
 		</repository>
-		</repositories>
-	-->
+	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>ruyicai</id>
@@ -686,11 +683,11 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<version>1.1</version>
 				<configuration>
-					<url>http://localhost:9080/manager</url>
+					<url>http://localhost:6666/manager</url>
 					<username>tomcat</username>
 					<password>tomcat</password>
 					<path>/core</path>
-					<port>9080</port>
+					<port>6666</port>
 					<update>true</update>
 				</configuration>
 			</plugin>
@@ -788,21 +785,14 @@
 						<artifactId>sql-maven-plugin</artifactId>
 						<version>1.5</version>
 						<configuration>
-							<driver>${database.driver}</driver>
-							<url>${database.url}</url>
-							<username>${database.systemUser}</username>
-							<password>
-								${database.systemPassword}
-							</password>
+							<driver>com.mysql.jdbc.Driver</driver>
+							<url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<username>root</username>
+							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								<!-- 
-									drop user jrtsch cascade;
-									create user jrtsch
-									identified BY jrtsch default tablespace users Temporary
-									TABLESPACE Temp;
-									grant connect,resource,dba to jrtsch;
-									commit; -->
+								drop database if exists test;
+								CREATE DATABASE test DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -818,9 +808,7 @@
 				</plugins>
 			</build>
 			<properties>
-				<database.driver>
-					${database.driver}
-				</database.driver>
+				<database.driver>com.mysql.jdbc.Driver</database.driver>
 			</properties>
 		</profile>
 		<profile>
@@ -832,10 +820,10 @@
 						<artifactId>sql-maven-plugin</artifactId>
 						<version>1.5</version>
 						<configuration>
-							<driver>${database.driver}</driver>
-							<url>${database.url}</url>
-							<username>${database.username}</username>
-							<password>${database.password}</password>
+							<driver>com.mysql.jdbc.Driver</driver>
+							<url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<username>root</username>
+							<password>123456</password>
 							<autocommit>true</autocommit>
 							<srcFiles>
 								<srcFile>
@@ -856,9 +844,7 @@
 				</plugins>
 			</build>
 			<properties>
-				<database.driver>
-					${database.driver}
-				</database.driver>
+				<database.driver>com.mysql.jdbc.Driver</database.driver>
 			</properties>
 		</profile>
 		<profile>
@@ -870,15 +856,13 @@
 						<artifactId>sql-maven-plugin</artifactId>
 						<version>1.5</version>
 						<configuration>
-							<driver>${database.driver}</driver>
-							<url>
-								${database.url}
-							</url>
-							<username>${database.username}</username>
-							<password>${database.password}</password>
+							<driver>com.mysql.jdbc.Driver</driver>
+							<url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<username>root</username>
+							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								drop user jrtsch cascade;
+								drop database test;
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -903,18 +887,14 @@
 						<artifactId>sql-maven-plugin</artifactId>
 						<version>1.5</version>
 						<configuration>
-							<driver>${database.driver}</driver>
-							<url>
-								${database.url}
-							</url>
-							<username>${database.username}</username>
-							<password>${database.password}</password>
+							<driver>com.mysql.jdbc.Driver</driver>
+							<url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<username>root</username>
+							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								create user jrtsch identified BY jrtsch
-								default tablespace users Temporary
-								TABLESPACE Temp; grant
-								connect,resource,dba to jrtsch;
+								drop database if exists test;
+								CREATE DATABASE test DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -961,7 +941,7 @@
 							<username>${database.username}</username>
 							<password>${database.password}</password>
 							<defaultSchemaName>
-								jrtsch
+								test
 							</defaultSchemaName>
 							<promptOnNonLocalDatabase>
 								${liquibase.promptOnNonLocalDatabase}
@@ -985,12 +965,8 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<database.url>
-					${database.url}
-				</database.url>
-				<database.driverClassName>
-					${database.driver}
-				</database.driverClassName>
+				<database.url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</database.url>
+				<database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
 				<database.username>root</database.username>
 				<database.password>123456</database.password>
 				<database.initialSize>0</database.initialSize>
@@ -999,8 +975,8 @@
 				<database.minIdle>0</database.minIdle>
 				<database.maxWait>10000</database.maxWait>
 				<database.partitionCount>1</database.partitionCount>
-				<!-- <tomcat.manager.url>http://dev:8080/manager</tomcat.manager.url> -->
-				<tomcat.manager.port>9080</tomcat.manager.port>
+				<tomcat.manager.url>http://localhost:6666/manager</tomcat.manager.url>
+				<tomcat.manager.port>6666</tomcat.manager.port>
 				<liquibase.promptOnNonLocalDatabase>
 					false
 				</liquibase.promptOnNonLocalDatabase>
