@@ -6,8 +6,9 @@
     <changeSet author="Administrator (generated)" id="1288866003498-1" runAlways="false">
         <sqlFile path="trent.sql" encoding="UTF-8"  relativeToChangelogFile="true"/>
     </changeSet>
-    <changeSet id="20110307-1" author="">
+    <changeSet id="20120113-1" author="">
     	<sql endDelimiter="/">
+    	<!-- 
 			create or replace procedure jrtsch.SP_UpdateNoticeState(inNoticetype number,inLotno varchar2,inBatchcode varchar2,inAgencyno varchar2 ,inState number)
 			as
 			pCheck number;
@@ -33,11 +34,14 @@
 			 end if;
 			End;
 			/
+			 -->
     	</sql>
     </changeSet>
-    <changeSet id="20111221" author="">
+    <changeSet id="2012013" author="">
+    	<!-- 
     	<addColumn tableName="torder">
     		<column name="EVENTCODE" type="varchar2(50 char)"></column>
     	</addColumn>
+    	 -->
     </changeSet>
 </databaseChangeLog>
