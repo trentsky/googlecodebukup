@@ -1,16 +1,16 @@
 create table DATABASECHANGELOG
 (
-  id            VARCHAR2(63) not null,
-  author        VARCHAR2(63) not null,
-  filename      VARCHAR2(200) not null,
+  id            VARCHAR(63) not null,
+  author        VARCHAR(63) not null,
+  filename      VARCHAR(200) not null,
   dateexecuted  TIMESTAMP(6) not null,
   orderexecuted INTEGER not null,
-  exectype      VARCHAR2(10) not null,
-  md5sum        VARCHAR2(35),
-  description   VARCHAR2(255),
-  comments      VARCHAR2(255),
-  tag           VARCHAR2(255),
-  liquibase     VARCHAR2(20)
+  exectype      VARCHAR(10) not null,
+  md5sum        VARCHAR(35),
+  description   VARCHAR(255),
+  comments      VARCHAR(255),
+  tag           VARCHAR(255),
+  liquibase     VARCHAR(20)
 );
 alter table DATABASECHANGELOG
   add constraint PK_DATABASECHANGELOG primary key (ID, AUTHOR, FILENAME);
@@ -20,7 +20,7 @@ create table DATABASECHANGELOGLOCK
   id          INTEGER not null,
   locked      NUMBER(1) not null,
   lockgranted TIMESTAMP(6),
-  lockedby    VARCHAR2(255)
+  lockedby    VARCHAR(255)
 );
 alter table DATABASECHANGELOGLOCK
   add constraint PK_DATABASECHANGELOGLOCK primary key (ID);
