@@ -9,28 +9,21 @@
 		  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 	<amq:connectionFactory id="jmsConnectionFactory" brokerURL="${jms.broker_url}" />
-
 	<bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
 		<property name="maxConnections" value="8" />
 		<property name="maximumActive" value="500" />
 		<property name="connectionFactory" ref="jmsConnectionFactory" />
 	</bean>
-
-
-	<camel:camelContext id="lotteryCamelContext" >
+	<camel:camelContext id="coreCamelContext" >
 		<camel:package>com.trent.core.camel</camel:package>
 		<camel:jmxAgent id="camelAgent" mbeanObjectDomainName="com.trent.core"/>
-	</camel:camelContext>
-	<camel:camelContext id="caselotContext" autoStartup="false" >
-	</camel:camelContext>
-	<camel:camelContext id="addnumContext" autoStartup="false" >
 	</camel:camelContext>
 	<bean id="jmsCfg" class="com.trent.core.jms.WithoutTMJmsConfiguration">
 		<property name="connectionFactory" ref="pooledConnectionFactory"></property>
 	</bean>
 	<bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
-		<constructor-arg type="org.apache.camel.component.jms.JmsConfiguration" ref="jmsCfg"></constructor-arg>
-		<property name="connectionFactory" ref="pooledConnectionFactory"></property>
-		<property name="transacted" value="true"></property>
+		<constructor-arg type="org.apache.camel.component.jms.JmsConfiguration" ref="jmsCfg" />
+		<property name="connectionFactory" ref="pooledConnectionFactory" />
+		<property name="transacted" value="true" />
 	</bean>
 </beans>
