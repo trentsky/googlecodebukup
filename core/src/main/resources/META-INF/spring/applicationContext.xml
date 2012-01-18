@@ -11,8 +11,10 @@
 		import project applicationContext listed files
 	</description>
 	<import resource="../email/applicationContext-email.xml" />
+	<!-- 
 	<import resource="../jms/applicationContext-jms-simple.xml" />
 	<import resource="../jms/applicationContext-jms-advanced.xml" />
+	 -->
 	<import resource="../jms/applicationContext-jms.xml" />
 	
 	<!-- This will automatically locate any and all property files you have 

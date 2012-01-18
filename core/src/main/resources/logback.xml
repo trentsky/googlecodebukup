@@ -50,7 +50,9 @@
 	<logger name="org.hibernate" level="WARN" />
 	<logger name="org.springframework" level="WARN" />
 	<logger name="com.opensymphony" level="WARN" />
-	<logger name="org.apache" level="WARN" /><!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+	<logger name="com.google" level="WARN" />
+	<logger name="org.apache" level="WARN" />
+	<!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
 		level="TRACE" />
 	<logger name="org.hibernate.type.descriptor.sql.BasicExtractor"
