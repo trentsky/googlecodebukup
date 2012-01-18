@@ -17,7 +17,10 @@
 		<logback.version>0.9.30</logback.version>
 		<log.dir>f:/logs</log.dir>
 		<logback.appender>logfile</logback.appender>
+		
+		
 	</properties>
+	<!-- 
 	<repositories>
 		<repository>
 			<id>ruyicai</id>
@@ -27,6 +30,7 @@
 			</url>
 		</repository>
 	</repositories>
+	-->
 	<pluginRepositories>
 		<pluginRepository>
 			<id>ruyicai</id>
@@ -862,7 +866,7 @@
 							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								drop database test;
+								drop database if exists test;
 							</sqlCommand>
 						</configuration>
 						<dependencies>
