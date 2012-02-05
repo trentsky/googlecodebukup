@@ -22,8 +22,8 @@ public class EmailTest {
 	@Autowired
 	private AdvancedNotifyMessageProducer advancedNotifyMessageProducer;
 
-	private static int measurements = 1; // 测量次数
-	private static int threads = 1; // 线程个数
+	private static int measurements = 10; // 测量次数
+	private static int threads = 10; // 线程个数
 
 	@Test
 	public void sendEmail() {
