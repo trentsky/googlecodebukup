@@ -67,7 +67,7 @@ public class MimeMailService {
 			File attachment = generateAttachment();
 			helper.addAttachment("mailAttachment.txt", attachment);
 
-			mailSender.send(msg);
+			//mailSender.send(msg);
 			logger.info("HTML版邮件已发送至springside3.demo@gmail.com");
 		} catch (MessagingException e) {
 			logger.error("构造邮件失败", e);

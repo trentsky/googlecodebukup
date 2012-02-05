@@ -42,7 +42,7 @@ public class TeacherController{
 	public @ResponseBody
 	String getTeacherByName(HttpServletRequest request,
 			@RequestParam(value = "name", required = true) String name) {
-		logger.info("根据name查询teacher");
+		logger.info("根据name查询teacher getTeacherByName"+" ,name:"+name);
 		Teacher teacher = teacherService.findByName(name);
 		return JsonUtil.toJson(teacher);
 	}
