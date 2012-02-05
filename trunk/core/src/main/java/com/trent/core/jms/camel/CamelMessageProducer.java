@@ -25,7 +25,7 @@ public class CamelMessageProducer {
 		HashMap<String, Object> headers = new HashMap<String, Object>();
 		headers.put("userName", user.getName());
 		headers.put("email", user.getEmail());
-		logger.info(user.toString());
+		logger.info("queue:"+user.toString());
 		
 		/**
 		 * body部分，JMS定义了六种java类型，它们是：
@@ -40,15 +40,16 @@ public class CamelMessageProducer {
 		types that’s filled and read sequentially.
 		　　6 ObjectMessage—Used to hold a serializable Java object as its payload. Usually
 		used for complex Java objects. Also supports Java collections.
-		mailQueueProducer.sendBodyAndHeaders(null, headers);
 		**/
+		mailQueueProducer.sendBodyAndHeaders(null, headers);
+		
 	}
 	
 	public void sendTopicMessage(User user) {
 		HashMap<String, Object> headers = new HashMap<String, Object>();
 		headers.put("userName", user.getName());
 		headers.put("email", user.getEmail());
-		logger.info(user.toString());
+		logger.info("topic:"+user.toString());
 		mailTopicProducer.sendBodyAndHeaders("邮件", headers);
 	}
 }
