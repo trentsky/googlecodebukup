@@ -23,13 +23,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
-import com.dbluethink.test.SaveFixturesListener;
 import com.trent.core.common.entity.User;
 import com.trent.core.jms.camel.CamelMessageProducer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners( { DependencyInjectionTestExecutionListener.class,
-	SaveFixturesListener.class, DirtiesContextTestExecutionListener.class })
+	 DirtiesContextTestExecutionListener.class })
 @ContextConfiguration(locations = {
 		"classpath:/META-INF/spring/applicationContext.xml",
 		"classpath:/META-INF/spring/applicationContext-test.xml",
