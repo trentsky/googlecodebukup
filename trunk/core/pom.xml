@@ -17,8 +17,6 @@
 		<logback.version>0.9.30</logback.version>
 		<log.dir>f:/logs</log.dir>
 		<logback.appender>logfile</logback.appender>
-		
-		
 	</properties>
 	<!-- 
 	<repositories>
