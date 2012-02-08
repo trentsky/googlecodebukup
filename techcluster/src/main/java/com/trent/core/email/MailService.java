@@ -9,12 +9,14 @@ import freemarker.template.TemplateException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 /**
  * MailService 基类.
  */
+@Service
 public abstract class MailService {
 	protected static final Log log = LogFactory.getLog(MailService.class);
 
