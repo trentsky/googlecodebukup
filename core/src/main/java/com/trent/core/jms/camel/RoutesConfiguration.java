@@ -16,7 +16,7 @@ public class RoutesConfiguration implements ApplicationListener<ContextRefreshed
 	
 	private Logger logger = LoggerFactory.getLogger(RoutesConfiguration.class);
 
-	@Resource(name="lotteryCamelContext")
+	@Resource(name="coreCamelContext")
 	private CamelContext camelContext;
 	
 	@Value("${mailQueue}")
@@ -30,7 +30,7 @@ public class RoutesConfiguration implements ApplicationListener<ContextRefreshed
 				@Override
 				public void configure() throws Exception {
 					deadLetterChannel("jms:queue:dead").maximumRedeliveries(-1).redeliveryDelay(3000);
-					from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
+					//from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
 				}
 			});
 		} catch (Exception e) {
