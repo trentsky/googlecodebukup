@@ -10,11 +10,13 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 /**
  * MailService接口的实现.
  */
+@Service
 public class DefaultMailService extends MailService implements InitializingBean {
 
 	protected JavaMailSender mailSender;

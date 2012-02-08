@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.trent.core.email.MimeMailService;
+import com.trent.core.email.MailService;
 
 /**
  * 消息的异步被动接收者.
@@ -19,7 +19,7 @@ public class AdvancedNotifyMessageListener implements MessageListener {
 	private static Logger logger = LoggerFactory.getLogger(AdvancedNotifyMessageListener.class);
 	
 	@Autowired(required = false)
-	private MimeMailService mimeMailService;
+	private MailService mailService;
 
 	/**
 	 * MessageListener回调函数.
@@ -32,8 +32,8 @@ public class AdvancedNotifyMessageListener implements MessageListener {
 			logger.info("UserName:" + mapMessage.getString("userName") + ", Email:" + mapMessage.getString("email")
 					+ ", ObjectType:" + mapMessage.getStringProperty("objectType"));
 			//发送邮件
-			if (mimeMailService != null) {
-				mimeMailService.sendNotificationMail(mapMessage.getString("userName"));
+			if (mailService != null) {
+				//mimeMailService.sendNotificationMail(mapMessage.getString("userName"));
 			}
 		} catch (Exception e) {
 			logger.error("处理消息时发生异常.", e);
