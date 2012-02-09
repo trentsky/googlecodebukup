@@ -106,7 +106,6 @@
 		<property name="dataSource">
 			<ref bean="dataSource" />
 		</property>
-
 		<!--主键Bean类-->
 		<property name="annotatedClasses">
 			<list>
