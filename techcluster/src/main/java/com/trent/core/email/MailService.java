@@ -4,14 +4,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 /**
  * MailService 基类.
@@ -20,11 +22,8 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 public abstract class MailService {
 	protected static final Log log = LogFactory.getLog(MailService.class);
 
-	private FreeMarkerConfigurer mailTemplateEngine = null;
-
-	public void setMailTemplateEngine(FreeMarkerConfigurer mailTemplateEngine) {
-		this.mailTemplateEngine = mailTemplateEngine;
-	}
+	@Autowired
+	FreeMarkerConfigurer freeMarkerConfigurer;
 
 	/**
 	 * 发送SimpleMailMessage的接口.
@@ -42,7 +41,7 @@ public abstract class MailService {
 		msg.setText(text);
 		send(msg);
 	}
-
+	
 	/**
 	 * 使用模版发送HTML格式的邮件.
 	 *
@@ -57,7 +56,7 @@ public abstract class MailService {
 	 */
 	public String generateEmailContent(String templateName, Map map) {
 		try {
-			Template t = mailTemplateEngine.getConfiguration().getTemplate(templateName);
+			Template t = freeMarkerConfigurer.getConfiguration().getTemplate(templateName);
 			return FreeMarkerTemplateUtils.processTemplateIntoString(t, map);
 		} catch (TemplateException e) {
 			log.error("Error while processing FreeMarker template ", e);

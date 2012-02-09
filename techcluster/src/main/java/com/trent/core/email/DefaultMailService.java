@@ -6,6 +6,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,11 +20,8 @@ import org.springframework.util.Assert;
 @Service
 public class DefaultMailService extends MailService implements InitializingBean {
 
-	protected JavaMailSender mailSender;
-
-	public void setMailSender(JavaMailSender mailSender) {
-		this.mailSender = mailSender;
-	}
+	@Autowired
+	JavaMailSender mailSender;
 
 	/**
 	 * 发送SimpleMailMessage.
@@ -32,6 +30,7 @@ public class DefaultMailService extends MailService implements InitializingBean 
 	public void send(SimpleMailMessage msg) {
 		try {
 			mailSender.send(msg);
+			log.info("email 发送成功!!!!");
 		} catch (MailException e) {
 			log.error(e.getMessage(), e);
 		}
@@ -45,7 +44,6 @@ public class DefaultMailService extends MailService implements InitializingBean 
 	 * @param model		   渲染模版所需的数据
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
 	public void send(SimpleMailMessage msg, String templateName, Map model) {
 		// 生成html邮件内容
 		String content = generateEmailContent(templateName, model);
@@ -60,10 +58,11 @@ public class DefaultMailService extends MailService implements InitializingBean 
 		} catch (MessagingException ex) {
 			log.error(ex.getMessage(), ex);
 		}
-
 		msg.setText(content);
 		mailSender.send(msg);
 	}
+	
+	
 
 	public void afterPropertiesSet() throws Exception {
 		Assert.notNull(mailSender, "未注入MailSender");

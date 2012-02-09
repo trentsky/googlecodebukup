@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.trent.core.base.hibernate.dao.BaseDaoSupport;
 import com.trent.core.cache.CacheService;
 import com.trent.core.common.entity.Teacher;
 import com.trent.core.common.service.ITeacherService;
 import com.trent.core.common.util.StringUtil;
+import com.trent.dbUtil.hibernate.dao.BaseDaoSupport;
 
 @Service
 public class TeacherServiceImpl extends BaseDaoSupport<Teacher> implements
