@@ -12,9 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.trent.consumeTest.Nano;
-import com.trent.core.base.hibernate.page.QueryResult;
 import com.trent.core.common.entity.Teacher;
 import com.trent.core.common.service.ITeacherService;
+import com.trent.dbUtil.hibernate.page.QueryResult;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/META-INF/spring/applicationContext.xml",
