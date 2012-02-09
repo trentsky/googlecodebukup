@@ -48,6 +48,13 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.trent</groupId>
+			<artifactId>dbUtil</artifactId>
+			<version>0.0.1</version>
+			<type>jar</type>
+		</dependency>
 
 		<!-- xstream javabean json xml 互转 -->
 		<dependency>
