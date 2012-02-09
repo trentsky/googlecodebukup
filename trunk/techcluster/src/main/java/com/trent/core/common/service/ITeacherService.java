@@ -2,8 +2,8 @@ package com.trent.core.common.service;
 
 import java.util.List;
 
-import com.trent.core.base.hibernate.dao.IBaseDao;
 import com.trent.core.common.entity.Teacher;
+import com.trent.dbUtil.hibernate.dao.IBaseDao;
 
 public interface ITeacherService extends IBaseDao<Teacher> {
 	

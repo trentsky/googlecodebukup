@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.trent.core.base.hibernate.page.PageView;
 import com.trent.core.common.entity.Teacher;
 import com.trent.core.common.service.ITeacherService;
 import com.trent.core.common.util.JsonUtil;
+import com.trent.dbUtil.hibernate.page.PageView;
 
 @Controller
 @RequestMapping("/teacher")
