@@ -31,7 +31,6 @@ import com.trent.core.jms.camel.CamelMessageProducer;
 	 DirtiesContextTestExecutionListener.class })
 @ContextConfiguration(locations = {
 		"classpath:/META-INF/spring/applicationContext.xml",
-		"classpath:/META-INF/spring/applicationContext-test.xml",
 		"classpath:/META-INF/spring/applicationContext-cache.xml" })
 @DirtiesContext
 @Scope("prototype")
@@ -44,7 +43,7 @@ public class CamelRouteTest {
 	@EndpointInject(uri = "mock:result")
     protected MockEndpoint resultEndpoint;
 	
-	@Resource(name = "lotteryCamelContext")
+	@Resource(name = "coreCamelContext")
 	CamelContext camelContext;
 
 	@Value("${mailQueue}")
@@ -62,10 +61,10 @@ public class CamelRouteTest {
 			@Override
 			public void configure() {
 				//send to queue
-				//from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
+				from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
 				//send to topic
 				//from("jms:topic:sendMailTopic?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
-				from("jms:topic:sendMailTopic?concurrentConsumers=" + mailQueue).to("mock:result").routeId("邮件服务");
+				//from("jms:topic:sendMailTopic?concurrentConsumers=" + mailQueue).to("mock:result").routeId("邮件服务");
 				//send to file
 				//from("jms:queue:VirtualTopicConsumers.sendMailTopic?concurrentConsumers=" + mailQueue).to("file:target/report.txt").routeId("邮件服务");
 			}
