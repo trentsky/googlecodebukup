@@ -14,7 +14,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "teacher", catalog = "test")
+@Table(name = "teacher")
 public class Teacher implements java.io.Serializable {
 
 	// Fields
