@@ -45,15 +45,23 @@ public class ServiceTest {
 
 	@Test
 	public void testGetScrollData() {
-		CustomerContextHolder.setCustomerType(CustomerType.queryDB); 
 		LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
 		orderby.put("id", "asc");
+		CustomerContextHolder.setCustomerType(CustomerType.queryDB);
 		QueryResult<Teacher> scrollData = teacherService.getScrollData(0, 10,
-				"o.id=?", new Object[] { 50 }, orderby);
+				"o.id=?", new Object[] { 41 }, orderby);
 		for (Teacher teacher : scrollData.getResultList()) {
 			logger.info(teacher.toString());
 		}
-		logger.info("总记录数：" + scrollData.getTotalRecord());
+		logger.info("queryDB总记录数：" + scrollData.getTotalRecord());
+		
+		CustomerContextHolder.setCustomerType(CustomerType.productDB);
+		QueryResult<Teacher> scrollData1 = teacherService.getScrollData(0, 10,
+				"o.id=?", new Object[] { 41 }, orderby);
+		for (Teacher teacher : scrollData1.getResultList()) {
+			logger.info(teacher.toString());
+		}
+		logger.info("productDB总记录数：" + scrollData1.getTotalRecord());
 	}
 
 	@Test
