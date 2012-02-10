@@ -1,0 +1,70 @@
+package com.trent.core.email;
+
+import java.util.Map;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
+/**
+ * MailService接口的实现.
+ */
+@Service
+public class DefaultMailService extends MailService implements InitializingBean {
+
+	@Autowired
+	JavaMailSender mailSender;
+
+	/**
+	 * 发送SimpleMailMessage.
+	 */
+	@Override
+	public void send(SimpleMailMessage msg) {
+		try {
+			mailSender.send(msg);
+			log.info("email 发送成功!!!!");
+		} catch (MailException e) {
+			log.error(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 使用模版发送HTML格式的邮件.
+	 *
+	 * @param msg		   装有to,from,subject信息的SimpleMailMessage
+	 * @param templateName 模版名,模版根路径已在配置文件定义于freemakarengine中
+	 * @param model		   渲染模版所需的数据
+	 */
+	@Override
+	public void send(SimpleMailMessage msg, String templateName, Map model) {
+		// 生成html邮件内容
+		String content = generateEmailContent(templateName, model);
+		MimeMessage mimeMsg;
+		try {
+			mimeMsg = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(mimeMsg, true, "utf-8");
+			helper.setTo(msg.getTo());
+			helper.setSubject(msg.getSubject());
+			helper.setFrom(msg.getFrom());
+			helper.setText(content, true);
+		} catch (MessagingException ex) {
+			log.error(ex.getMessage(), ex);
+		}
+		msg.setText(content);
+		mailSender.send(msg);
+	}
+	
+	
+
+	public void afterPropertiesSet() throws Exception {
+		Assert.notNull(mailSender, "未注入MailSender");
+	}
+}
