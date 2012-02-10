@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.trent.consumeTest.Nano;
 import com.trent.core.common.entity.Teacher;
 import com.trent.core.common.service.ITeacherService;
+import com.trent.core.datasource.CustomerContextHolder;
+import com.trent.core.datasource.CustomerType;
 import com.trent.dbUtil.hibernate.page.QueryResult;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -43,10 +45,11 @@ public class ServiceTest {
 
 	@Test
 	public void testGetScrollData() {
+		CustomerContextHolder.setCustomerType(CustomerType.queryDB); 
 		LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
 		orderby.put("id", "asc");
 		QueryResult<Teacher> scrollData = teacherService.getScrollData(0, 10,
-				"o.positional=?", new Object[] { "assistant" }, orderby);
+				"o.id=?", new Object[] { 50 }, orderby);
 		for (Teacher teacher : scrollData.getResultList()) {
 			logger.info(teacher.toString());
 		}
