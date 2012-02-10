@@ -795,13 +795,13 @@
 						<version>1.5</version>
 						<configuration>
 							<driver>com.mysql.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</url>
 							<username>root</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								drop database if exists test;
-								CREATE DATABASE test DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+								drop database if exists querydb;
+								CREATE DATABASE querydb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -830,7 +830,7 @@
 						<version>1.5</version>
 						<configuration>
 							<driver>com.mysql.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</url>
 							<username>root</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
@@ -866,12 +866,12 @@
 						<version>1.5</version>
 						<configuration>
 							<driver>com.mysql.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</url>
 							<username>root</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								drop database if exists test;
+								drop database if exists querydb;
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -897,13 +897,13 @@
 						<version>1.5</version>
 						<configuration>
 							<driver>com.mysql.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</url>
 							<username>root</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								drop database if exists test;
-								CREATE DATABASE test DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
+								drop database if exists querydb;
+								CREATE DATABASE querydb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -950,7 +950,7 @@
 							<username>${database.username}</username>
 							<password>${database.password}</password>
 							<defaultSchemaName>
-								test
+								querydb
 							</defaultSchemaName>
 							<promptOnNonLocalDatabase>
 								${liquibase.promptOnNonLocalDatabase}
@@ -974,10 +974,13 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<database.url>jdbc:mysql://localhost:3306/test_query?useUnicode=true&amp;characterEncoding=utf-8</database.url>
 				<database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
+				<database.url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</database.url>
 				<database.username>root</database.username>
 				<database.password>123456</database.password>
+				<productDB.url>jdbc:mysql://localhost:3306/productdb?useUnicode=true&amp;characterEncoding=utf-8</productDB.url>
+				<productDB.username>root</productDB.username>
+				<productDB.password>123456</productDB.password>
 				<database.initialSize>0</database.initialSize>
 				<database.maxActive>20</database.maxActive>
 				<database.maxIdle>100</database.maxIdle>
