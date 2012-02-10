@@ -49,12 +49,28 @@
 			type="annotation" />
 	</context:component-scan>
 	<!--BoneCP数据源 -->
-	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
+	<bean id="querySource" class="com.jolbox.bonecp.BoneCPDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="${database.driverClassName}" />
-		<property name="jdbcUrl" value="${database.url}" />
-		<property name="username" value="${database.username}" />
-		<property name="password" value="${database.password}" />
+		<property name="jdbcUrl" value="${queryDB.url}" />
+		<property name="username" value="${queryDB.username}" />
+		<property name="password" value="${queryDB.password}" />
+		<property name="idleConnectionTestPeriodInMinutes" value="60" />
+		<property name="idleMaxAgeInMinutes" value="240" />
+		<property name="maxConnectionsPerPartition" value="20" />
+		<property name="minConnectionsPerPartition" value="5" />
+		<property name="partitionCount" value="${database.partitionCount}" />
+		<property name="acquireIncrement" value="5" />
+		<property name="statementsCacheSize" value="10" />
+		<property name="releaseHelperThreads" value="3" />
+	</bean>
+	
+	<bean id="productSource" class="com.jolbox.bonecp.BoneCPDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${database.driverClassName}" />
+		<property name="jdbcUrl" value="${productDB.url}" />
+		<property name="username" value="${productDB.username}" />
+		<property name="password" value="${productDB.password}" />
 		<property name="idleConnectionTestPeriodInMinutes" value="60" />
 		<property name="idleMaxAgeInMinutes" value="240" />
 		<property name="maxConnectionsPerPartition" value="20" />
@@ -65,6 +81,14 @@
 		<property name="releaseHelperThreads" value="3" />
 	</bean> 
 	
+	<bean id="dataSource" class="com.trent.core.datasource.CustomerRoutingDataSource">  
+	   <property name="targetDataSources">  
+	      <map key-type="com.trent.core.datasource.CustomerType">  
+	         <entry key="queryDB" value-ref="querySource"/>  
+	      </map>  
+	   </property>  
+	   <property name="defaultTargetDataSource" ref="productSource"/>  
+	</bean>  
 	<!-- C3p0数据源 
 	<bean id="dataSource"
         class="com.mchange.v2.c3p0.ComboPooledDataSource"
