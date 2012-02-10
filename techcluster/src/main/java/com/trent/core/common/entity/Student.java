@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
  */
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "student", catalog = "test")
+@Table(name = "student")
 public class Student implements java.io.Serializable {
 
 	// Fields
