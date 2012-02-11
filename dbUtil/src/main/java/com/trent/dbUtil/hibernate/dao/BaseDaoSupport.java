@@ -5,6 +5,7 @@ import java.beans.PropertyDescriptor;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -236,10 +237,16 @@ public abstract class BaseDaoSupport<T> extends HibernateDaoSupport implements
 		StringBuffer orderbyql = new StringBuffer("");
 		if (orderby != null && orderby.size() > 0) {
 			orderbyql.append(" order by ");
-			for (String key : orderby.keySet()) {
-				orderbyql.append("o.").append(key).append(" ").append(
-						orderby.get(key)).append(",");
+//			for (String key : orderby.keySet()) {
+//				orderbyql.append("o.").append(key).append(" ").append(
+//						orderby.get(key)).append(",");
+//			}
+			Iterator<String> iterator = orderby.keySet().iterator();
+			if (iterator.hasNext()) {
+				orderbyql.append("o.").append(iterator.next()).append(" ").append(
+						orderby.get(iterator.next())).append(",");
 			}
+			
 			orderbyql.deleteCharAt(orderbyql.length() - 1);
 		}
 		return orderbyql.toString();
