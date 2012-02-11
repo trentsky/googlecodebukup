@@ -16,6 +16,7 @@ import java.util.concurrent.Executors;
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.spi.LoggingEvent;
 import org.apache.log4j.spi.ThrowableInformation;
+import org.dom4j.Branch;
 
 public class GtalkAppender extends AppenderSkeleton {
 
@@ -27,7 +28,7 @@ public class GtalkAppender extends AppenderSkeleton {
 	/**
 	 * api key
 	 */
-	private String apikey="0ccb1fdd5aa8431a82efa02d831c9198";
+	private String apikey = "0ccb1fdd5aa8431a82efa02d831c9198";
 
 	/**
 	 * recive user
@@ -54,11 +55,15 @@ public class GtalkAppender extends AppenderSkeleton {
 
 	protected void append(LoggingEvent event) {
 		long now = System.currentTimeMillis();
-		if ((now - lastSendTime) > 1000) {//igron some message
-			String content = sdf.format(new Date()) + " " + event.getLevel()
-					+ " [" + event.getLoggerName() + "]\n"
-					+ event.getRenderedMessage() + "\n";
-
+		if ((now - lastSendTime) > 1000) {// igron some message
+		// String content = sdf.format(new Date()) + " " + event.getLevel()
+		// + " [" + event.getLoggerName() + "]\n"
+		// + event.getRenderedMessage() + "\n";
+			StringBuffer content = new StringBuffer(200);
+			content.append(sdf.format(new Date())).append(" ").append(
+					event.getLevel()).append(" [").append(
+					event.getRenderedMessage()).append("]\n").append(
+					event.getRenderedMessage()).append("\n");
 			if (event.getThrowableInformation() != null) {
 				ThrowableInformation ti = event.getThrowableInformation();
 				String[] throwableStrRep = ti.getThrowableStrRep();
@@ -68,11 +73,12 @@ public class GtalkAppender extends AppenderSkeleton {
 						k = 3;
 					}
 					for (int i = 0; i < k; i++) {
-						content += throwableStrRep[i] + "\n";
+						//content += throwableStrRep[i] + "\n";
+						content.append(throwableStrRep[i]).append("\n");
 					}
 				}
 			}
-			final String message = content;
+			final String message = content.toString();
 			threadPool.submit(new Runnable() {
 				@Override
 				public void run() {
