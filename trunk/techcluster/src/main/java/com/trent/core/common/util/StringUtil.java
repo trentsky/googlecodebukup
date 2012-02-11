@@ -12,14 +12,6 @@ public class StringUtil {
 		return false;
 	}
 
-	public static boolean isEmpty(Character c) {
-		if (null == c)
-			return true;
-		if ("".equals(c))
-			return true;
-		return false;
-	}
-
 	public static boolean isInt(String str) {
 		return str.matches("^[0-9]*$");
 	}
