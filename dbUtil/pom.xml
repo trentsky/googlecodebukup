@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.trent</groupId>
   <artifactId>dbUtil</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <version>0.0.1</version>
   <name>dbUtil Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
