@@ -1,1 +1,0 @@
-/etc/init.d/oracle-xe restart &&  mvn sql:execute -U -Plocal,local-recreate-db  && mvn liquibase:update -Plocal,update-db  &&  mvn com.dbluethink.test:momo-test-plugin:saveFixtures && mvn sql:execute -Plocal,load_initdata
