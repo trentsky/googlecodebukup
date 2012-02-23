@@ -71,23 +71,11 @@ public class OracleDialect implements Dialect {
 	}
 	
 	public String getPageCountString(String sql) {
-		/*
-		StringBuffer sql_ = new StringBuffer();
-		sql_.append("select count(1) as count from ( ").append(sql).append(" )");		 		 
-		return sql_.toString();
-		*/
 		boolean isChildQueryExists = Pattern.compile(pageNavigationExtRegEx).matcher(sql).matches();
     	return sql.replaceAll("\n","").replaceFirst(isChildQueryExists ? pageNavigationExtRegEx : pageNavigationRegEx, "$1count(1)$3");
 	}
 	
 	public String getPageDataString(String sql, int startRow, int maxRow) { 
-		/*
-		StringBuffer sql_ = new StringBuffer(); 
-		sql_.append("select * from ( select t1.*, rownum rownum_ from ( ");
-		sql_.append(sql);
-		sql_.append(" ) t1 where rownum <= "+maxRow+") where rownum_ > "+startRow+"");
-		return sql_.toString();
-		*/
 		return new StringBuffer().append("select outer.* from (select inner.*, rownum rowno from (").append(sql).append(")inner where rownum <= " + maxRow + ")outer where outer.rowno > " + startRow).toString();
 	}
 
