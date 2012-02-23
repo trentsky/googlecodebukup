@@ -1,5 +1,6 @@
 package com.trent.dbUtil.ibatis;
 
+
 public interface Dialect {
 	 
 	//public abstract String getCountString(String sql);
@@ -10,6 +11,6 @@ public interface Dialect {
 	
 	public String getPageDataString(String sql, int startRow, int maxRow);
 
-	public String[] getQueryStringArrayWithResultMap(String sql);
+	//public String[] getQueryStringArrayWithResultMap(String sql);
 
 }
