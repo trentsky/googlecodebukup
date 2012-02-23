@@ -40,43 +40,28 @@ public abstract class BaseDaoSupport<T> extends HibernateDaoSupport implements
 		super.setSessionFactory(sessionFactory);
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#findByEntity(java.lang.Object)
-	 */
 	public List<T> findByEntity(Object entiey) {
 		return super.getHibernateTemplate().findByExample(entiey);
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#findByProperty(java.lang.String, java.lang.Object)
-	 */
 	public List<T> findByProperty(String propertyName, Object value) {
 		String queryString = "from " + entityClassName + " o where o."
 				+ propertyName + "= ?";
 		return super.getHibernateTemplate().find(queryString, value);
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#delete(java.io.Serializable[])
-	 */
 	public void delete(Serializable... entityids) {
 		for (Object id : entityids) {
 			super.getHibernateTemplate().delete(find((Serializable) id));
 		}
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#find(java.io.Serializable)
-	 */
 	public T find(Serializable entityId) {
 		if (null != entityId)
 			return (T) super.getHibernateTemplate().get(entityClass, entityId);
 		return null;
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#getCount()
-	 */
 	public int getCount() {
 		String hql = "select count( " + keyFieldName + ") from "
 				+ entityClassName;
@@ -89,17 +74,10 @@ public abstract class BaseDaoSupport<T> extends HibernateDaoSupport implements
 		super.getHibernateTemplate().save(entity);
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#update(java.lang.Object)
-	 */
 	public void update(Object entity) {
 		super.getHibernateTemplate().update(entity);
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#getScrollData(int, int, java.lang.String,
-	 *      java.lang.Object[], java.util.LinkedHashMap)
-	 */
 	public QueryResult<T> getScrollData(final int firstindex,
 			final int maxresult, final String wherejpql,
 			final Object[] queryParams,
@@ -132,43 +110,26 @@ public abstract class BaseDaoSupport<T> extends HibernateDaoSupport implements
 
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#getScrollData(int, int, java.lang.String,
-	 *      java.lang.Object[])
-	 */
 	public QueryResult<T> getScrollData(int firstindex, int maxresult,
 			String wherejpql, Object[] queryParams) {
 		return getScrollData(firstindex, maxresult, wherejpql, queryParams,
 				null);
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#getScrollData(int, int, java.util.LinkedHashMap)
-	 */
 	public QueryResult<T> getScrollData(final int firstindex,
 			final int maxresult, final LinkedHashMap<String, String> orderby) {
 		return getScrollData(firstindex, maxresult, null, null, orderby);
 
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#getScrollData(int, int)
-	 */
 	public QueryResult<T> getScrollData(final int firstindex,
 			final int maxresult) {
 		return getScrollData(firstindex, maxresult, null, null, null);
 	}
 
-	/*
-	 * @see org.usc.daos.DAO#getScrollData()
-	 */
 	public QueryResult<T> getScrollData() {
 		return getScrollData(-1, -1, null, null, null);
 	}
-
-	/*
-	 * @see org.usc.daos.DAO#save(java.lang.Object)
-	 */
 
 	/**
 	 * 获取实体的名称

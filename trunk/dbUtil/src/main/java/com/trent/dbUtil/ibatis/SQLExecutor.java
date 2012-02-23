@@ -22,11 +22,8 @@ public class SQLExecutor extends SqlExecutor {
 	public void executeQuery(RequestScope request, Connection conn, String sql,
 			Object[] parameters, int skipResults, int maxResults,
 			RowHandlerCallback callback) throws SQLException {
-		//String[] fields = dialect.getQueryStringArrayWithResultMap(sql);
-		
 		String newSql = sql;
 		if ((skipResults != NO_SKIPPED_RESULTS || maxResults != NO_MAXIMUM_RESULTS)) {
-			//sql = dialect.getLimitString(sql, skipResults, maxResults);
 			newSql = dialect.getPageDataString(newSql, skipResults, maxResults);
 			if(logger.isDebugEnabled()){
                 logger.debug(sql);
