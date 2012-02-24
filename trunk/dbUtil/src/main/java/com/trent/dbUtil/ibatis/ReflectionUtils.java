@@ -8,8 +8,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 
-public class MyReflectionUtils {	
-	private static final Log logger = LogFactory.getLog(MyReflectionUtils.class);
+public class ReflectionUtils {	
+	private static final Log logger = LogFactory.getLog(ReflectionUtils.class);
 	/**
 	 * 对象字段设置
 	 */

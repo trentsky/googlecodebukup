@@ -25,7 +25,7 @@ public abstract class IbatisBaseDaoSupport extends SqlMapClientDaoSupport implem
 			SqlMapClient sqlMapClient = getSqlMapClientTemplate()
 					.getSqlMapClient();
 
-			MyReflectionUtils.setFieldValue(
+			ReflectionUtils.setFieldValue(
 					((ExtendedSqlMapClient) sqlMapClient).getDelegate(),
 					"sqlExecutor", SQLExecutor.class, this.sqlExecutor);
 		}
