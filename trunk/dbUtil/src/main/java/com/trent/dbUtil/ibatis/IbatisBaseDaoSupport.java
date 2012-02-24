@@ -62,7 +62,7 @@ public abstract class IbatisBaseDaoSupport extends SqlMapClientDaoSupport implem
 				statementName, parameterObject);
 		Dialect dialect = null;
 		try {
-			dialect = this.sqlExecutor.getCurrentDialect(getSqlMapClient().getCurrentConnection());
+			dialect = this.sqlExecutor.getCurrentDialect(getDataSource().getConnection());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,6 +77,8 @@ public abstract class IbatisBaseDaoSupport extends SqlMapClientDaoSupport implem
 		int pageSize = page.getPageSize();
 		int skipResults = (pageNo - 1) * pageSize;
 		int maxResults = pageNo * pageSize;
+		parameterMap.put("startRow", skipResults);
+		parameterMap.put("maxRow", maxResults);
 		int totalRows = getRowCount(statementName, parameterMap);
 		page.setTotalRows(totalRows);
 		List data = getSqlMapClientTemplate().queryForList(statementName,
