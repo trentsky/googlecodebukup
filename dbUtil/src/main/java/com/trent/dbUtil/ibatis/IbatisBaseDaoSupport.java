@@ -63,7 +63,7 @@ public abstract class IbatisBaseDaoSupport extends SqlMapClientDaoSupport implem
 				parameterObject);
 	}
 
-	private int getRowCount(String statementName, Object parameterObject) {
+	private Integer getRowCount(String statementName, Object parameterObject) {
 		SQL d = new SQL((ExtendedSqlMapClient) getSqlMapClient(),
 				statementName, parameterObject);
 		Dialect dialect = null;
