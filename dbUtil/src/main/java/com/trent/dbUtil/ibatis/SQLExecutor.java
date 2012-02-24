@@ -15,9 +15,10 @@ import com.ibatis.sqlmap.engine.scope.RequestScope;
 public class SQLExecutor extends SqlExecutor {
 	private static final Log logger = LogFactory.getLog(SQLExecutor.class);
 
-	 private static final String MICROSOFT_SQL_SERVER = "Microsoft SQL Server";
+	//DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase
+	 private static final String MICROSOFT_SQL_SERVER = "MS-SQL";
 	 private static final String ORACLE_DATABASE = "Oracle";
-	 private static final String MYSQL_DATABASE = "mysql";
+	 private static final String MYSQL_DATABASE = "MySQL";
 
 	private Dialect currentDialect;
 
