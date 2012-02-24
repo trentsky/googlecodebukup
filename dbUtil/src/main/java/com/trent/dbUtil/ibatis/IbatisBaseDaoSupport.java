@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcOperations;
@@ -19,7 +21,11 @@ public abstract class IbatisBaseDaoSupport extends SqlMapClientDaoSupport implem
 
 	@Autowired
 	private SQLExecutor sqlExecutor;
-
+	
+	@Resource(name = "sqlMapClient")
+	public void setSuperSessionFactory(SqlMapClient sqlMapClient) {
+		super.setSqlMapClient(sqlMapClient);
+	}
 
 	public void initialize() throws Exception {
 		if (this.sqlExecutor != null) {
@@ -67,7 +73,6 @@ public abstract class IbatisBaseDaoSupport extends SqlMapClientDaoSupport implem
 			e.printStackTrace();
 		}
 		String sql = dialect.getPageCountString(d.getSql());
-
 		Object[] parameters = d.getParameters();
 		return this.jdbcOperations.queryForInt(sql, parameters);
 	}
@@ -77,8 +82,6 @@ public abstract class IbatisBaseDaoSupport extends SqlMapClientDaoSupport implem
 		int pageSize = page.getPageSize();
 		int skipResults = (pageNo - 1) * pageSize;
 		int maxResults = pageNo * pageSize;
-		parameterMap.put("startRow", skipResults);
-		parameterMap.put("maxRow", maxResults);
 		int totalRows = getRowCount(statementName, parameterMap);
 		page.setTotalRows(totalRows);
 		List data = getSqlMapClientTemplate().queryForList(statementName,
