@@ -2,25 +2,7 @@ package com.trent.dbUtil.ibatis;
 
 import java.util.regex.Pattern;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class OracleDialect implements Dialect {
-	/*
-	public String getCountString(String sql) {
-		StringBuffer sql_ = new StringBuffer();
-		sql_.append("select count(1) as count from ( ").append(sql).append(" )");		 		 
-		return sql_.toString();
-	}
- 
-	public String getLimitString(String sql, int startRow, int maxRow) { 
-		StringBuffer sql_ = new StringBuffer(); 
-		sql_.append("select * from ( select t1.*, rownum rownum_ from ( ");
-		sql_.append(sql);
-		sql_.append(" ) t1 where rownum <= "+maxRow+") where rownum_ > "+startRow+"");
-        return sql_.toString();		
-	}
-	*/
 	
 	private String pageNavigationRegEx = "^(?i)(\\s*select\\s+)(.+?)(?i)(\\s+from\\s+.+)$";
 	//private static String REGEX = "^(?i)(\\s*select\\s+)(.+?)(?i)(\\s+from\\s+.+)$";

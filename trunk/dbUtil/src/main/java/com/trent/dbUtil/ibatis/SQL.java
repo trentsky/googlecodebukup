@@ -21,21 +21,21 @@ public class SQL {
 		this.sqlMapClient = sqlMapClient;
 		this.statementName = statementName;
 		this.parameterObject = parameterObject;
-
-		this.request = newRequestScope(this.sqlMapClient, this.statementName,this.parameterObject);
+		this.request = newRequestScope(this.sqlMapClient, this.statementName,
+				this.parameterObject);
 	}
 
-	private RequestScope newRequestScope(ExtendedSqlMapClient sqlMapClient,String statementName, Object parameterObject) {
+	private RequestScope newRequestScope(ExtendedSqlMapClient sqlMapClient,
+			String statementName, Object parameterObject) {
 
 		RequestScope request = new RequestScope();
-		
 		MappedStatement stmt = sqlMapClient.getMappedStatement(statementName);
+		stmt.initRequest(request);
 		request.setStatement(stmt);
-		
 		Sql sql = stmt.getSql();
 		request.setSql(sql);
-		
-		ParameterMap parameterMap = sql.getParameterMap(request,parameterObject);
+		ParameterMap parameterMap = sql.getParameterMap(request,
+				parameterObject);
 		request.setParameterMap(parameterMap);
 		return request;
 	}
@@ -45,7 +45,8 @@ public class SQL {
 	}
 
 	public Object[] getParameters() {
-		return request.getParameterMap().getParameterObjectValues(request,parameterObject);
+		return request.getParameterMap().getParameterObjectValues(request,
+				parameterObject);
 	}
 
 }

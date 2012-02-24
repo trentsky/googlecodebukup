@@ -1,9 +1,7 @@
 package com.trent.dbUtil.ibatis;
 
-import org.springframework.stereotype.Component;
 
 
-@Component
 public class MySQLDialect implements Dialect {
 
 	protected static final String SQL_END_DELIMITER = ";";

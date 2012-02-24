@@ -1,5 +1,6 @@
 package com.trent.dbUtil.ibatis;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -59,7 +60,12 @@ public abstract class IbatisBaseDaoSupport extends SqlMapClientDaoSupport implem
 	private int getRowCount(String statementName, Object parameterObject) {
 		SQL d = new SQL((ExtendedSqlMapClient) getSqlMapClient(),
 				statementName, parameterObject);
-		Dialect dialect = this.sqlExecutor.getCurrentDialect();
+		Dialect dialect = null;
+		try {
+			dialect = this.sqlExecutor.getCurrentDialect(getSqlMapClient().getCurrentConnection());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		String sql = dialect.getPageCountString(d.getSql());
 
 		Object[] parameters = d.getParameters();
