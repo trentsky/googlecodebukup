@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public abstract class IbatisBaseDaoSupport extends SqlMapClientDaoSupport implem
 		super.setSqlMapClient(sqlMapClient);
 	}
 
+	@PostConstruct
 	public void initialize() throws Exception {
 		if (this.sqlExecutor != null) {
 			SqlMapClient sqlMapClient = getSqlMapClientTemplate()

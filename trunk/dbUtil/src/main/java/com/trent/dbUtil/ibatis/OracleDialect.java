@@ -64,7 +64,7 @@ public class OracleDialect implements Dialect {
 	
 	public String getPageCountString(String sql) {
 		boolean isChildQueryExists = Pattern.compile(pageNavigationExtRegEx).matcher(sql).matches();
-    	return sql.replaceAll("\n","").replaceFirst(isChildQueryExists ? pageNavigationExtRegEx : pageNavigationRegEx, "$1count(1)$3");
+    	return sql.replaceAll("\n","").replaceFirst(isChildQueryExists ? pageNavigationExtRegEx : pageNavigationRegEx, "$1count(*)$3");
 	}
 	
 	public String getPageDataString(String sql, int startRow, int maxRow) { 

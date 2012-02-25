@@ -21,10 +21,9 @@ public class SQLExecutor extends SqlExecutor {
 	public void executeQuery(RequestScope request, Connection conn, String sql,
 			Object[] parameters, int skipResults, int maxResults,
 			RowHandlerCallback callback) throws SQLException {
-		getCurrentDialect(conn);
 		String newSql = sql;
 		if ((skipResults != NO_SKIPPED_RESULTS || maxResults != NO_MAXIMUM_RESULTS)) {
-			newSql = currentDialect.getPageDataString(newSql, skipResults,
+			newSql = getCurrentDialect(conn).getPageDataString(newSql, skipResults,
 					maxResults);
 			if (logger.isDebugEnabled()) {
 				logger.debug(sql);
@@ -57,20 +56,4 @@ public class SQLExecutor extends SqlExecutor {
 		return currentDialect;
 	}
 
-	// DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase
-	// private static final String MICROSOFT_SQL_SERVER = "MS-SQL";
-	// private static final String ORACLE_DATABASE = "Oracle";
-	// private static final String MYSQL_DATABASE = "MySQL";
-	// 判断数据库类型.注入不同的dialect
-	// public Dialect getCurrentDialect(Connection conn) throws SQLException {
-	// String DataBase_Type = conn.getMetaData().getDatabaseProductName();
-	// if (DataBase_Type.equalsIgnoreCase(MICROSOFT_SQL_SERVER)) {
-	// currentDialect = new SqlServerDialect();
-	// } else if (DataBase_Type.equalsIgnoreCase(ORACLE_DATABASE)) {
-	// currentDialect = new OracleDialect();
-	// } else if (DataBase_Type.equalsIgnoreCase(MYSQL_DATABASE)) {
-	// currentDialect = new MySQLDialect();
-	// }
-	// return currentDialect;
-	// }
 }
