@@ -19,15 +19,15 @@
 		<logback.appender>logfile</logback.appender>
 	</properties>
 	<!-- 
-	<repositories>
+		<repositories>
 		<repository>
-			<id>ruyicai</id>
-			<name>Ruyicai Repository</name>
-			<url>
-				http://202.43.151.3:8181/nexus/content/repositories/public/
-			</url>
+		<id>ruyicai</id>
+		<name>Ruyicai Repository</name>
+		<url>
+		http://202.43.151.3:8181/nexus/content/repositories/public/
+		</url>
 		</repository>
-	</repositories>
+		</repositories>
 	-->
 	<pluginRepositories>
 		<pluginRepository>
@@ -48,7 +48,7 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.trent</groupId>
 			<artifactId>dbUtil</artifactId>
@@ -72,6 +72,13 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>3.3.2.GA</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.ibatis</groupId>
+			<artifactId>ibatis-sqlmap</artifactId>
+			<version>2.3.0</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -795,13 +802,16 @@
 						<version>1.5</version>
 						<configuration>
 							<driver>com.mysql.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<url>
+								jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8
+							</url>
 							<username>root</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								drop database if exists querydb;
-								CREATE DATABASE querydb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+								drop database if exists querydb; CREATE
+								DATABASE querydb DEFAULT CHARACTER SET
+								utf8 COLLATE utf8_general_ci;
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -830,7 +840,9 @@
 						<version>1.5</version>
 						<configuration>
 							<driver>com.mysql.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<url>
+								jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8
+							</url>
 							<username>root</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
@@ -866,7 +878,9 @@
 						<version>1.5</version>
 						<configuration>
 							<driver>com.mysql.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<url>
+								jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8
+							</url>
 							<username>root</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
@@ -897,13 +911,16 @@
 						<version>1.5</version>
 						<configuration>
 							<driver>com.mysql.jdbc.Driver</driver>
-							<url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</url>
+							<url>
+								jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8
+							</url>
 							<username>root</username>
 							<password>123456</password>
 							<autocommit>true</autocommit>
 							<sqlCommand>
-								drop database if exists querydb;
-								CREATE DATABASE querydb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
+								drop database if exists querydb; CREATE
+								DATABASE querydb DEFAULT CHARACTER SET
+								utf8 COLLATE utf8_general_ci;
 							</sqlCommand>
 						</configuration>
 						<dependencies>
@@ -974,11 +991,17 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<database.driverClassName>com.mysql.jdbc.Driver</database.driverClassName>
-				<database.url>jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8</database.url>
+				<database.driverClassName>
+					com.mysql.jdbc.Driver
+				</database.driverClassName>
+				<database.url>
+					jdbc:mysql://localhost:3306/querydb?useUnicode=true&amp;characterEncoding=utf-8
+				</database.url>
 				<database.username>root</database.username>
 				<database.password>123456</database.password>
-				<productDB.url>jdbc:mysql://localhost:3306/productdb?useUnicode=true&amp;characterEncoding=utf-8</productDB.url>
+				<productDB.url>
+					jdbc:mysql://localhost:3306/productdb?useUnicode=true&amp;characterEncoding=utf-8
+				</productDB.url>
 				<productDB.username>root</productDB.username>
 				<productDB.password>123456</productDB.password>
 				<database.initialSize>0</database.initialSize>
@@ -987,7 +1010,9 @@
 				<database.minIdle>0</database.minIdle>
 				<database.maxWait>10000</database.maxWait>
 				<database.partitionCount>1</database.partitionCount>
-				<tomcat.manager.url>http://localhost:6666/manager</tomcat.manager.url>
+				<tomcat.manager.url>
+					http://localhost:6666/manager
+				</tomcat.manager.url>
 				<tomcat.manager.port>6666</tomcat.manager.port>
 				<liquibase.promptOnNonLocalDatabase>
 					false
