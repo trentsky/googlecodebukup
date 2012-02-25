@@ -16,7 +16,6 @@ import java.util.concurrent.Executors;
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.spi.LoggingEvent;
 import org.apache.log4j.spi.ThrowableInformation;
-import org.dom4j.Branch;
 
 public class GtalkAppender extends AppenderSkeleton {
 
