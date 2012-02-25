@@ -6,11 +6,11 @@ import java.util.List;
  * @author howard
  *
  */
-public class Page implements Serializable {
+public class Page<T> implements Serializable {
 	
 	private int pageSize;//每页显示条数
 	private int pageNo=1;//当前页数，默认为1
-	private List data;//查询数据，存储当页要展示的数据
+	private List<T> data;//查询数据，存储当页要展示的数据
 	private int totalRows;//总条数
 	
 	private static final long serialVersionUID = 5247894882002876129L;
@@ -63,11 +63,11 @@ public class Page implements Serializable {
 		this.pageSize = pageSize;
 	}
 
-	public List getData() {
+	public List<T> getData() {
 		return data;
 	}
 
-	public void setData(List data) {
+	public void setData(List<T> data) {
 		this.data = data;
 	}
 

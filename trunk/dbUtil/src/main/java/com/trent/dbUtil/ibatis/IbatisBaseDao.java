@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 
-public interface IbatisBaseDao {
+public interface IbatisBaseDao<T> {
 	
 	public Object insert(String statementName, Object parameterObject);
 
@@ -13,14 +13,14 @@ public interface IbatisBaseDao {
     
     public  int delete(String statementName,Object parameterObject);
     
-    public Object queryForObject(String statementName,Object parameterObject);
+    public T queryForObject(String statementName,Object parameterObject);
     
-    public List queryForList(String statementName, Object parameterObject);
+    public List<T> queryForList(String statementName, Object parameterObject);
     
-	public Page queryForPage(String statementName, Map parameterMap, Page page);
+	public Page<T> queryForPage(String statementName, Map<String,Object> parameterMap, Page<T> page);
 	
-	public Page queryForPage(String statementName, Map parameterMap, int pageNo);
+	public Page<T> queryForPage(String statementName, Map<String,Object> parameterMap, int pageNo);
 
-	public Page queryForPage(String statementName, Map parameterMap, int pageNo, int pageSize);
+	public Page<T> queryForPage(String statementName, Map<String,Object> parameterMap, int pageNo, int pageSize);
     
 }
