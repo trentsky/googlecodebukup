@@ -19,13 +19,15 @@ import com.trent.core.datasource.CustomerType;
 import com.trent.dbUtil.hibernate.page.QueryResult;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/META-INF/spring/applicationContext.xml",
-									"classpath:/META-INF/spring/applicationContext-cache.xml"})
+@ContextConfiguration(locations = {
+		"classpath:/META-INF/spring/applicationContext.xml",
+		"classpath:/META-INF/ibatis/applicationContext-ibatis.xml",
+		"classpath:/META-INF/spring/applicationContext-cache.xml" })
 public class ServiceTest {
 
 	Logger logger = LoggerFactory.getLogger(ServiceTest.class);
 	private static int measurements = 10; // 测量次数
-	private static int threads = 10; // 线程个数
+	private static int threads = 100; // 线程个数
 	@Autowired
 	private ITeacherService teacherService;
 
@@ -45,23 +47,34 @@ public class ServiceTest {
 
 	@Test
 	public void testGetScrollData() {
-		LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-		orderby.put("id", "asc");
-		CustomerContextHolder.setCustomerType(CustomerType.queryDB);
-		QueryResult<Teacher> scrollData = teacherService.getScrollData(0, 10,
-				"o.id=?", new Object[] { 41 }, orderby);
-		for (Teacher teacher : scrollData.getResultList()) {
-			logger.info(teacher.toString());
-		}
-		logger.info("queryDB总记录数：" + scrollData.getTotalRecord());
-		
-		CustomerContextHolder.setCustomerType(CustomerType.productDB);
-		QueryResult<Teacher> scrollData1 = teacherService.getScrollData(0, 10,
-				"o.id=?", new Object[] { 41 }, orderby);
-		for (Teacher teacher : scrollData1.getResultList()) {
-			logger.info(teacher.toString());
-		}
-		logger.info("productDB总记录数：" + scrollData1.getTotalRecord());
+		Nano.bench().measurements(measurements).threads(threads).measure(
+				"BoneCP 测试", new Runnable() {
+					public void run() {
+//						LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+//						orderby.put("id", "asc");
+//						CustomerContextHolder
+//								.setCustomerType(CustomerType.queryDB);
+//						QueryResult<Teacher> scrollData = teacherService
+//								.getScrollData(0, 10, "",
+//										new Object[] { }, orderby);
+						teacherService.getScrollData(0,10);
+//						for (Teacher teacher : scrollData.getResultList()) {
+//							logger.info(teacher.toString());
+//						}
+//						logger.info("queryDB总记录数："
+//								+ scrollData.getTotalRecord());
+
+						// CustomerContextHolder.setCustomerType(CustomerType.productDB);
+						// QueryResult<Teacher> scrollData1 =
+						// teacherService.getScrollData(0, 10,
+						// "o.id=?", new Object[] { 41 }, orderby);
+						// for (Teacher teacher : scrollData1.getResultList()) {
+						// logger.info(teacher.toString());
+						// }
+						// logger.info("productDB总记录数：" +
+						// scrollData1.getTotalRecord());
+					}
+				});
 	}
 
 	@Test
