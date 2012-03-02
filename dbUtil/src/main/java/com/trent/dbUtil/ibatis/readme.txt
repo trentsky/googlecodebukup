@@ -1,3 +1,5 @@
+<context:component-scan base-package="com.trent" />  
+
 <bean id="sqlMapClient"
 	class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 	<property name="dataSource">

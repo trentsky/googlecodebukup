@@ -25,7 +25,7 @@ public abstract class IbatisBaseDaoSupport<T> extends SqlMapClientDaoSupport imp
 	private SQLExecutor sqlExecutor;
 	
 	@Resource(name = "sqlMapClient")
-	public void setSuperSessionFactory(SqlMapClient sqlMapClient) {
+	public void setSuperSqlMapClient(SqlMapClient sqlMapClient) {
 		super.setSqlMapClient(sqlMapClient);
 	}
 
@@ -105,4 +105,5 @@ public abstract class IbatisBaseDaoSupport<T> extends SqlMapClientDaoSupport imp
 		queryForPage(statementName, parameterMap, page);
 		return page;
 	}
+	
 }
