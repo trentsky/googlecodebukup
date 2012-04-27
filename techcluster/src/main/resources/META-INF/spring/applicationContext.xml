@@ -44,9 +44,8 @@
 		The most commonly used annotation is @Autowired, which instructs Spring to 
 		dependency inject an object into your class. -->
 	<context:component-scan base-package="com.trent.core">
-		<context:exclude-filter
-			expression="org.springframework.stereotype.Controller"
-			type="annotation" />
+		<!-- 不扫描带有@Controller注解的类。因为这些类已经随容器启动时，在webmvc-servlet.xml中扫描过一遍了 --> 
+		<context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation" />
 	</context:component-scan>
 	<!--BoneCP数据源 -->
 	<bean id="querySource" class="com.jolbox.bonecp.BoneCPDataSource"
