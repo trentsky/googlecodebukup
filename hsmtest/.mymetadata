@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="hsmtest"
+  id="myeclipse.1336022251546"
+  context-root="/hsmtest"
+  j2ee-spec="1.4"
+  archive="hsmtest.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
