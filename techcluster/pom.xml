@@ -9,6 +9,9 @@
 	<version>0.1.0.BUILD-SNAPSHOT</version>
 	<name>techcluster</name>
 	<properties>
+		<maven.compile.source>1.6</maven.compile.source>
+		<maven.compile.target>1.6</maven.compile.target>
+		<maven.compile.deprecation>off</maven.compile.deprecation>
 		<spring.version>3.1.0.RELEASE</spring.version>
 		<aspectj.version>1.6.11.M2</aspectj.version>
 		<project.build.sourceEncoding>
@@ -18,17 +21,23 @@
 		<log.dir>f:/logs</log.dir>
 		<logback.appender>logfile</logback.appender>
 	</properties>
-	<!-- 
-		<repositories>
+	<repositories>
+		<!-- 
 		<repository>
-		<id>ruyicai</id>
-		<name>Ruyicai Repository</name>
-		<url>
-		http://202.43.151.3:8181/nexus/content/repositories/public/
-		</url>
+			<id>ruyicai</id>
+			<name>Ruyicai Repository</name>
+			<url>
+				http://202.43.151.3:8181/nexus/content/repositories/public/
+			</url>
+		</repository> -->
+		<repository>
+			<id>aisino</id>
+			<name>aision Repository</name>
+			<url>
+				http://192.168.15.212:8081/nexus/content/repositories/public/
+			</url>
 		</repository>
-		</repositories>
-	-->
+	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>ruyicai</id>
@@ -52,7 +61,7 @@
 		<dependency>
 			<groupId>com.trent</groupId>
 			<artifactId>dbUtil</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.2</version>
 			<type>jar</type>
 		</dependency>
 
@@ -526,7 +535,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>aspectj-maven-plugin</artifactId>
-				<version>1.0</version>
+				<version>1.4</version>
 				<dependencies>
 					<!-- NB: You must use Maven 2.0.9 or above or these are ignored (see 
 						MNG-2972) -->
