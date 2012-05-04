@@ -12,7 +12,7 @@
 	<import resource="../jms/applicationContext-jms.xml" />
 	<import resource="../ibatis/applicationContext-ibatis.xml" />
 	<import resource="applicationContext-cache.xml" />
-	<import resource="../jms/applicationContext-jms-advanced.xml" />
+	
 	
 	<!-- This will automatically locate any and all property files you have 
 		within your classpath, provided they fall under the META-INF/spring directory. 
