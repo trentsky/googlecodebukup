@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.trent.consumeTest.Nano;
 import com.trent.core.common.entity.User;
 import com.trent.core.jms.camel.CamelMessageProducer;
 
@@ -50,6 +49,7 @@ public class EmailTest {
 					user.setEmail("2863779499@qq.com");
 					user.setName("Tom");
 //					advancedNotifyMessageProducer.sendQueue(user);
-					camelMessageProducer.sendQueueMessage(user);
+//					camelMessageProducer.sendQueueMessage(user);
+					camelMessageProducer.sendTopicMessage(user);
 	}
 }
