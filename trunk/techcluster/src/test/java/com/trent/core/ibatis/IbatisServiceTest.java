@@ -16,9 +16,7 @@ import com.trent.core.ibatis.service.TeacherService;
 import com.trent.dbUtil.ibatis.Page;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/META-INF/spring/applicationContext.xml",
-									"classpath:/META-INF/ibatis/applicationContext-ibatis.xml",
-									"classpath:/META-INF/spring/applicationContext-cache.xml"})
+@ContextConfiguration(locations = { "classpath:/META-INF/spring/applicationContext.xml"})
 public class IbatisServiceTest {
 
 	Logger logger = LoggerFactory.getLogger(IbatisServiceTest.class);

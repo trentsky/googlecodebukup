@@ -9,21 +9,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.trent.consumeTest.Nano;
 import com.trent.core.common.entity.User;
 import com.trent.core.jms.advanced.AdvancedNotifyMessageProducer;
+import com.trent.core.jms.camel.CamelMessageProducer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {  "classpath:/META-INF/jms/applicationContext-jms.xml",
-		"classpath:/META-INF/spring/applicationContext.xml",
-		"classpath:/META-INF/spring/applicationContext-cache.xml"})
+@ContextConfiguration(locations = {"classpath:/META-INF/spring/applicationContext.xml"})
 public class EmailTest {
-
-	// @Autowired
-	// private NotifyMessageProducer notifyMessageProducer;
 
 	@Autowired
 	private AdvancedNotifyMessageProducer advancedNotifyMessageProducer;
+	
+	@Autowired
+	private CamelMessageProducer camelMessageProducer;
 
-	private static int measurements = 10; // 测量次数
-	private static int threads = 10; // 线程个数
+	private static int measurements = 1; // 测量次数
+	private static int threads = 1; // 线程个数
 
 	@Test
 	public void sendEmail() {
@@ -36,10 +35,10 @@ public class EmailTest {
 						user.setShaPassword("123456");
 						user.setStatus("1");
 						user.setVersion(3);
-						user.setEmail("aaa");
+						user.setEmail("2863779499@qq.com");
 						user.setName("Tom");
-						System.out.println(user.toString());
-						advancedNotifyMessageProducer.sendQueue(user);
+//						advancedNotifyMessageProducer.sendQueue(user);
+						camelMessageProducer.sendQueueMessage(user);
 					}
 				});
 	}

@@ -1,6 +1,5 @@
 package com.trent.core.hibernate;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.junit.Test;
@@ -14,15 +13,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.trent.consumeTest.Nano;
 import com.trent.core.common.entity.Teacher;
 import com.trent.core.common.service.ITeacherService;
-import com.trent.core.datasource.CustomerContextHolder;
-import com.trent.core.datasource.CustomerType;
-import com.trent.dbUtil.hibernate.page.QueryResult;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-		"classpath:/META-INF/spring/applicationContext.xml",
-		"classpath:/META-INF/ibatis/applicationContext-ibatis.xml",
-		"classpath:/META-INF/spring/applicationContext-cache.xml" })
+		"classpath:/META-INF/spring/applicationContext.xml" })
 public class ServiceTest {
 
 	Logger logger = LoggerFactory.getLogger(ServiceTest.class);
