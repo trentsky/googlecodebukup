@@ -20,7 +20,7 @@ public class CamelNotifyMessageListener{
 	public void process(@Header("userName") String username,
 			@Header("email") String email,@Body String body) {
 		try {
-			logger.info("UserName:" + username + ", Email:" + email+", Body:"+body+",defaultMailService:"+defaultMailService);
+			logger.info("用户信息==UserName:{}, Email:{}, Body:{}",new String[]{username,email,body});
 			if (defaultMailService != null) {
 				defaultMailService.send("springside3.demo@gmail.com", email, "ccccccccc", username);
 			}
