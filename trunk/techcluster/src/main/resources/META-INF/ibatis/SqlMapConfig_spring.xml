@@ -7,5 +7,5 @@
 <sqlMapConfig>
 
 	<!-- List the SQL Map XML files. They can be loaded from the classpath, as they are here (com.domain.data...) -->
-	<sqlMap resource="com/trent/core/ibatis/entiey/teacher.xml" />
+	<sqlMap resource="META-INF/ibatis/teacher.xml" />
 </sqlMapConfig>
