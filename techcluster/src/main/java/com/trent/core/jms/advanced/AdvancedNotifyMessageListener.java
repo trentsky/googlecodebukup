@@ -33,7 +33,7 @@ public class AdvancedNotifyMessageListener implements MessageListener {
 					+ ", ObjectType:" + mapMessage.getStringProperty("objectType"));
 			//发送邮件
 			if (mailService != null) {
-				//mimeMailService.sendNotificationMail(mapMessage.getString("userName"));
+				mailService.send("springside3.demo@gmail.com", "2863779499@qq.com", "ccccccccc", "dddddddddd");
 			}
 		} catch (Exception e) {
 			logger.error("处理消息时发生异常.", e);

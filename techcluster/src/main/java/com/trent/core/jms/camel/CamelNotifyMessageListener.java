@@ -14,16 +14,15 @@ public class CamelNotifyMessageListener{
 
 	private static Logger logger = LoggerFactory.getLogger(CamelNotifyMessageListener.class);
 	
-	@Autowired(required = false)
+	@Autowired
 	private MailService defaultMailService;
 
 	public void process(@Header("userName") String username,
 			@Header("email") String email,@Body String body) {
 		try {
-			logger.info("UserName:" + username + ", Email:" + email+", Body:"+body);
+			logger.info("UserName:" + username + ", Email:" + email+", Body:"+body+",defaultMailService:"+defaultMailService);
 			if (defaultMailService != null) {
-				//mimeMailService.sendNotificationMail(username); //发送邮件
-				defaultMailService.send("aaa@sina.com", "bbb@sina.com", "ccccccccc", "dddddddddd");
+				defaultMailService.send("springside3.demo@gmail.com", "2863779499@qq.com", "ccccccccc", "dddddddddd");
 			}
 		} catch (Exception e) {
 			logger.error("处理消息时发生异常.", e);

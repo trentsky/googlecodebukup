@@ -35,7 +35,6 @@ public class AdvancedNotifyMessageProducer {
 	private void sendMessage(final User user, Destination destination) {
 		jmsTemplate.send(destination, new MessageCreator() {
 			public Message createMessage(Session session) throws JMSException {
-
 				MapMessage message = session.createMapMessage();
 				message.setString("userName", user.getName());
 				message.setString("email", user.getEmail());
