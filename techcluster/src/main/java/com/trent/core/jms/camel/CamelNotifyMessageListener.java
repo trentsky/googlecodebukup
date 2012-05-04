@@ -22,7 +22,7 @@ public class CamelNotifyMessageListener{
 		try {
 			logger.info("UserName:" + username + ", Email:" + email+", Body:"+body+",defaultMailService:"+defaultMailService);
 			if (defaultMailService != null) {
-				defaultMailService.send("springside3.demo@gmail.com", "2863779499@qq.com", "ccccccccc", "dddddddddd");
+				defaultMailService.send("springside3.demo@gmail.com", email, "ccccccccc", username);
 			}
 		} catch (Exception e) {
 			logger.error("处理消息时发生异常.", e);
