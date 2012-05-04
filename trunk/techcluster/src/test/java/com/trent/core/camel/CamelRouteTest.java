@@ -85,10 +85,10 @@ public class CamelRouteTest {
 		user.setName("Tom");
 	}
 
-	@Test //send to queue
-	public void testQueueCamelRoute() {
-		camelMessageProducer.sendQueueMessage(user);
-	}
+//	@Test //send to queue
+//	public void testQueueCamelRoute() {
+//		camelMessageProducer.sendQueueMessage(user);
+//	}
 	
 	@Test //send to topic
 	public void testTopicCamelRoute() {
