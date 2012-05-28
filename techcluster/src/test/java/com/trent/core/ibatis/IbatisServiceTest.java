@@ -27,16 +27,16 @@ public class IbatisServiceTest {
 
 	@Test
 	public void testIbatisQueryForPage() {
-		Nano.bench().measurements(measurements).threads(threads).measure(
-				"cache测试:", new Runnable() {
-					public void run() {
+//		Nano.bench().measurements(measurements).threads(threads).measure(
+//				"cache测试:", new Runnable() {
+//					public void run() {
 						Map<String, Object> map = new HashMap<String, Object>();
 						Page<com.trent.core.ibatis.entiey.Teacher> page = teacherService.queryForPage("getAllUserForPage", map, 1, 10);
 //						List<Teacher> list = page.getData();
 //						for (Teacher teacher:list) {
 //							logger.info(teacher.toString());
-//						}
-					}
-				});
+////						}
+//					}
+//				});
 	}
 }
