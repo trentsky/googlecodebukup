@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * Student entity.
  * 
@@ -110,9 +112,7 @@ public class Student implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Student [no=" + no + ", name=" + name + ", age=" + age
-				+ ", eduTime=" + eduTime + ", score=" + score + ", sex=" + sex
-				+ "]";
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 }
