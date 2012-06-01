@@ -3,6 +3,8 @@ package com.trent.dbUtil.ibatis;
 import java.util.List;
 import java.util.Map;
 
+import com.trent.dbUtil.hibernate.page.PageView;
+
 
 
 public interface IbatisBaseDao<T> {
@@ -17,10 +19,10 @@ public interface IbatisBaseDao<T> {
     
     public List<T> queryForList(String statementName, Object parameterObject);
     
-	public Page<T> queryForPage(String statementName, Map<String,Object> parameterMap, Page<T> page);
+	public PageView<T> queryForPage(String statementName, Map<String,Object> parameterMap, PageView<T> page);
 	
-	public Page<T> queryForPage(String statementName, Map<String,Object> parameterMap, int pageNo);
+	public PageView<T> queryForPage(String statementName, Map<String,Object> parameterMap, int pageNo);
 
-	public Page<T> queryForPage(String statementName, Map<String,Object> parameterMap, int pageNo, int pageSize);
+	public PageView<T> queryForPage(String statementName, Map<String,Object> parameterMap, int pageNo, int pageSize);
     
 }
