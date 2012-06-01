@@ -12,8 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.trent.core.ibatis.entiey.Teacher;
 import com.trent.core.ibatis.service.TeacherService;
-import com.trent.dbUtil.ibatis.Page;
+import com.trent.dbUtil.hibernate.page.PageView;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/META-INF/spring/applicationContext.xml"})
@@ -31,12 +32,18 @@ public class IbatisServiceTest {
 //				"cache测试:", new Runnable() {
 //					public void run() {
 						Map<String, Object> map = new HashMap<String, Object>();
-						Page<com.trent.core.ibatis.entiey.Teacher> page = teacherService.queryForPage("getAllUserForPage", map, 1, 10);
-						List<com.trent.core.ibatis.entiey.Teacher> list = page.getData();
+						PageView<com.trent.core.ibatis.entiey.Teacher> page = teacherService.queryForPage("getAllUserForPage", map, 1, 10);
+						List<com.trent.core.ibatis.entiey.Teacher> list = page.getRecords();
 						for (com.trent.core.ibatis.entiey.Teacher teacher:list) {
 							logger.info(teacher.toString());
-//						}
-					}
+						}
+						logger.info("=============================================");
+						PageView<Teacher> page1 = teacherService.queryForPage("getAllUserForPage", map, 1);
+						List<com.trent.core.ibatis.entiey.Teacher> list1 = page1.getRecords();
+						for (com.trent.core.ibatis.entiey.Teacher teacher:list1) {
+							logger.info(teacher.toString());
+						}
+//					}
 //				});
 	}
 }
