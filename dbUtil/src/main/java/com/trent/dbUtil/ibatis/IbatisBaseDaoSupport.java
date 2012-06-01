@@ -14,6 +14,7 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.engine.impl.ExtendedSqlMapClient;
+import com.trent.dbUtil.hibernate.page.PageView;
 
 @SuppressWarnings("unchecked")
 public abstract class IbatisBaseDaoSupport<T> extends SqlMapClientDaoSupport implements IbatisBaseDao<T>{
@@ -80,28 +81,28 @@ public abstract class IbatisBaseDaoSupport<T> extends SqlMapClientDaoSupport imp
 		return this.jdbcOperations.queryForInt(sql, parameters);
 	}
 
-	public Page queryForPage(String statementName, Map<String,Object> parameterMap, Page<T> page) {
-		int pageNo = page.getPageNo();
-		int pageSize = page.getPageSize();
+	public PageView queryForPage(String statementName, Map<String,Object> parameterMap, PageView<T> page) {
+		int pageNo = page.getCurrentPage();
+		int pageSize = page.getMaxResult();
 		int skipResults = (pageNo - 1) * pageSize;
 		int maxResults = pageNo * pageSize;
 		int totalRows = getRowCount(statementName, parameterMap);
-		page.setTotalRows(totalRows);
+		page.setTotalRecord(totalRows);
 		List<T> data = getSqlMapClientTemplate().queryForList(statementName,
 				parameterMap, skipResults, maxResults);
-		page.setData(data);
+		page.setRecords(data);
 		return page;
 	}
 
-	public Page queryForPage(String statementName, Map<String,Object> parameterMap, int pageNo) {
-		Page page = new Page(pageNo);
+	public PageView queryForPage(String statementName, Map<String,Object> parameterMap, int pageNo) {
+		PageView page = new PageView(pageNo);
 		queryForPage(statementName, parameterMap, page);
 		return page;
 	}
 
-	public Page queryForPage(String statementName, Map<String,Object> parameterMap,
+	public PageView queryForPage(String statementName, Map<String,Object> parameterMap,
 			int pageNo, int pageSize) {
-		Page page = new Page(pageNo, pageSize);
+		PageView page = new PageView(pageSize, pageNo);
 		queryForPage(statementName, parameterMap, page);
 		return page;
 	}

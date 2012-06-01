@@ -13,7 +13,7 @@ public class PageView<T> {
 	/** 总页数 * */
 	private int totalPage = 1;
 	/** 每页显示记录数 * */
-	private int maxResult = 10;
+	private int maxResult = 5;
 	/** 当前页 * */
 	private int currentPage = 1;
 	/** 总记录数 * */
