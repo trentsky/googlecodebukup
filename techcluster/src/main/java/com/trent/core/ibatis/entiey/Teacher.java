@@ -2,7 +2,9 @@ package com.trent.core.ibatis.entiey;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-public class Teacher implements java.io.Serializable {
+import com.trent.core.common.entity.base.BaseEntity;
+
+public class Teacher extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 	private Integer id;
@@ -40,10 +42,6 @@ public class Teacher implements java.io.Serializable {
 
 	public void setPositional(String positional) {
 		this.positional = positional;
-	}
-
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 
 }
