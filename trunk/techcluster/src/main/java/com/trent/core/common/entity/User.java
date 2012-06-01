@@ -2,8 +2,11 @@ package com.trent.core.common.entity;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-public class User {
+import com.trent.core.common.entity.base.BaseEntity;
+
+public class User extends BaseEntity{
 	
+	private static final long serialVersionUID = 1L;
 	private String loginName;
 	private String plainPassword;
 	private String shaPassword;
@@ -52,9 +55,5 @@ public class User {
 	}
 	public void setVersion(Integer version) {
 		this.version = version;
-	}
-	
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 }

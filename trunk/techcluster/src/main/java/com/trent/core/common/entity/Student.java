@@ -1,6 +1,7 @@
 package com.trent.core.common.entity;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import com.trent.core.common.entity.base.BaseEntity;
 
 /**
  * Student entity.
@@ -19,7 +20,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "student")
-public class Student implements java.io.Serializable {
+public class Student extends BaseEntity {
 
 	// Fields
 
@@ -109,10 +110,4 @@ public class Student implements java.io.Serializable {
 	public void setEduTime(Date eduTime) {
 		this.eduTime = eduTime;
 	}
-
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-
 }

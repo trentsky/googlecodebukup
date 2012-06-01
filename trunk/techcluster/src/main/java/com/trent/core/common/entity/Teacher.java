@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+import com.trent.core.common.entity.base.BaseEntity;
+
 /**
  * Teacher entity.
  * 
@@ -15,7 +17,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  */
 @Entity
 @Table(name = "teacher")
-public class Teacher implements java.io.Serializable {
+public class Teacher extends BaseEntity {
 
 	// Fields
 	private static final long serialVersionUID = 1L;
@@ -82,9 +84,4 @@ public class Teacher implements java.io.Serializable {
 	public void setPositional(String positional) {
 		this.positional = positional;
 	}
-	
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-
 }
