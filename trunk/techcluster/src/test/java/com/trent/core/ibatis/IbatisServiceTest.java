@@ -1,6 +1,7 @@
 package com.trent.core.ibatis;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.trent.consumeTest.Nano;
 import com.trent.core.ibatis.service.TeacherService;
 import com.trent.dbUtil.ibatis.Page;
 
@@ -24,7 +24,7 @@ public class IbatisServiceTest {
 	private static int threads = 100; // 线程个数
 	@Autowired
 	private TeacherService teacherService;
-
+	
 	@Test
 	public void testIbatisQueryForPage() {
 //		Nano.bench().measurements(measurements).threads(threads).measure(
@@ -32,11 +32,11 @@ public class IbatisServiceTest {
 //					public void run() {
 						Map<String, Object> map = new HashMap<String, Object>();
 						Page<com.trent.core.ibatis.entiey.Teacher> page = teacherService.queryForPage("getAllUserForPage", map, 1, 10);
-//						List<Teacher> list = page.getData();
-//						for (Teacher teacher:list) {
-//							logger.info(teacher.toString());
-////						}
-//					}
+						List<com.trent.core.ibatis.entiey.Teacher> list = page.getData();
+						for (com.trent.core.ibatis.entiey.Teacher teacher:list) {
+							logger.info(teacher.toString());
+//						}
+					}
 //				});
 	}
 }
