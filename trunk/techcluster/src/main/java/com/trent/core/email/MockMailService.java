@@ -19,6 +19,7 @@ public class MockMailService extends MailService {
 		mail.append(getMailHeader(msg) + "\n");
 		mail.append(msg.getText());
 		log.info(mail.toString());
+		log.info("email 发送成功!!!!");
 	}
 
 	/**
