@@ -24,13 +24,14 @@ public class RoutesConfiguration implements ApplicationListener<ContextRefreshed
 	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		logger.info("init camel routes");
+		logger.info("init camel routes.......");
 		try {
 			camelContext.addRoutes(new RouteBuilder() {
 				@Override
 				public void configure() throws Exception {
 					deadLetterChannel("jms:queue:dead").maximumRedeliveries(-1).redeliveryDelay(3000);
 					from("jms:queue:sendMailQueue?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
+//					from("jms:topic:sendMailTopic?concurrentConsumers=" + mailQueue).to("bean:camelNotifyMessageListener?method=process").routeId("邮件服务");
 				}
 			});
 		} catch (Exception e) {
