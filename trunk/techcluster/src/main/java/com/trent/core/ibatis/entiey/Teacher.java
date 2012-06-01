@@ -1,7 +1,5 @@
 package com.trent.core.ibatis.entiey;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import com.trent.core.common.entity.base.BaseEntity;
 
 public class Teacher extends BaseEntity {
