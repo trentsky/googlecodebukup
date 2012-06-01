@@ -5,7 +5,7 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="User">
-	<select id="getAllUserForPage" parameterClass="map" resultClass="com.trent.core.common.entity.Teacher">
+	<select id="getAllUserForPage" parameterClass="map" resultClass="com.trent.core.ibatis.entiey.Teacher">
 		select * from teacher
 	</select>
 </sqlMap>
