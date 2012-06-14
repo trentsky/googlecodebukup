@@ -38,6 +38,7 @@
 			</url>
 		</repository>
 	</repositories>
+	<!-- 
 	<pluginRepositories>
 		<pluginRepository>
 			<id>ruyicai</id>
@@ -46,7 +47,7 @@
 				http://202.43.151.3:8181/nexus/content/repositories/public/
 			</url>
 		</pluginRepository>
-	</pluginRepositories>
+	</pluginRepositories> -->
 	<dependencies>
 
 		<!-- 性能测试 -->
@@ -61,7 +62,7 @@
 		<dependency>
 			<groupId>com.trent</groupId>
 			<artifactId>dbUtil</artifactId>
-			<version>0.0.2</version>
+			<version>0.0.3</version>
 			<type>jar</type>
 		</dependency>
 
