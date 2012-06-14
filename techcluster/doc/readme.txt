@@ -20,4 +20,5 @@ windows 开发环境设置：
 	f、run test:    mvn clean integration-test -Plocal -U
 	g、db recreate: mvn sql:execute -Plocal,local-recreate-db
 	h、db update:   mvn liquibase:update -Plocal,update-db
+8、mvn clean install sonar:sonar -Dmaven.test.failure.ignore=true -e
 
