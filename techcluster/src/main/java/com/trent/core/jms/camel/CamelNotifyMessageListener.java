@@ -12,7 +12,7 @@ import com.trent.core.email.MailService;
 @Component
 public class CamelNotifyMessageListener{
 
-	private static Logger logger = LoggerFactory.getLogger(CamelNotifyMessageListener.class);
+	private static final Logger logger = LoggerFactory.getLogger(CamelNotifyMessageListener.class);
 	
 //	@Autowired
 //	private MailService defaultMailService;

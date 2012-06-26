@@ -16,7 +16,7 @@ import com.trent.core.email.MailService;
  */
 public class NotifyMessageListener implements MessageListener {
 
-	private static Logger logger = LoggerFactory.getLogger(NotifyMessageListener.class);
+	private static final Logger logger = LoggerFactory.getLogger(NotifyMessageListener.class);
 
 	@Autowired(required = false)
 	private MailService mailService;

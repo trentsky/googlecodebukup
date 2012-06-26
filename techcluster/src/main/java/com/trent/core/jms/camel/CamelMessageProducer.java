@@ -13,7 +13,7 @@ import com.trent.core.common.entity.User;
 @Service
 public class CamelMessageProducer {
 
-	private Logger logger = LoggerFactory.getLogger(CamelMessageProducer.class);
+	private static final Logger logger = LoggerFactory.getLogger(CamelMessageProducer.class);
 	
 	@Produce(uri = "jms:queue:sendMailQueue")
 	ProducerTemplate mailQueueProducer;
