@@ -19,7 +19,7 @@ import com.trent.core.common.service.ITeacherService;
 		"classpath:/META-INF/spring/applicationContext.xml" })
 public class ServiceTest {
 
-	Logger logger = LoggerFactory.getLogger(ServiceTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(ServiceTest.class);
 	private static int measurements = 10; // 测量次数
 	private static int threads = 100; // 线程个数
 	@Autowired

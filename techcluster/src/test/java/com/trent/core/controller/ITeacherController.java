@@ -23,7 +23,7 @@ import com.gargoylesoftware.htmlunit.WebRequest;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/META-INF/spring/applicationContext.xml"})
 public class ITeacherController {
-	private Logger logger = LoggerFactory.getLogger(ITeacherController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ITeacherController.class);
 	
 	@Value("${test.baseUrl}")
 	private String baseUrl;

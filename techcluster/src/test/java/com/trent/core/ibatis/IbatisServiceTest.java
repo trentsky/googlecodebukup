@@ -21,7 +21,7 @@ import com.trent.dbUtil.hibernate.page.PageView;
 @ContextConfiguration(locations = { "classpath:/META-INF/spring/applicationContext.xml"})
 public class IbatisServiceTest {
 
-	Logger logger = LoggerFactory.getLogger(IbatisServiceTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(IbatisServiceTest.class);
 	private static int measurements = 2; // 测量次数
 	private static int threads = 2; // 线程个数
 	@Autowired

@@ -17,7 +17,7 @@ import com.trent.core.common.entity.User;
 
 public class XstreamTest {
 
-	private Logger logger = LoggerFactory.getLogger(XstreamTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(XstreamTest.class);
 	private User user = null;
 	private XStream xstream = null;
 	private ObjectOutputStream out = null;
