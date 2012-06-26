@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RoutesConfiguration implements ApplicationListener<ContextRefreshedEvent> {
 	
-	private Logger logger = LoggerFactory.getLogger(RoutesConfiguration.class);
+	private static final Logger logger = LoggerFactory.getLogger(RoutesConfiguration.class);
 
 	@Resource(name="coreCamelContext")
 	private CamelContext camelContext;
