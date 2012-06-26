@@ -19,7 +19,7 @@ import com.trent.dbUtil.hibernate.page.PageView;
 @Controller
 @RequestMapping("/teacher")
 public class TeacherController{
-	private Logger logger = LoggerFactory.getLogger(TeacherController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TeacherController.class);
 	
 	@Autowired
 	private ITeacherService teacherService;
