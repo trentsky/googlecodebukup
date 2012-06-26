@@ -37,7 +37,7 @@ import com.trent.core.jms.camel.CamelMessageProducer;
 @Component
 public class CamelRouteTest {
 
-	private static Logger logger = LoggerFactory
+	private Logger logger = LoggerFactory
 			.getLogger(CamelRouteTest.class);
 
 	@EndpointInject(uri = "mock:result")
