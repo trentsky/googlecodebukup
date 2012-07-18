@@ -15,6 +15,10 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.engine.impl.ExtendedSqlMapClient;
 import com.trent.dbUtil.hibernate.page.PageView;
+import com.trent.dbUtil.ibatis.DBDialect.Dialect;
+import com.trent.dbUtil.ibatis.support.ReflectionUtils;
+import com.trent.dbUtil.ibatis.support.SQL;
+import com.trent.dbUtil.ibatis.support.SQLExecutor;
 
 @SuppressWarnings("unchecked")
 public abstract class IbatisBaseDaoSupport<T> extends SqlMapClientDaoSupport implements IbatisBaseDao<T>{

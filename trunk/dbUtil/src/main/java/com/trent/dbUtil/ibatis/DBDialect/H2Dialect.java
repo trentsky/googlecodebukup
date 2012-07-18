@@ -1,4 +1,5 @@
-package com.trent.dbUtil.ibatis;
+package com.trent.dbUtil.ibatis.DBDialect;
+
 
 
 public class H2Dialect extends Dialect {

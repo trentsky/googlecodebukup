@@ -1,4 +1,6 @@
-package com.trent.dbUtil.ibatis;
+package com.trent.dbUtil.ibatis.DBDialect;
+
+
 public class HSQLDialect extends Dialect{
 
 	public boolean supportsLimit() {

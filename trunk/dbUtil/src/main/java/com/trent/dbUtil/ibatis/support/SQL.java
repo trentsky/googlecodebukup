@@ -1,4 +1,4 @@
-package com.trent.dbUtil.ibatis;
+package com.trent.dbUtil.ibatis.support;
 
 import com.ibatis.sqlmap.engine.impl.ExtendedSqlMapClient;
 import com.ibatis.sqlmap.engine.mapping.parameter.ParameterMap;

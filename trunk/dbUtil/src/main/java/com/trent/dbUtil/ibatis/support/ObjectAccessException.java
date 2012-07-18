@@ -1,4 +1,4 @@
-package com.trent.dbUtil.ibatis;
+package com.trent.dbUtil.ibatis.support;
 
 public class ObjectAccessException extends RuntimeException {
 	
