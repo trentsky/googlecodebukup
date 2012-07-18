@@ -1,4 +1,4 @@
-package com.trent.dbUtil.ibatis;
+package com.trent.dbUtil.ibatis.DBDialect;
 
 import java.util.regex.Pattern;
 

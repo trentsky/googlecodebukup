@@ -1,4 +1,4 @@
-package com.trent.dbUtil.ibatis;
+package com.trent.dbUtil.ibatis.support;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

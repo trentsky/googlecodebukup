@@ -1,4 +1,4 @@
-package com.trent.dbUtil.ibatis;
+package com.trent.dbUtil.ibatis.support;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.ibatis.sqlmap.engine.execution.SqlExecutor;
 import com.ibatis.sqlmap.engine.mapping.statement.RowHandlerCallback;
 import com.ibatis.sqlmap.engine.scope.RequestScope;
+import com.trent.dbUtil.ibatis.DBDialect.Dialect;
 
 @Service
 public class SQLExecutor extends SqlExecutor {
@@ -23,8 +24,8 @@ public class SQLExecutor extends SqlExecutor {
 			RowHandlerCallback callback) throws SQLException {
 		String newSql = sql;
 		if ((skipResults != NO_SKIPPED_RESULTS || maxResults != NO_MAXIMUM_RESULTS)) {
-			newSql = getCurrentDialect(conn).getPageDataString(newSql, skipResults,
-					maxResults);
+			newSql = getCurrentDialect(conn).getPageDataString(newSql,
+					skipResults, maxResults);
 			if (logger.isDebugEnabled()) {
 				logger.debug(sql);
 			}
@@ -38,11 +39,10 @@ public class SQLExecutor extends SqlExecutor {
 	public Dialect getCurrentDialect(Connection conn) throws SQLException {
 		String dialectName = conn.getMetaData().getDatabaseProductName();
 		StringBuilder dbDialect = new StringBuilder();
-		dbDialect.append("com.trent.dbUtil.ibatis.").append(dialectName)
-				.append("Dialect");
+		dbDialect.append("com.trent.dbUtil.ibatis.DBDialect").append(
+				dialectName).append("Dialect");
 		if (dialectName == null)
-			logger
-					.info("The dialect was not set. Set the property hibernate.dialect.");
+			logger.info("Could not get dialectName");
 		try {
 			currentDialect = (Dialect) ReflectionUtils.classForName(
 					dbDialect.toString()).newInstance();

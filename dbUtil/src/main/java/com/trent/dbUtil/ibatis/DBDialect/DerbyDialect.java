@@ -1,6 +1,7 @@
-package com.trent.dbUtil.ibatis;
+package com.trent.dbUtil.ibatis.DBDialect;
 
-public class SybaseDialect extends Dialect{
+
+public class DerbyDialect extends Dialect{
 
 	@Override
 	public String getPageDataString(String sql, int startRow, int maxRow) {

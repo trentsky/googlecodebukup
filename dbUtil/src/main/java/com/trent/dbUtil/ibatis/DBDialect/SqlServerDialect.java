@@ -1,4 +1,5 @@
-package com.trent.dbUtil.ibatis;
+package com.trent.dbUtil.ibatis.DBDialect;
+
 
 public class SqlServerDialect extends Dialect {     
     protected static final String SQL_END_DELIMITER = ";";     
