@@ -1,0 +1,58 @@
+.head {
+	background-image: url(../images/head_bg.gif);
+	height: 96px;
+	background-repeat: repeat;
+}
+.login {
+	background-image: url(../images/login-line.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.login .denglu {
+	background-image: url(../images/login-pic.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.login_btn {
+	background-image: url(../images/login-btn.gif);
+	height: 27px;
+	width: 100px;
+	font-weight: bold;
+	border: 1px solid #4579ff;
+	color: #001C64;
+}
+.login_input{
+	border:1px solid #3d66d1;
+	height:24px;
+	width: 160px;
+}
+
+.head a,a:link{
+	color: #000000;
+	text-decoration: none;
+}
+.head a:active {
+	color: #003366;
+	text-decoration: underline;
+}
+.head a:hover {
+	text-decoration: none;
+	color: #FF0000;
+}
+.rollBox{width:600px;overflow:hidden;}
+.rollBox .Cont{width:100%;overflow:hidden;float:left;}
+.rollBox .ScrCont{width:1e+006;}
+.rollBox .Cont .pic{width:100px;float:left;text-align:center;}
+.rollBox .ScrCont .pic img {
+	height: 35px;
+}
+
+.rollBox .ScrCont .pic h5 {
+	margin: 0px;
+	line-height: 20px;
+	font-size: 12px;
+}
+
+.rollBox .Cont a:link,.rollBox .Cont a:visited{color:#003366;text-decoration:none;}
+.rollBox .Cont a:hover{color:#FF3300;text-decoration:underline;}
+.rollBox #List1,.rollBox #List2{float:left;}

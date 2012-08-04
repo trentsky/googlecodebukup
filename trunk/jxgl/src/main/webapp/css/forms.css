@@ -1,0 +1,212 @@
+form {
+	font-size: 1em;
+	margin: 0px;
+}
+
+/* ----- 表单域样式 ----- */
+input{
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:150%;
+}
+input.text, input.txt,
+textarea.textarea{
+    background:#FFFFFF;
+	border:1px solid #B5B8C8;
+	padding:3px 3px;
+	height:22px;
+	line-height:18px;
+	vertical-align:middle;
+	padding-bottom:0pt;
+	padding-top:2px;
+	width:150px;
+	color: #333;
+}
+textarea.textarea{
+	height:100px;
+}
+select{
+	border:1px solid #B5B8C8;
+	vertical-align:middle;
+	padding:1px;
+}
+select.select{
+	width:150px;
+}
+    /*普通下拉列表的样式,自动加载*/
+.table-form select.common-select {
+    font-size: 12px;
+    width: 90%;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #6699CC;
+    border-right-color: #DFE8F3;
+    border-bottom-color: #DFE8F3;
+    border-left-color: #6699CC;
+}  
+input.invalid,textarea.invalid{
+	background:#fff url(images/invalid_line.gif) repeat-x bottom;
+	/*border:1px solid #dd7870;*/
+}
+select.invalid{
+	border:1px solid #dd7870;
+}
+option.invalid{
+	background-color:#ffa07a;
+	color:#fff;
+}
+input.file{
+	border:1px solid #B5B8C8;
+	height:22px;
+	width:auto;
+}
+input.checkbox, input.radio{
+	display: block;
+	line-height: 1.4em;
+	margin: 0px 0 0 3px;
+	width: 13px;
+	height: 13px;
+	padding: 0px;
+}
+
+input.focus, textarea.focus {
+    background: #ffd;
+    color: #000;
+}
+/* ----- 按钮样式  ----- */
+input.btn, input.button, input.submit, input.reset{
+	font-size: 12px;
+	width:auto;
+	height: 22px;
+	border:1px solid #8facf8;
+	background-image: url(table/button_bg.gif);
+	background-repeat: repeat-x;
+	padding:0;
+	color: #031d61;
+}
+input[type='button'], input[type='submit'], input[type='reset']{ 
+	border:1px solid #8facf8;
+	background-image: url(table/button_bg.gif);
+	background-repeat: repeat-x;
+}
+.button_tt{
+	border:1px solid #8facf8;
+	text-align:center;
+	color: #031d61;
+	margin: 4px;
+	font-size: 12px;
+	text-decoration: none;
+	height: 22px;
+	font-family: "宋体";
+	padding: 0px 4px;
+	background-image: url(../images/title_bg.gif);
+}
+/* ----- SIZES ----- */
+input.max, textarea.max{
+    width: 100%;
+}
+input.sear,textarea.sear,select.sear{
+    width:90%;
+}
+input.mid{
+    width:60%;
+}
+input.small{
+    width:50px;
+}
+
+input.date{
+	width:80px;
+}
+/* ----- ERRORS ----- */
+form li.error{
+    background-color: #FFDFDF;
+    margin: 3px 0 !important;
+}
+
+input.error, textarea.error{
+    border: 1px solid #EF5959;
+    border-left: 1px solid #FF8F8F;
+    border-top: 1px solid #FF8F8F;
+    background: #fff;
+}
+
+p.error, li.error label.desc{
+    color: red !important;
+}
+
+p.error{
+    font-size: 9px !important;
+    margin: 1px 0;
+}
+
+/* END FORM ELEMENTS */
+
+/* ----- 表格(table)通用样式 ----- */
+div.history-item{
+	font-size:12px;
+	padding:1px 1px;
+}
+div.history-item-title{
+	background-color:#eff3ff;
+	font-size: 14px;
+	border-left:1px solid #d3dfff;
+	border-right:1px solid #d3dfff;
+	border-top:1px solid #d3dfff;
+	border-bottom-width: 3px;
+	border-bottom-style: double;
+	border-bottom-color: #8facf8;
+	text-indent: 20px;
+	color: #003366;
+	line-height: 14px;
+	padding-top: 6px;
+	padding-bottom: 2px;
+}
+div.history-item-content{
+	width:100%;
+}
+.formTable{
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 12px;
+}
+.formTable td{
+	border: 1px solid #d3dfff;
+	background-color:#FFFFFF;
+	padding: 2px 6px;
+	line-height: 20px;
+}
+
+.formTable tr.header td{
+	color:#003366;
+	background-image: url(table/head_bg.gif);
+} 
+td.label{
+	background-color:#f6f8ff;
+	width:15%;
+}
+
+td.label1{
+	background-color:#f6f8ff;
+	width:22%;
+}
+td.content{
+	width:35%;
+}
+td.checkColumn{
+	width:10px;
+}
+
+.disabledText{
+	background: #d0d0d0;
+	width:150px;
+}
