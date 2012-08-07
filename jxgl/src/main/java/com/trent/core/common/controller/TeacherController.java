@@ -38,6 +38,18 @@ public class TeacherController{
 		return JsonUtil.toJson(rd);
 	}
 	
+	@RequestMapping(value = "/getPageTeacher", method = RequestMethod.GET)
+	public String getPageTeacher(HttpServletRequest request,
+			@RequestParam(value = "page", required = true, defaultValue = "1") Integer page) {
+		logger.info("获取teacher列表");
+		int maxResult = 5;
+		PageView<Teacher> pageView = new PageView<Teacher>(maxResult, page);
+		pageView.setQueryResult(teacherService.getScrollData(pageView.getFirstResult(), maxResult));
+		request.setAttribute("pageView", pageView);
+		request.setAttribute("records", pageView.getRecords());
+		return "demofull001";
+	}
+	
 	@RequestMapping(value = "/getTeacherName", method = RequestMethod.GET)
 	public @ResponseBody
 	String getTeacherByName(HttpServletRequest request,
