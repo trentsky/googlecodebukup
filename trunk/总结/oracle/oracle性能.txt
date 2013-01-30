@@ -1,0 +1,116 @@
+--1、查看值得怀疑的SQL
+select substr(to_char(s.pct, '99.00'), 2) || '%' load,
+       s.username,
+       s.executions executes,
+       p.sql_text
+  from (select address,
+               disk_reads,
+               executions,
+               pct,
+               username,
+               rank() over(order by disk_reads desc) ranking
+          from (select address,
+                       disk_reads,
+                       executions,
+                       b.username,
+                       100 * ratio_to_report(disk_reads) over() pct
+                  from sys.v_$sql a, dba_users b
+                 where a.PARSING_USER_ID=b.user_id and command_type != 47)
+         where disk_reads > 50 * executions) s,
+       sys.v_$sqltext p
+ where s.ranking <= 5
+   and p.address = s.address
+ order by 1, s.address, p.piece;
+
+--2、查看消耗内存多的sql
+
+select b.username,
+       a. buffer_gets,
+       a.executions,
+       a.disk_reads / decode(a.executions, 0, 1, a.executions),
+       a.sql_text SQL
+  from v$sqlarea a, dba_users b
+ where a.parsing_user_id = b.user_id
+   and a.disk_reads > 10000
+   /*and b.username='WLKP'*/
+ order by disk_reads desc;
+ 
+--3、查看逻辑读多的SQL
+select *
+  from (select buffer_gets, sql_text
+          from v$sqlarea
+         where buffer_gets > 500000
+         order by buffer_gets desc)
+ where rownum <= 30;
+
+
+--4、查看执行次数多的SQL
+select sql_text, executions
+  from (select sql_text, executions from v$sqlarea order by executions desc)
+ where rownum < 81;
+
+--5、查看读硬盘多的SQL
+select sql_text, disk_reads
+  from (select sql_text, disk_reads from v$sqlarea order by disk_reads desc)
+ where rownum < 21;
+
+--6、查看排序多的SQL
+select sql_text, sorts
+  from (select sql_text, sorts from v$sqlarea order by sorts desc)
+ where rownum < 21;
+
+--7、分析的次数太多，执行的次数太少，要用绑变量的方法来写sql
+set pagesize 600;
+set linesize 120;
+select substr(sql_text, 1, 80) "sql", count(*), sum(executions) "totexecs"
+  from v$sqlarea
+ where executions < 5
+ group by substr(sql_text, 1, 80)
+having count(*) > 30
+ order by 2;
+ 
+--8、游标的观察
+set pages 300;
+select sum(a.value), b.name
+  from v$sesstat a, v$statname b
+ where a.statistic# = b.statistic# andb.name = 'opened cursors current'
+ group by b.name;
+
+select count(0) from v$open_cursor;
+
+select user_name, sql_text, count(0)
+  from v$open_cursor
+ group by user_name, sql_text
+having count(0) > 30;
+
+--9、查看当前用户&username执行的SQL
+select sql_text
+from v$sqltext_with_newlines
+where(hash_value, address)in
+       (select sql_hash_value, sql_address
+         from v$session
+        where username='&username')
+order by address, piece;
+
+
+
+
+查询表空间
+ SELECT TABLESPACE_NAME "表空间",
+       TO_CHAR(ROUND(BYTES / 1024, 2), '99990.00') || 'G' "实有",
+       TO_CHAR(ROUND((BYTES - FREE) / 1024, 2), '99990.00') || 'G' "使用",
+       TO_CHAR(ROUND(FREE / 1024, 2), '99990.00') || 'G' "现有",
+       TO_CHAR(ROUND(10000 * USED / BYTES) / 100, '99990.00') || '%' "比例"
+  FROM (SELECT A.TABLESPACE_NAME TABLESPACE_NAME,
+               FLOOR(A.BYTES / (1024 * 1024)) BYTES,
+               FLOOR(B.FREE / (1024 * 1024)) FREE,
+               FLOOR((A.BYTES - B.FREE) / (1024 * 1024)) USED
+          FROM (SELECT TABLESPACE_NAME TABLESPACE_NAME, SUM(BYTES) BYTES
+                  FROM DBA_DATA_FILES
+                 GROUP BY TABLESPACE_NAME) A,
+               (SELECT TABLESPACE_NAME TABLESPACE_NAME, SUM(BYTES) FREE
+                  FROM DBA_FREE_SPACE
+                 GROUP BY TABLESPACE_NAME) B
+         WHERE A.TABLESPACE_NAME = B.TABLESPACE_NAME)
+  --WHERE TABLESPACE_NAME LIKE 'CDR%'
+ ORDER BY FLOOR(10000 * USED / BYTES) DESC;

@@ -1,0 +1,21 @@
+select:—°÷–
+var xtcsid = "<c:out value="${WlkpScXtCs.id}" />";
+var xtcsz = "<c:out value="${WlkpScXtCs.xtcsz}" />";
+if(xtcsid == '1' || xtcsid == '6'){
+	$("select[@name=xtcsz] option").each(function(){
+		if($(this).val() == xtcsz){
+		    $(this).attr("selected",true);
+		 }
+	 });
+}
+
+trœ‘ æ“˛≤ÿ
+function changeStatus(status){
+  if(status=='0'){
+	$('#msyj').css("display","none");
+	$('#sphm').css("display","block");
+  }else if(status=='1'){
+	$('#msyj').css("display","block");
+	$('#sphm').css("display","none");
+  }
+}
