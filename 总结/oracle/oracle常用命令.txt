@@ -1,0 +1,1991 @@
+内容包括三大项:
+    1.oracle基本操作语句
+
+    2.SQLServer基本操作语句
+
+    3.各种数据库连接方法
+
+**************************************************oracle基本操作语句********************************************************
+打开服务器
+net start oracleservice
+打开监听器
+lsnrctl start
+关闭服务器
+net stop oracleservicebinbo
+关闭监听器
+lsnrctl stop
+强制关闭oracle
+shutdown abort
+===============================================================
+清屏 clear scr
+	
+****************************************************************
+数据字典 ===========desc user_views(关键词)
+****************************************************************
+===============================================================
+查看当前用户的角色
+SQL>select * from user_role_privs;
+===============================================================
+查看当前用户的系统权限和表级权限
+SQL>select * from user_sys_privs;
+SQL>select * from user_tab_privs;
+===============================================================
+查看当前用户的缺省表空间
+SQL>select username,default_tablespace from user_users;
+===============================================================
+换用户
+conn as sysdba
+sys
+tsinghua
+sqlplus "sys/tsinghua as sysdba"
+conn sys/zl as sysdba
+===============================================================
+修改表结构
+alter table test modify(name not null);
+alter table test add(name varchar2(20));
+alter table test drop column sex;
+alter table test set unused column sex;
+alter table test drop unused columns;
+===============================================================
+更改用户密码
+sql>alter user 管理员 identified by 密码；
+===============================================================
+创建表空间的数据文件
+sql>create tablespace test datafile 'd:\oracle\binbo.dbf' size 10m;
+===============================================================
+创建用户
+sql>create user 用户名 identified by 用户名;
+===============================================================
+bfile类型实例
+创建目录
+create directory tnpdir as 'c:\';
+删除目录
+drop directory tnpdir
+授权
+crant read on directory tn pdir to scott;
+建表
+create table bfiletest(id number(3), fname bfile);
+添加数据
+insert into bfiletest values(1,bfilename('TMPDIR','tmptest.java'));
+===============================================================
+查看用户
+sql>show user
+===============================================================
+检查语句是否有错
+show error
+===============================================================
+锁定用户
+sql>alter user 用户名 account lock
+===============================================================
+解除用户
+sql>alter user 用户名 account unlock
+===============================================================
+删除用户
+sql>drop user zl;
+===============================================================
+给用户创建表权限
+sql>grant create table to 用户名;
+===============================================================
+授管理员权限
+sql>grant dba to 用户名;
+===============================================================
+给用户登录权限
+sql>grant connect to 用户名
+===============================================================
+给用户无限表空间权限
+sql>grant unlinmited tablespace to 用户名;
+===============================================================
+收回权限
+sql>revoke dba from 用户名;
+===============================================================
+查看用户下所有的表
+            SQL>select * from user_tables;
+===============================================================
+查看名称包含log字符的表
+            SQL>select object_name,object_id from user_objects
+                where instr(object_name,'LOG')>0;
+===============================================================
+查看某表的创建时间
+            SQL>select object_name,created from user_objects where object_name=upper('&table_name');
+===============================================================
+查看某表的大小
+            SQL>select sum(bytes)/(1024*1024) as "size(M)" from user_segments
+                where segment_name=upper('&table_name');
+===============================================================
+查看放在ORACLE的内存区里的表
+            SQL>select table_name,cache from user_tables where instr(cache,'Y')>0;
+
+
+===============================================================
+
+再添加一个表空间的数据文件
+sql>alter tablespace test add datafile 'd:\oracle\test1.dbf' size 10m;
+===============================================================
+建表    SQL>create table studen(stuno int,stuname varchar(8) not null,stubirth date default to_date('1987-5-9','YYYY-MM-DD'));
+向表结构中加入一列  SQL>alter table studen add(stuphoto varchar(9));
+从表结构中删除一列  SQL>alter table studen drop column stuphoto;
+修改表一列的长度    SQL>alter table studen modify(stuno number(4));
+隐藏将要删除的一列  SQL>alter table studen set unused column stuphoto;
+删除隐藏的列        SQL>alter table studen drop unused columns;
+向表中加入约束      SQL>alter table studen add constraint pk primary key(stuno);
+删除约束            SQL>alter table studen drop constraint pk;
+===============================================================
+创建表
+
+sql>create table 用户名(name varchar2(20),password varchar(20)) tablespace 空间名;
+===============================================================
+添加字段
+sql>alter table test add(column_x char(10) not null);
+===============================================================
+更改字段
+sql>alter table emp modify(column_x char (20));
+===============================================================
+删除字段
+	如待删除域属于某个索引，则不允许删除操作，必须将此域先设置为NULL。
+sql>alter table emp modify(column_x null);
+sql>update emp set column_x=null;
+sql>commit;
+sql>alter table emp drop(column_x);
+===============================================================
+选择表空间
+sql>alter user 用户名 default tablespace test;
+===============================================================
+管理员删除别的用户中的表
+sql>drop table 用户名.表名;
+===============================================================
+退出
+sql>exit;
+===============================================================
+默认进入
+sql>sqlplus "/ as sysdba"
+===============================================================
+查看数据库
+sql>show parameter block;
+===============================================================
+写大量语句用记事本，新建方式。
+输入"ed"回车
+保存后
+输入"/"运行;
+===============================================================
+查询用户有多少表
+sql>select * from tab;
+===============================================================
+SQLServer取时间
+sql>select getdate
+oracle 取时间
+sql>sysdate;
+===============================================================
+操作表结构数据库定义语言命令
+(不记录在日志文件中)
+create table建表
+sql>create table test(name varchar2(20),age date,sex char(2));
+sql>insert into test(name,age,sex) values('aa',sysdate,'男');
+sql>insert into test(name,age,sex) values('bb',to_date('1888-8-8',"yyyy-aa-dd hh24:mi:ss"),'男');
+sql>select * from test;
+===============================================================
+查询男和女总数
+sql>select sex,count(sex) from test group by sex;
+---------------------------------------------------------------
+test表中数据输入test1表中
+SQLSserver---select * into test1 from test;
+oracle---create table test1 as select * from test;
+---------------------------------------------------------------
+更改会话时间
+sql>alter session set nls_date_format='yyyy-mm-dd hh24:mi:ss';
+---------------------------------------------------------------
+sql>show parameter block 表和视图
+sql>show parameter date 查数据结构
+---------------------------------------------------------------
+SQLServer中
+--删除表中相同数据
+sql>create table test1 as select distinct * from test;
+--删除表数据
+sql>truncate table test;
+--把test中数据输入到test1中
+sql>insert into test(select * from test1);
+---------------------------------------------------------------
+rowid(表中存储地址相当表id)和rownum(表序号)称伪列(用法)
+sql>select name,age,sex,rowid,rownum from test1;
+查出前三行
+sql>select * from test where rownum<=3;
+查出后三行
+sql>select * from (select name n,age a,sex s,rownum r from test) where r>(select count(*) from test)-3;
+删除后三行
+SQL> delete from test where name not in(select name from test where rownum<=(select count(*) from test)-3);
+删除相同行
+sql>delete from test where rowid not in(select max(rowid) from test group by name,age,sex);
+删除所有表
+sql>select  'drop table' ||tname|| ':' from tab;
+sql>spool c:\test.sql;
+sql>select  'drop table' ||tname|| ':' from tab;
+sql>spool off
+sql>@c:\test.sql;
+---------------------------------------------------------------
+alter table修改表
+truncate table节段表(只删除数据)
+drop table删除表
+===============================================================
+查看表结构
+desc 表名;
+===============================================================
+查出成绩的前三名
+sql>select * from (select * from stu order by score desc) where rownum<=3;
+===============================================================
+更改字符集
+SQL>startup mount
+SQL>alter system enable restricted session;
+SQL>alter system set job_queue_processes=0;
+SQL>alter database open;
+SQL>alter database character set ZHS16GBK;
+SQL>shutdown
+SQL>startup
+===============================================================
+将一张表或几张表中的域重新组合后插入新表。
+假定原先的两张表为emp,work，现选择部分数据域合并为emp_work
+建立emp_work
+SQL>insert into emp_new select a.no, sysdate, a.name, b.service_duration from emp a, work b where a.no=b.no;
+SQL>commit;
+这样的方式仍然要使用回滚段，为加快数据迁移速度，可将insert替换成insert /*+APPEND*/（大小写不论），指示oracle以直通方式直接写数据文件，绕过回滚空间。
+SQL>insert /*+APPEND*/ into emp_new select a.no, sysdate, a.name, b.service_duration from emp a, work b where a.no=b.no;
+SQL>commit;
+===============================================================
+DDL数据定义语言(create,alter,drop)
+DML数据操纵语言(insert,select,delete,update)
+TCL事务控制语言(commit,savepoint,rollback)
+DCL数据控制语言(GRANT  REVOKE)
+===============================================================
+
+一个表中的某一列输到另一个表中
+insert into stu1(name)(select name from stu);
+===============================================================
+事务
+rollback;
+insert into stu1(name)(select name from stu);
+commit;提交
+===============================================================
+COMMIT - 提交并结束事务处理
+ROLLBACK -  撤销事务中已完成的工作
+SAVEPOINT – 标记事务中可以回滚的点
+SQL>  update order_master set del_date ='30-8月-05' WHERE orderno <= 'o002';
+	
+SQL>  savepoint mark1;
+SQL>  delete FROM order_master WHERE orderno = 'o002';
+SQL>  savepoint mark2;
+SQL>  rollback TO SAVEPOINT mark1;
+SQL>  COMMIT;
+===============================================================
+换名
+set sqlprompt "scott>";
+===============================================================
+GRANT 授予权限
+SQL> GRANT SELECT ON vendor_master TO accounts WITH GRANT OPTION;
+REVOKE 撤销已授予的权限
+SQL> REVOKE SELECT, UPDATE ON order_master FROM MARTIN;
+===============================================================
+比较操作符 
+SQL> SELECT vencode,venname,tel_no 
+     FROM vendor_master 
+     WHERE venname LIKE 'j___s';
+SQL> SELECT orderno FROM order_master 
+     WHERE del_date IN (‘06-1月-05’,‘05-2月-05');
+SQL> SELECT itemdesc, re_level
+     FROM  itemfile
+     WHERE qty_hand < max_level/2;
+===============================================================
+逻辑操作符
+SQL> SELECT * FROM order_master 
+     WHERE odate > ‘10-5月-05' 
+     AND del_date < ‘26-5月-05’;
+===============================================================
+集合操作符将两个查询的结果组合成一个结果
+SQL> SELECT orderno FROM order_master 
+     MINUS
+     SELECT orderno FROM order_detail;
+-----------------------------------------------------------------
+select * from scott.stu
+union (all)重复的去掉[intersect把相同的取出来][minus显示不相同的数]
+select * from stu
+-----------------------------------------------------------------
+显示相同的数据
+select name from stu intersect select name from stu1;
+===============================================================
+连接操作符
+连接操作符用于将多个字符串或数据值合并成一个字符串
+SQL> SELECT (venname|| ' 的地址是 '
+     ||venadd1||' '||venadd2 ||' '||venadd3) address
+     FROM vendor_master WHERE vencode='V001';
+===============================================================
+操作符的优先级
+SQL 操作符的优先级从高到低的顺序是：
+算术操作符           --------最高优先级
+连接操作符
+比较操作符
+NOT 逻辑操作符
+AND 逻辑操作符
+OR   逻辑操作符   --------最低优先级 
+
+===============================================================
+用来转换空值的函数
+NVL
+NVL2
+NULLIF
+SELECT itemdesc, NVL(re_level,0) FROM itemfile;
+SELECT itemdesc, NVL2(re_level,re_level,max_level) FROM itemfile;
+SELECT itemdesc, NULLIF(re_level,max_level) FROM itemfile;
+===============================================================
+GROUP BY和HAVING子句
+
+GROUP BY子句
+用于将信息划分为更小的组
+每一组行返回针对该组的单个结果
+
+HAVING子句
+用于指定 GROUP BY 子句检索行的条件
+
+SELECT p_category, MAX(itemrate) FROM itemfile GROUP BY p_category;
+SELECT p_category, MAX(itemrate) FROM itemfile GROUP BY p_category HAVING p_category NOT IN ('accessories');
+===============================================================
+ROW_NUMBER (row_number)返回连续的排位，不论值是否相等
+RANK(rank) 具有相等值的行排位相同，序数随后跳跃
+DENSE_RANK(dense_rank) 具有相等值的行排位相同，序号是连续的
+SELECT d.dname, e.ename, e.sal, DENSE_RANK()
+  OVER (PARTITION BY e.deptno ORDER BY e.sal DESC)
+  AS DENRANK
+FROM emp e, dept d WHERE e.deptno = d.deptno;
+===============================================================
+日期函数
+ADD_MONTHS(当前只加月)
+alter session set nls_date_format='yyyymmdd hh24miss';
+select add_months(sysdate,2) from dual;
+----------------------------------------------------------------
+MONTHS_BETWEEN(前面时间减后面时间=得之间月差)
+select months_between(sysdate,to_date('2007-6-10','yyyy-mm-dd')) from dual;
+----------------------------------------------------------------
+LAST_DAY(求得当前月的最后一天)
+select last_day(sysdate) from dual;
+----------------------------------------------------------------
+ROUND(round年-月-日-->四舍五入)
+select round(2.3) from dual;
+select round(to_date('2007-6-10','yyyy-mm-dd'),'year') from dual;
+select round(to_date('2007-6-10','yyyy-mm-dd'),'month') from dual;
+select round(to_date('2007-6-10','yyyy-mm-dd'),'day') from dual;
+----------------------------------------------------------------
+NEXT_DAY(下一星期的星期二）
+select next_day(to_date('2007-6-10','yyyy-mm-dd'),'星期二') from dual;
+----------------------------------------------------------------
+TRUNC(trunc)
+----------------------------------------------------------------
+EXTRACT(extract)
+select extract(year from date '1998-03-07') from dual;
+select extract(month from to_date ('1998-03-07','yyyy-mm-dd')) from dual;
+
+----------------------------------------------------------------
+2008年2月有多少天
+inbo---->select extract(day from last_day(to_date ('2008-02-07','yyyy-mm-dd'))) from dual;
+----------------------------------------------------------------
+2003-4-3与1956-3-1之间有多少天
+inbo---->select round(months_between(to_date('2003-4-3','yyyy-mm-dd'),to_date('1956-3-1','yyyy-mm-dd'))/12) from dual;
+===============================================================
+把两边的9去掉
+select trim('9' from '9999ddddddd99999') from dual;
+去空格
+select trim(' ' from '     9999ddddddd99999') from dual;
+===============================================================
+   函数                   输入                          输出
+Initcap(char) 	          Select initcap(‘hello’) from dual;	                Hello 
+Lower(char) 	          Select lower(‘FUN’) from dual;	                fun 
+Upper(char)               Select upper(‘sun’) from dual;	                SUN 
+Ltrim(char,set) 	  Select ltrim( ‘xyzadams’,’xyz’) from dual;        adams
+Rtrim(char,set) 	  Select rtrim(‘xyzadams’,’ams’) from dual; 	xyzad 
+Translate(char, from, to) Select translate(‘jack’,’j’ ,’b’) from dual;	back 
+Replace(char,searchstring,[rep string])   Select replace(‘jack and jue’ ,’j’,’bl’) from dual;	black and blue 
+Instr (char, m, n) 	  Select instr (‘worldwide’,’d’) from dual; 	 5 
+Substr (char, m, n) 	  Select substr(‘abcdefg’,3,2) from dual; 	        cd 
+Concat (expr1, expr2)	  Select concat (‘Hello’,’ world’) from dual; 	Hello world
+
+===============================================================
+数字函数接受数字输入并返回数值结果
+
+   函数	   输入	  输出
+Abs(n) 	        Select abs(-15) from dual; 	15
+
+Ceil(n) 	Select ceil(44.778) from dual; 	45
+
+Cos(n) 	        Select cos(180) from dual; 	-.5984601 
+
+Cosh(n) 	Select cosh(0) from dual; 	1
+
+Floor(n) 	Select floor(100.2) from dual; 	100
+
+Power(m,n) 	Select power(4,2) from dual; 	16 
+
+Mod(m,n) 	Select mod(10,3) from dual; 	1
+
+Round(m,n) 	Select round(100.256,2) from dual; 	100.26 
+
+Trunc(m,n) 	Select trunc(100.256,2) from dual; 	100.25 
+
+Sqrt(n) 	Select sqrt(4) from dual; 	2 
+
+Sign(n)	        Select sign(-30) from dual;	          -1
+
+===============================================================
+字符函数 
+查看有多少个字符
+SQL> SELECT LENGTH('frances') FROM dual;
+-----------------------------------------------------------------
+SQL> SELECT vencode, 
+     DECODE(venname,'frances','Francis') name 
+     FROM vendor_master WHERE vencode='v001';
+-----------------------------------------------------------------
+查找人是否存在 加字段decode主明是否有人
+select name,decode(name,'rbb','有人') from stu;
+
+===================================================================
+排续
+select dense_rank() over(partition by sex order by score) from test;
+select row_number() over(order by score),name,sex,score from test;
+select rank() over(order by score) from test;
+select dense_rank() over(order by score) from test;
+==========================================================================
+
+创建同义词
+SQL> create public synonym test for rbb.test;
+SQL> create synonym test for mytest;
+同一类的才可以替换,同义词替换同义词
+替换
+SQL> create or replace synonym emp_sysn for scott.emp;
+
+**********************************************************************************************
+创建序列
+SQL>create sequence xule increment by 1 start with 1 maxvalue 999;
+increment by  增长值
+start with    起始值
+maxvalue 最大值
+minvalue 最小值
+nocycle 不循环
+chare 10缓存
+xule.nextval  ===========下一个序列的值
+xule.currval  ===========可以查询序列当前的值
+更改序列 start with 不能改
+alter sequence xule maxvalue 100 [sycle nocycle]；
+**********************************************************************************************
+序列用法
+SQL>create table xl(name varchar2(4));
+SQL>insert into test values(xule.nextval);
+SQL>select xl.currval from dual;
+**********************************************************************************************
+删除序列
+drop sequence x;
+desc user_sequences
+**********************************************************************************************
+创建视图   视图中可以使用函数和表达式
+create or replace view 
+**********************************************************************************************
+创建视图
+SQL> create or replace view 视图名 as select * from rbb union all select * from rbbb union all select * from test;
+SQL> create or replace view 视图名 as
+  2  select empno as 编号,ename as 姓名 from scott.emp
+  3  where deptno=10;
+==========================================================================
+如果在当前用户下没有这个视图就创建此视图
+如果有此视图就覆盖此视图
+create or replace view view_name as select empno,ename from emp where deptno=10;
+**********************************************************************************************
+在创建视图前要为当前用户授权
+grant resource to scott;
+create or replace view v_sal as select ename,sal from emp order by sal desc;
+**********************************************************************************************
+使用视图 
+select * from v_sal;
+**********************************************************************************************
+删除一个视图
+drop view view_name;
+**********************************************************************************************
+重新编译已有的视图
+alter view view_name compile;
+**********************************************************************************************
+数据字典 ===========desc user_views
+**********************************************************************************************
+
+常用的转换函数有
+TO_CHAR
+SELECT TO_CHAR(sysdate,'YYYY"年"fmMM"月"fmDD"日" HH24:MI:SS') FROM dual;　
+
+TO_DATE
+SELECT TO_DATE('2005-12-06', 'yyyy-mm-dd') FROM dual;
+
+TO_NUMBER
+SELECT TO_NUMBER('100') FROM dual;
+**********************************************************************************************
+集合操作符
+union all  连接两个表或者多个表为一个视图
+MINUS 操作符返回从第一个查询结果中排除第二个查
+询中出现的行。
+INTERSECT 操作符只返回两个查询的公共行。
+**********************************************************************************************
+
+锁定的优点
+
+1.一致性 - 一次只允许一个用户修改数据
+
+2.完整性 - 为所有用户提供正确的数据。如果一个用户进行了修改并保存，所做的修改将反映给所有用户
+
+3.并行性 －允许多个用户访问同一数据
+
+行级锁和表级锁
+
+行级锁:是一种排他锁,防止其他事务修改此行.
+
+解锁：提交事务(commit),(rollback)
+---------------------------------------------------------------
+更新表数据:update test set score=80 where name='xiaoli';
+--------------------------------------------------------------
+自动提交
+set autocommit on
+set sutocommit off
+------------------------------------------------------------
+锁定某行更新语句
+select * from scott.test where name='xiaoli' for update;
+SELECT * FROM order_master WHERE vencode='V002' FOR UPDATE OF odate,del_date;
+select * from scott.test where name='xiaoli' for update of score;
+
+select * from scott.test atest,test b where a.name=b.name and b.name='bbb' for update of b.score; 
+--------------------------------------------------------------------
+等待update
+select * from scott.test where name='xiaoli' for update wait 2;
+select * from scott.test where name='xiaoli' for update nowait;
+
+-------------------------------------------------------------------
+表级锁：锁定整个表
+表级锁语法:lock table 表名 in mode mode;
+-------------------------------------------------------------------------
+行共享row share--行排他row exclusive--共享share-共享行排他share row exclusive-----排他exclusive
+---------------------------------------------------------------------------------
+行共享(row share):lock table scott.test in (row share) mode;
+[其他用户.行共享---其他用户.行排他---其他用户.共享----其他用户.共享行排他----其他用户.不可以(排他)]
+
+--------------------------------------------------------------------------------
+行排他(row exclusive):lock table scott.test in (row exclusive) mode;
+
+[其他用户.行共享----其他用户.行排他----其他用户.不可以(共享)---其他用户.不可以(共享行排他)--其他用户.不可以(排他)]
+
+---------------------------------------------------------------------------------
+共享(share):lock table scott.test in (share) mode;
+
+[其他用户.行共享---其他用户.不可以(行排他)---其他用户.共享----其他用户.不可以(共享行排他)---其他用户.不可以(排他)]
+
+-----------------------------------------------------------------------------------
+共享行排他(share row exclusive):lock table scott.test in (share row exclusive) mode;
+
+[其他用户.行共享,其他用户.不可以(行排他),其他用户.不可以(共享),其他用户.不可以(共享行排他),其他用户.不可以(排他)]
+
+--------------------------------------------------------------------------------------
+排他(exclusive):lock table scott.test in (exclusive) mode;
+
+[其他用户.不可以(行共享),其他用户.不可以(行排他),其他用户.不可以(共享),其他用户.不可以(共享行排他,)其他用户.不可以(排他)]
+
+----------------------------------------------------------------------------------
+死锁
+
+当两个事务相互等待对方释放资源时，就会形成死锁
+
+Oracle会自动检测死锁，并通过结束其中的一个事务来解决死锁
+----------------------------------------------------------------------------------
+
+表分区
+
+---范围分区
+create table test(name varchar2(20),sex char(2),score number(3))
+partition by range(score)
+(
+partition p1 values less than (50) tablespace users,
+partition p2 values less than (80),
+partitiom p3 values less than (maxvalue)
+)
+select * from test partition(p1) union select * from test partitiom(p3);
+---
+删除分区
+alter table test drop partition p3;
+添加分区
+alter table test add partition p3 values less than (maxvalue);
+拆分分区
+alter table test split partition p2 at(60) 
+into (partition p21,partition p22);
+合并分区
+alter table test merge partitions p21,p22 into partition p2;
+截断分区(删除数据)
+alter table test truncate partition p3;
+
+现有表分区
+create table str as select * from student;
+drop table student;
+create table student(
+	studentid integer not null,
+	studentname varchar2(20),
+	score integer
+)
+partition by range(score)(
+	partition p1 values less than(60),
+	partition p2 values less than(75),
+	partition p3 values less than(85),
+	partition p4 values less than(maxvalue)
+)
+insert into student(select * from stu);
+
+
+select * from test scott.emp@tsinghua
+
+ 
+
+**********************************************************************************************
+
+表分区
+Oracle允许用户对表进一步的规化，即对表进一步拆分，将表分成若干个逻辑部分，每个部分称其为表分区
+优点：增强可用性，单个分区出现故障，不影响其他分区
+均衡的I/O，不同的分区可以映射到不同的磁盘   改善性能
+**********************************************************************************************
+①范围分区法
+create table st(
+	studentid integer not null,
+	studentname varchar2(20),
+	score integer
+)
+partition by range(score)(
+	partition p1 values less than(60),
+	partition p2 values less than(75),
+	partition p3 values less than(85),
+	partition p4 values less than(maxvalue)
+)
+========================select * from stu partition(p1)============
+②散列分区
+create table st(deptno int,deptname varchar(14))
+partition by hash(deptno)(
+partition p1,partition p2
+)
+组合分区
+alter table test coalesce partition;
+**********************************************************************************************
+③复合分区
+范围分区和列表分区
+create table salgrade(
+grade number(2),losal number(2),hisal number(2)
+)
+partition by range(grade)
+subpartition by list(losal)
+(
+partition p1 values less than(10)
+
+  (
+   subpartition p1a values('湖北'),
+   subpartition p1b values(default)
+  ),
+partition p2 values less than(20)
+  (
+   subpartition p1a values('河南'),
+   subpartition p1b values(default)
+  ),
+partition p3 values less than(30)
+  (
+   subpartition p1a values('上海'),
+   subpartition p1b values(default)
+  )
+)
+
+范围分区和散列分区
+create table salgrade(
+grade number(2),losal number(2),hisal number(2)
+)
+partition by range(grade)
+subpartition by hash(losal)
+[subpartitions 5]
+(
+partition p1 values less than(10)(subpartition p1a,subpartition p1b),
+partition p2 values less than(20)(subpartition p2a,subpartition p2b),
+partition p3 values less than(30)(subpartition p3a,subpartition p3b)
+)
+--------------------------------------------
+ create table salg(
+ grade number(2),losal number(2),hisal number(2)
+ )
+ partition by range(grade)
+ subpartition by hash(losal)
+ subpartitions 3
+ (
+ partition p1 values less than(10),
+ partition p2 values less than(20),
+ partition p3 values less than(30)
+ )
+**********************************************************************************************
+④列表分区
+create table test stu(id int,name varchar(20),add varchar(8))
+partition by list(add)
+(
+partition p1 values('中国'),
+partition p2 values('英国'),
+partition p3 values(default)
+)
+**********************************************************************************************
+移动分区
+
+alter table test move partition p5 tablespace users;
+
+********************************************************************************************
+
+修改存档
+
+SQL> shutdown immediate
+数据库已经关闭。
+已经卸载数据库。
+ORACLE 例程已经关闭。
+
+SQL> startup mount
+ORACLE 例程已经启动。
+
+Total System Global Area  135338868 bytes                                       
+Fixed Size                   453492 bytes                                       
+Variable Size             109051904 bytes                                       
+Database Buffers           25165824 bytes                                       
+Redo Buffers                 667648 bytes                                       
+数据库装载完毕。
+
+SQL> alter database archivelog;
+
+数据库已更改。
+alter database open;
+
+SQL> archive log list;
+数据库日志模式            存档模式
+自动存档             禁用
+存档终点            d:\oracle\ora92\RDBMS
+最早的概要日志序列     1
+下一个存档日志序列   2
+当前日志序列           2
+
+SQL> alter system set log_archive_dest=true scope=spfile;
+
+系统已更改。
+
+SQL> alter database open;
+
+数据库已更改。
+
+SQL> spool off
+********************************************************************************************
+
+PL/SSQL(过程化语言) 声明部分 执行语句部分 异常处理部分
+
+identifier constant datatype not null
+[:=|default expr];
+
+
+
+declare 
+my number(5);
+begin
+ select quantity into my
+from products where product='wawa'
+for update of quantity;
+if my>0 then
+update products set quantity=quantity+1
+where product='wawa';
+insert into purchase_record
+values('wawawa',sysdate);
+end if;
+commit;
+Exception
+where others then
+dbms_output.put_line('chucuo'||SQLERRM);
+END;
+
+declare icode varchar2(6)
+p_catg varchar2(20);
+c_catg constant datatype:=0.10
+
+数字类型
+number
+  decrmdl
+  int/integer
+  real(实数)
+  binary_integer(带符号的整数)
+  pls_integer(同上)
+字符类型
+character 
+  char 3276
+  Raw(2000)
+  long/long Raw(32760)
+  Rowid/rowid()
+  varchar2 (string(nchar/nvarchar)/varchar)
+日期时间
+date
+  timeStamp(固定日期dd-mm-yy 秒6位)
+  子 timestamp with time zone
+  ti timestamp(9)
+布尔
+boolean
+  true
+  false
+  null
+打印出时间
+declare
+test_tz timestamp with time zone;
+begin test_tz:=to_timestamp_tz('2006-6-22 09:07:11','yyyy-mm-dd hh24:mi:ss');
+dbms_output.put_line(test_tz);
+end;
+
+
+lob类型
+  BFILE
+  BLOB
+  CLOB
+  NCLOB
+属性类型
+  %type  %rowtype
+===============================================================
+bfile类型实例
+创建目录
+create directory tnpdir as 'c:\';
+删除目录
+drop directory tnpdir
+授权
+crant read on directory tnpdir to scott;
+建表
+create table bfiletest(id number(3), fname bfile);
+添加数据
+insert into bfiletest values(1,bfilename('TMPDIR','tmptest.java'));
+
+===============================================================
+向数据库中添加图片
+create directory images as 'c:\images';
+crant read on directory images to scott;
+create table my_diagrams(
+chapter_descr varchar2(40);
+diagram_no integer,
+diagram blob
+);
+
+declare
+  l_bfile bfile;
+  l_blob blob;
+begin
+ insert into my_diagrams(diagram)
+ values(emptv_blob())
+ return diagram into l_blob;
+ l_bfile:=bfilename('images','\nvimage.jpg');
+ dbms_lob.open(l_bfile,dbms_lob.file_readonly);
+ dbms_lob.loadfromfile(l_blob,l_bfile,dbms_lob,getlength(l_bfile));
+ dbms_lob.close(l_bfile);
+ commit;
+end;
+
+===============================================================
+%type实例 查询
+declare 
+dtr dept.dname%type;
+begin
+select dname into str from dept where deptno=30;
+dbms_output.put_line(str);
+end;
+set serverout on
+
+===============================================================
+%rowtype实例
+
+declare
+row dept%rowtype;
+begin
+select * into row from dept where deptno=30;
+dbms_output.put.line(row.dname||' '||row.deptno||' '||row.loc);
+//异常
+exception
+when no_data_found then
+ dbms_output.put_lin('没有数据');
+when too_many_rows(others) then
+ dbms_output.put_lin('太多拉');
+end;
+
+===============================================================
+格式
+
+if 条件 then
+
+elsif 条件 then
+
+else
+
+end if
+===============================================================
+格式
+
+begin
+ case'&grade'
+  when 'a' then dbms_output.put_line('优异');
+  when 'b' then dbms_output.put_line('良好');
+  else dbms_output.put_line('其它')
+ end case;
+end;
+===============================================================
+外界变量
+var vnm varchar2(20);
+begin
+:v:='aaaaa';
+end;
+打印
+print v
+===============================================================
+loop实例
+
+begin
+loop
+exit when 3>4;
+
+end loop;
+end;
+===============================================================
+while实例
+begin
+while (条件)condition loop
+语句体;
+end loop;
+end;
+===============================================================
+循环实例
+正
+begin
+for c in 1..10
+loop
+dbms_output.put_line(c);
+end loop
+end;
+倒
+begin
+for c in reverse(倒) 1..10
+loop
+dbms_output.put_line(c);
+end loop
+end;
+===============================================================
+
+declare
+ num number(3):=1;
+begin
+ while num<10 loop
+  dbms_output.put_line(num);
+  num:=num+1;
+  end loop;
+end;
+
+declare
+ num number(3):=1;
+begin
+ loop
+  dbms_output.put_line(num);
+  exit when num>10;//退出
+  num:=num+1;
+  end loop;
+end;
+===============================================================
+goto实例
+DECLARE
+  qtyhand itemfile.qty_hand%type;
+  relevel itemfile.re_level%type;
+BEGIN
+  SELECT qty_hand,re_level INTO qtyhand,relevel
+  FROM itemfile WHERE itemcode = 'i201';
+  IF qtyhand < relevel THEN
+    GOTO updation;
+  ELSE
+    GOTO quit;
+  END IF;
+  <<updation>>
+  UPDATE itemfile SET qty_hand = qty_hand + re_level
+  WHERE itemcode = 'i201';
+  <<quit>>
+  NULL;
+END;
+===============================================================
+动态SQL 查询
+declare
+cl varchar2(20);
+va varchar2(20);
+tb varchar2(20);
+nm number(13);
+
+begin
+tb:='&table';
+cl:='&aadd';
+nm:=&num;
+EXECUTE IMMEDIATE 
+'select '||cl||' from '||tb||' where '||cl||'=:1' into va using nm;
+dbms_output.put_line(va);
+end;
+
+
+===============================================================
+动态SQL 
+
+declare
+
+sql_stmt varchar2(200);
+emp_id number(4):=7566;
+emp_rec emp% rowtype;
+
+begin
+Execute immedlate
+'create table bonus1(id number,amt number)';
+
+sql_stmt:='select * from emp where empno=:id';
+Execute immedlate sql_stmt into emp_rec using emp_id;
+
+end;
+===============================================================
+declare
+aaa varchar2(20);
+num number(10);
+bbb varchar2(20);
+begin
+aaa='&aaa';
+num=&kkk;
+execute immedlate 'select '||aaa||' from test where age=:a'into bbb using num;(标准SQL语句)
+dbms_output.put_line(bbb);
+end;
+into 变量(给值)
+:a(外界参数) using bb(邦定常量)
+
+===============================================================
+自己定义异常
+declare 
+invar exception;
+cate varchar2(10);
+begin
+cate:='&cate';
+if cate not in('aa','ff','dd') then
+raise invar;
+else
+dbms_output.put_line('你输入的类别是:'||cate);
+end if;
+exception
+when invar then
+dbms_output.put_line('无法认识这个类别!');
+raise_application_error(-20200,'自己写');
+end;
+让数据库真正出错
+raise_application_error(-20200,'自己写');
+
+例子2
+declare 
+rate itemfile.itemrate%type;
+ratee exception;
+begin
+select nvl(itemrate,0) into rate from itemfile
+where itemcode='i207';
+if rate=0 then
+raise ratee;
+else
+dbms_output.put_line('项费率是:'||rate);
+end if;
+exception
+when ratee then
+RAISE_APPLICATION_ERROR(-20001, '未指定项费率');
+end;
+===============================================================
+create procedure存储过程
+===============================================================
+创建标准索引
+SQL> CREATE INDEX item_index ON itemfile (itemcode)
+     TABLESPACE index_tbs;
+重建索引
+SQL> ALTER INDEX item_index REBUILD; 
+删除索引
+SQL> DROP INDEX item_index; 
+唯一索引确保在定义索引的列中没有重复值
+Oracle 自动在表的主键列上创建唯一索引
+使用CREATE UNIQUE INDEX语句创建唯一索引
+SQL> CREATE UNIQUE INDEX item_index
+     ON itemfile (itemcode);
+组合索引是在表的多个列上创建的索引
+索引中列的顺序是任意的
+如果 SQL 语句的 WHERE 子句中引用了组合索引的所有列或大多数列，则可以提高检索速度
+
+SQL> CREATE INDEX comp_index
+     ON itemfile(p_category, itemrate);
+反向键索引反转索引列键值的每个字节
+通常建立在值是连续增长的列上，使数据均匀地分布在整个索引上
+创建索引时使用REVERSE关键字
+SQL> CREATE INDEX rev_index 
+     ON itemfile (itemcode) REVERSE;
+SQL> ALTER INDEX rev_index REBUID NOREVERSE;
+位图索引适合创建在低基数列上
+位图索引不直接存储ROWID，而是存储字节位到ROWID的映射
+减少响应时间
+节省空间占用
+SQL> CREATE BITMAP INDEX bit_index
+     ON order_master (orderno);
+基于一个或多个列上的函数或表达式创建的索引
+表达式中不能出现聚合函数
+不能在LOB类型的列上创建
+创建时必须具有 QUERY REWRITE 权限
+SQL> CREATE INDEX lowercase_idx 
+     ON toys (LOWER(toyname));
+SQL> SELECT toyid FROM toys
+     WHERE LOWER(toyname)='doll';
+与索引有关的数据字典视图有：
+USER_INDEXES － 用户创建的索引的信息
+USER_IND_PARTITIONS － 用户创建的分区索引的信息
+USER_IND_COLUMNS － 与索引相关的表列的信息
+SQL> SELECT INDEX_NAME, TABLE_NAME, COLUMN_NAME
+     FROM USER_IND_COLUMNS
+     ORDER BY INDEX_NAME, COLUMN_POSITION;
+可以将索引存储在不同的分区中
+与分区有关的索引有三种类型：
+局部分区索引 － 在分区.
+表上创建的索引，在每个表分区上创建独立的索引，索引的分区范围与表一致
+全局分区索引 － 在分区表或非分区表上创建的索引，索引单独指定分区的范围，与表的分区范围或是否分区无关
+全局非分区索引 － 在分区表上创建的全局普通索引，索引没有被分区
+
+SQL> CREATE TABLE ind_org_tab (
+     vencode NUMBER(4) PRIMARY KEY,
+       venname VARCHAR2(20)
+    ) 
+    ORGANIZATION INDEX;
+与索引有关的数据字典视图有：
+USER_INDEXES － 用户创建的索引的信息
+USER_IND_PARTITIONS － 用户创建的分区索引的信息
+USER_IND_COLUMNS － 与索引相关的表列的信息
+
+SQL> SELECT INDEX_NAME, TABLE_NAME, COLUMN_NAME
+     FROM USER_IND_COLUMNS
+     ORDER BY INDEX_NAME, COLUMN_POSITION;
+
+
+----游标简介
+
+逐行处理查询结果,经编程的方式访问数据
+
+---游标类型:
+隐式游标:在 PL/SQL 程序中执行DML SQL 语句时自动创建隐式游标。
+显式游标:显式游标用于处理返回多行的查询。
+REF 游标:REF 游标用于处理运行时才能确定的动态 SQL 查询的结果
+
+------隐式游标的属性有：
+%FOUND – SQL 语句影响了一行或多行时为 TRUE
+%NOTFOUND – SQL 语句没有影响任何行时为TRUE
+%ROWCOUNT – SQL 语句影响的行数
+%ISOPEN  - 游标是否打开，始终为FALSE
+
+
+删除游标 
+
+delete from table_name where cursor of cursor_name;
+===============================================================
+------隐式游标示例
+------too_many_rows的用法!
+
+  1  declare
+  2  empid varchar2(20);
+  3  begin
+  4  select name into empid from test;
+  5  exception
+  6  when too_many_rows then
+  7  dbms_output.put_line('该查询多于两行!');
+  8* end;
+SQL> /
+该查询多于两行!
+
+PL/SQL 过程已成功完成。
+
+===============================================================
+
+------no_data_found的用法!
+SQL> set serverout on
+SQL> ed
+已写入文件 afiedt.buf
+
+  1  declare
+  2  empid varchar2(20);
+  3  desig varchar2(20);
+  4  begin
+  5  empid:='&emp';
+  6  select name into desig from test where name=empid;
+  7  dbms_output.put_line('你查询的名字是:'||desig);
+  8  exception
+  9  when no_data_found then
+ 10  dbms_output.put_line('没有时间！');
+ 11* end;
+SQL> /
+输入 emp 的值:  xiaoli
+原值    5: empid:='&emp';
+新值    5: empid:='xiaoli';
+你查询的名字是:xiaoli
+
+PL/SQL 过程已成功完成。
+
+SQL> /
+输入 emp 的值:  ss
+原值    5: empid:='&emp';
+新值    5: empid:='ss';
+没有时间！
+
+PL/SQL 过程已成功完成。
+
+===============================================================
+SQL> set serveroutput on
+SQL> begin
+  2  update test set name='renbinbo' where name='binbo';
+  3  if sql%found then
+  4  dbms_output.put_line('表已经更新!');
+  5  end if;
+  6  end;
+  7  /
+test_t表中name也已经更新!
+表已经更新!
+
+===============================================================
+SQL>
+  declare
+   aa varchar2(20);
+  bb varchar2(20);
+   begin
+  bb:='&bb';
+   select score into aa from test where name=bb;
+   if sql%found then
+   dbms_output.put_line(bb||'的分数为:'||aa);
+   end if;
+  end;
+SQL> /
+输入 bb 的值:  renbinbo
+原值    5: bb:='&bb';
+新值    5: bb:='renbinbo';
+renbinbo的分数为:100
+
+PL/SQL 过程已成功完成。
+===============================================================
+SQL> ed
+已写入文件 afiedt.buf
+
+  1  declare
+  2  my_toy rbb.test.name%type;
+  3  cursor toy_cur is
+  4  select name from test where name='xiaoli';
+  5  begin
+  6  open toy_cur;
+  7  loop
+  8  fetch toy_cur into my_toy;
+  9  exit when toy_cur%notfound;
+ 10  dbms_output.put_line('你查询人的姓名:'||my_toy);
+ 11  end loop;
+ 12  close toy_cur;
+ 13* end;
+SQL> /
+你查询人的姓名:xiaoli
+
+PL/SQL 过程已成功完成。
+
+SQL> ed
+已写入文件 afiedt.buf
+
+  1  declare
+  2  name_n rbb.test.name%type;
+  3  sex_s rbb.test.name%type;
+  4  sex_t rbb.test.name%type;
+  5  cursor test_t is
+  6  select name,sex,score from test;
+  7  begin
+  8  open test_t;
+  9  dbms_output.put_line('你所查资料列表:');
+ 10  loop
+ 11  fetch test_t into name_n,sex_s,sex_t;
+ 12  exit when test_t%notfound;
+ 13  dbms_output.put_line(name_n||'  '||sex_s||'  '||sex_t);
+ 14  end loop;
+ 15  close test_t;
+ 16* end;
+ 17  /
+你所查资料列表:
+xiaoli  女   90
+renbinbo  男   100
+xiaoming  男   89
+xiaowang  男   91
+xiaohua  女   98
+yunfeng  男   88
+wangming  男   78
+wuming  男   98
+xiaobin  男   68
+binbin  男   44
+tianhua  女   55
+liyun  女   65
+
+PL/SQL 过程已成功完成。
+
+===============================================================
+
+bibno-->ed
+已写入文件 afiedt.buf
+
+  1  declare
+  2  cursor test_cur is
+  3  select name,sex,score from test;
+  4  begin
+  5  dbms_output.put_line('用户资料列表:');
+  6  for namet in test_cur
+  7  loop
+  8  dbms_output.put_line(namet.name||' '||namet.sex||' '||namet.score);
+  9  end loop;
+ 10* end;
+ 11  /
+用户资料列表:
+xiaoli 女  90
+renbinbo 男  100
+xiaoming 男  89
+xiaowang 男  91
+xiaohua 女  98
+yunfeng 男  88
+wangming 男  78
+wuming 男  98
+xiaobin 男  68
+binbin 男  44
+tianhua 女  55
+liyun 女  65
+
+PL/SQL 过程已成功完成。
+
+===============================================================
+
+带参数的显式游标
+SET SERVEROUTPUT ON
+SQL> DECLARE
+		desig    VARCHAR2(20);
+		emp_code VARCHAR2(5);
+		empnm    VARCHAR2(20);
+		CURSOR emp_cur(desigparam VARCHAR2) IS
+		 SELECT empno, ename FROM employee
+		 WHERE designation=desig;
+     BEGIN
+		desig:= '&desig';
+		OPEN emp_cur(desig);
+		LOOP
+			FETCH emp_cur INTO emp_code,empnm;
+			EXIT WHEN emp_cur%NOTFOUND;
+			DBMS_OUTPUT.PUT_LINE(emp_code||' '||empnm);
+  		END LOOP;
+		CLOSE emp_cur;
+     END;
+===============================================================
+SET SERVEROUTPUT ON
+SQL> DECLARE
+  new_price NUMBER;
+  CURSOR cur_toy IS
+    SELECT toyprice FROM toys WHERE toyprice<100
+    FOR UPDATE OF toyprice;
+BEGIN
+  OPEN cur_toy;
+  LOOP
+    FETCH cur_toy INTO new_price;
+    EXIT WHEN cur_toy%NOTFOUND;
+    UPDATE toys
+    SET toyprice = 1.1*new_price
+    WHERE CURRENT OF cur_toy;
+  END LOOP;
+  CLOSE cur_toy;
+  COMMIT;
+END;
+
+===============================================================
+游标变量的功能强大，可以简化数据处理
+
+游标变量的优点有:
+1.可从不同的 SELECT 语句中提取结果集
+2.可以作为过程的参数进行传递
+3.可以引用游标的所有属性
+4.可以进行赋值运算
+
+使用游标变量的限制：
+1.不能在程序包中声明游标变量
+2.FOR UPDATE子句不能与游标变量一起使用
+3.不能使用比较运算符
+===============================================================
+===============================================================
+
+
+
+
+创建过程
+create procedure test_b(test varchar2,test1 number)
+as
+begin
+
+dbms_output.put_line(test);
+dbms_output.put_line(test1);
+end;
+
+
+
+create procedure test_c(test varchar2,test1 char)
+as
+aa varchar2(20);
+bb char(10);
+begin
+select name into aa from test where name=test;
+dbms_output.put_line(aa);
+ select age into bb from test where age=test1;
+dbms_output.put_line(bb);
+end;
+===============================================================
+创建函数
+create or replace function test_binbo return varchar2
+as
+begin
+return '我爱你!';
+end
+执行:
+select test_binbo from dual;
+
+ create or replace function test_binbo return varchar2
+ as
+ aa varchar2(20);
+ bb char(3);
+ begin
+ bb:='&bb';
+ select name into aa from test where sex=bb;
+ return 'name';
+ end;
+执行:
+select test_binbo from dual;
+
+create or replace function item_price_range(price number)
+return varchar2 as
+min_price number;
+max_price number;
+begin
+select max(itemrate),min(temrate) into max_price,min_price
+from test;
+if price>=min_price and price<=max_price then
+return '将计就计机';
+else
+return '哩哩啦啦理论';
+end if;
+end;
+执行:
+select test_binbo from dual;
+===============================================================
+自主事务处理
+CREATE OR REPLACE PROCEDURE p1 AS 
+  b VARCHAR2(50);
+BEGIN
+  UPDATE vendor_master SET venadd1='10 Walls Street' 
+  WHERE vencode='V002';
+  P2();
+  SELECT venadd1 INTO b 
+  FROM vendor_master WHERE vencode='V002';
+  DBMS_OUTPUT.PUT_LINE(b);
+END;
+/
+执行
+EXECUTE p1;
+
+CREATE OR REPLACE PROCEDURE p2 AS
+  a VARCHAR2(50);
+  PRAGMA AUTONOMOUS_TRANSACTION;
+BEGIN
+  SELECT venadd1 INTO a 
+  FROM vendor_master WHERE vencode='V002';
+  DBMS_OUTPUT.PUT_LINE(a);
+  ROLLBACK;
+END;
+/
+
+===============================================================
+创建程序包
+
+
+SQL> ed
+已写入文件 afiedt.buf
+
+  1  create or replace package package_me as
+  2  procedure proc_test(test varchar2);
+  3  function fun_test(funt varchar2) return varchar2;
+  4* end;
+  5  /
+
+程序包已创建。
+
+已写入文件 afiedt.buf
+
+  1  create or replace package body package_me as
+  2  procedure proc_test(test varchar2) as
+  3  nam varchar2(20);
+  4  begin
+  5  select name into nam from test where name=test;
+  6  dbms_output.put_line('你所查的人的姓名是:'||nam);
+  7  end;
+  8  function fun_test(funt varchar2) return varchar2 as
+  9  funn varchar2(20);
+ 10  begin
+ 11  select next_day(funt,'星期六')-7 into funn from dual;
+ 12  return funn;
+ 13  end;
+ 14* end package_me;
+SQL> /
+
+程序包主体已创建。
+SQL> select package_me.fun_test('2008-10-16') from dual;
+
+PACKAGE_ME.FUN_TEST('2008-10-16')
+---------------------------------------------------------
+
+2008-10-11
+
+SQL> exec package_me.proc_test('xiaoli');
+你所查的人的姓名是:xiaoli
+PL/SQL 过程已成功完成。
+===============================================================
+create or replace package pack_me as
+procedure order_pr(orn varchar2);
+function order_fu(onr varchar2) return varchar2;
+end pack_me;
+/
+
+CREATE OR REPLACE PACKAGE BODY pack_me AS
+  PROCEDURE order_proc (orno VARCHAR2) IS
+    stat CHAR(1);
+  BEGIN
+    SELECT ostatus INTO stat FROM order_master
+    WHERE orderno = orno;
+    IF stat = 'p' THEN
+      DBMS_OUTPUT.PUT_LINE('暂挂的订单');
+    ELSE
+      DBMS_OUTPUT.PUT_LINE('已完成的订单');
+    END IF;
+  END order_proc;
+  
+  FUNCTION order_fun(ornos VARCHAR2)
+  RETURN VARCHAR2
+  IS
+    icode   VARCHAR2(5);
+    ocode   VARCHAR2(5);
+    qtyord  NUMBER;
+    qtydeld NUMBER;
+  BEGIN
+    SELECT qty_ord, qty_deld, itemcode, orderno
+    INTO   qtyord, qtydeld, icode, ocode
+    FROM order_detail
+    WHERE orderno = ornos;
+    IF qtyord < qtydeld THEN
+      RETURN ocode;
+    ELSE
+      RETURN icode;
+    END IF;
+  END order_fun;
+END pack_me;
+/
+
+===============================================================
+
+执行
+EXECUTE pack_me.order_proc('o002');
+
+DECLARE
+  msg VARCHAR2(10);
+BEGIN
+  msg := pack_me.order_fun('o002');
+  DBMS_OUTPUT.PUT_LINE('值是 ' || msg);
+END;
+
+/
+
+CREATE OR REPLACE PACKAGE BODY cur_pack AS
+ CURSOR ord_cur(vcode VARCHAR2)
+ RETURN order_master%ROWTYPE IS 
+ SELECT * FROM order_master
+ WHERE VENCODE=vcode;
+ PROCEDURE ord_pro(vcode VARCHAR2) IS
+   or_rec order_master%ROWTYPE;
+ BEGIN
+  OPEN ord_cur(vcode); 
+  LOOP
+    FETCH ord_cur INTO or_rec;
+    EXIT WHEN ord_cur%NOTFOUND;
+    DBMS_OUTPUT.PUT_LIne('返回的值为' || or_rec.orderno);
+  END LOOP;
+ END ord_pro;
+END cur_pack;
+
+EXEC cur_pack.ord_pro('V001');
+===============================================================
+
+
+COLUMN OBJECT_NAME FORMAT A18
+
+SELECT object_name, object_type
+FROM USER_OBJECTS
+WHERE object_type IN ('PROCEDURE', 'FUNCTION',
+ 'PACKAGE', 'PACKAGE BODY');
+
+DESC USER_SOURCE
+
+COLUMN LINE FORMAT 9999
+COLUMN TEXT FORMAT A50
+
+SELECT line, text FROM USER_SOURCE
+WHERE NAME='TEST';
+
+DESC pack_me;
+
+===============================================================
+
+数据库级触发器
+CREATE TABLE system.session_info (
+  username   VARCHAR2(30),
+  logontime  DATE,
+  session_id VARCHAR2(30),
+  ip_addr    VARCHAR2(30),
+  hostname   VARCHAR2(30),
+  auth_type  VARCHAR2(30)
+);
+显示
+set serverout on
+
+create or replace trigger trg_session_info defore logoff on database
+declare
+session_id varchar2(30);
+ip_addr    varchar2(30);
+hostname   varchar2(30);
+auth_type  varchar2(30);
+logontime  date;
+
+begin
+ select sys_context('userenv','sessionid') -- 会话编号
+  --  用户登录的客户端IP地址 
+ select sys_context('userenv','ip_address') into ip_addr from dual;
+  --  用户登录的客户端主机名  
+ select sys_context('usernv','host') into hostname from dual;
+  --  登录认证方式，数据库认证或外部认证
+ select sys_context('usernv','authentication_type') into auth_type from dual;
+ insert into system.session_info values (user,sysdate,session_id,ip_addr,hostname,auth_type);
+end;
+SELECT * FROM system.session_info;
+===============================================================
+对表employees创建触发器
+create or replace trigger tr_employee after update on employees 
+for each row
+begin
+ if(:new.salary>40000) then
+	raise_application_error(-20002,'职员工资不能超过 40000');
+ end if;
+end;
+===============================================================
+
+create or replace procedure demo(salary in number) as
+  cursor_name integer;
+  rows_processed interger;
+begin
+  cursor_name:=dbms_sql.open_cursor;
+  dbms_sql.parse(cursor_name,'delete from salary_records where empsal>:temp_sal',dbms_sql.native);
+  dbms_sql.bind_variable(cursor_name,':temp_sal',salay);
+  rows_processed:=dbms_sql.execute(cursor_name);
+  dbms_sql.close_cursor(crusor_name);
+exception
+  when others then
+    dbms_sql.close_cursor(cursor_name);
+end;
+===============================================================
+1.写一个带程序包的函数，只要传入文件名和地址就可以把这个文件的内容存到BLOB类型的字段中。
+binbo>create directory tnpdir as 'c:\bfile';
+binbo>grant read on directory tnpdir to scott;
+binbo>CREATE TABLE my_dia
+(
+  chapter_descr VARCHAR2(40),
+  diagram_no INTEGER,
+  diagram BLOB 
+);
+
+DECLARE
+  l_bf  BFILE;
+  l_bl BLOB;
+BEGIN
+  INSERT INTO my_dia (diagram)
+  VALUES (EMPTY_BLOB())
+  RETURN diagram INTO l_bl;
+  l_bf := BFILENAME('jsp', '\test.jsp');
+  DBMS_LOB.OPEN(l_bf, DBMS_LOB.FILE_READONLY);
+  DBMS_LOB.LOADFROMFILE(l_bl, l_bf, DBMS_LOB.GETLENGTH(l_bf));
+  DBMS_LOB.CLOSE(l_bf);
+  COMMIT;
+END;
+===============================================================
+2.有一张表，字段的值是这样的：name varchar2(20),sex char(2),score number(3)。其中的SCORE字段为分数字段。请用一条SQL语句把九十分以上的显示为A。九十到七十分的为B。七十分以下的为C。
+
+binbo>create table test(name varchar2(20),sex char(2),score number(3));
+binbo>select name,sex,case when score<=70 then 'C'
+when score<=90 and score>70 when 'B'
+when score>90 when 'A'
+end case from test;
+===============================================================
+3.有一个表，其中有一个字段为自动增长的数据类型。请在ORACLE中实现。
+binbo>create table test(id number,name varchar2(20));
+create sequence seq_test increment by 1 start with 1 maxvalue 999;
+create or replace trigger tr_test before insert or update of id on test
+for each row
+begin
+if insert into then
+select seq_test.nextval into :new.id from dual;
+else
+raise_application_error(-20002,'不允许更新ID序列!');
+end if;
+end;
+===============================================================
+4.如何删除一个用户下的所有表。
+
+binbo>spool c:\test.sql
+binbo>select 'drop table '||tname||';'from tab;
+binbo>spool off
+binbo>@c:\test;
+===============================================================
+5。如何把数据库的日志模式从归档模式变为非归档模式
+
+binbo>shutdown immediate
+binbo>startup mount
+binbo>alter database archivelog;
+binbo>archive log list;
+binbo>alter system set log_archive_dest=false scope=spfile;
+binbo>alter database open;
+===============================================================
+
+6。建立一个用户和表空间，在这个用户和表空间下建立一张表。并授予SCOTT用户查询权利。
+binbo>create user binbo identified by binbo;
+binbo>create tablespace test datafile 'e:\test.dbf' size 10m;
+binbo>GRANT SELECT ON scott.test to scott;
+===============================================================
+7。写一个过程，计算某个月有多少天。
+ create or replace procedure dept(test in varchar2)
+ as
+ aa varchar2(20);
+  begin
+ select extract(day from last_day(to_date (test,'yyyy-mm'))) into aa from dual;
+  dbms_output.put_line(aa);
+  end;
+===============================================================
+8。有一章表，字段为name,sex,score，score字段为分数字段，查询出这个班的第五名到第七名的人的姓名。
+binbo>create table test(name varchar2(20),sex char(3),score number(3));
+binbo>select * from (select name n,score sc,rownum r from (select name,score,rownum from test order by score desc)) where r between 5 and 7;
+===============================================================
+9。查询出当前这个星期的星期六是几号。
+
+binbo>select next_day(sysdate,'星期六') from dual;
+===============================================================
+10。做一个外键关联的两个表。然后用触发器做级联更新。
+create table test(name varchar2(20),sex char(3),score number(3));
+ create table test_t(name varchar2(20));
+
+ create or replace trigger test_test before insert or update of name on test
+ for each row
+ begin
+ if inserting then
+  insert into test_t(name) values (:new.name);
+  dbms_output.put_line('test_t表中name也已经插入!');
+ elseif updating then
+  update test_t set name=:new.name where name=old.name;
+  dbms_output.put_line('test_t表中name也已经更新!');
+ elseif deleting then
+  delete from test_t where name=:old.name;
+  dbms_output.put_line('test_t表中name也已经删除!');
+ else
+  raise_application_error(-20002,'不允许更新test表中的name字段');
+ end if;
+ end;
+
+===============================================================
+---从外界向数据库中插入数据
+SQL> create table test_file(name varchar(30),shell varchar2(30));
+表已创建。
+
+G:盘data.ctl:(tab键隔开时间用x'09')
+load data into table test_file fields terminated by '=='(name,shell);
+
+G:盘data.txt:
+aaaaaaaa==11111111
+bbbbbbbb==22222222
+cccccccc==33333333
+binbo==hehehehe
+
+
+C:\Documents and Settings\Administrator>sqlldr rbb/rbb control=G:\data.ctl data=G:\data.txt
+
+SQL*Loader: Release 9.2.0.1.0 - Production on 星期二 7月 10 20:37:47 2007
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+达到提交点，逻辑记录计数3
+达到提交点，逻辑记录计数4
+
+SQL> select * from test_file;
+
+NAME                           SHELL
+------------------------------ ------------------------------
+aaaaaaaa                       11111111
+bbbbbbbb                       22222222
+cccccccc                       33333333
+binbo                          hehehehe
+
+
+
+
+===============================================================
+ declare
+   result clob;
+   xmlstr varchar2(32767);
+   line varchar2(2000);
+   line_no integer:=1;
+   begin
+   result:=dbms_xmlquery.getxml('select * from test');
+   xmlstr:=dbms_lob.substr(result,32767);
+   loop
+  exit when xmlstr is null;
+ line:=substr(xmlstr,1,instr(xmlstr,chr(10))-1);
+  dbms_output.put_line(line_no||':'||line);
+  xmlstr:=substr(xmlstr,instr(xmlstr,chr(10))+1);
+  line_no:=line_no+1;
+ end loop;
+ end;
+SQL> /
+
+PL/SQL 过程已成功完成。
+
+
+
+SQL> select instr('abcdefsfssdfabcabcsdfs','bc',2,2) "instring" from dual;
+
+  instring
+----------
+        14
+
+===============================================================
+---创建表中自动增长列(利用触发器)
+//创建表
+create table test_bin(id number(3),name varchar2(20));
+//创建序列
+create sequence test_sq increment by 1 start with 1 maxvalue 1000;
+//创建触发器
+行级触发器
+create or replace trigger test_test before insert or update of id on test_bin
+for each row
+begin
+if inserting then
+select test_sq.nextval into :new.id from dual;
+else
+raise_application_error(-20002,'不允许更新id');
+end if;
+end;
+===============================================================
+语句级触发器
+
+create or replace trigger trgdemo after insert or update or delete on order_master
+begin
+ if updating then
+  dbms_output.put_line('已更新order_master中的数据');
+ elseif deleting then
+  dbms_output.put_line('已删除order_master中的数据');
+ elseif inserting then
+  dbms_output.put_line('已在order_master中插入数据');
+ end if;
+end;
+===============================================================
+instead of 触发器(主要用在视图中[视图中只能有for each row])
+
+create or replace trigger upda_ord instead of update on ord_view 
+for each row
+begin
+  update order_master set vencode=:new.vencode where orderno=:new.orderno;
+  dbms_output.put_line('已激活触发器');
+end;
+===============================================================
+触发器由三部分组成：
+触发器语句（事件）
+定义激活触发器的 DML 事件和 DDL 事件
+触发器限制
+执行触发器的条件，该条件必须为真才能激活触发器
+触发器操作（主体）
+包含一些 SQL 语句和代码，它们在发出了触发器语句且触发限制的值为真时运行
+
+===============================================================
+触发器类型
+
+DDL 触发器
+数据库级触发器
+DML 触发器
+语句级触发器
+行级触发器
+INSTEAD OF 触发器
+===============================================================
+模式触发器
+create table dropped_obj(obj_name varchar2(30),obj_type varchar2(20),drop_date date);
+
+create or replace trigger log_drop_obj after drop on schema 
+begin
+ insert into dropped_obj values(ora_dict_obj_name,ora_dict_obj_type,sysdate);
+end;
+===============================================================
+启用和禁用触发器
+alter trigger aiu_name disable;
+alter trigger aiu_name enable;
+===============================================================
+删除触发器
+drop trigger aiu_name;
+===============================================================
+user_triggers数据字典视图包含有关触发器的信息
+select trigger_name from user_triggers where table_name='emp';
+
+select trigger_type,triggering_event,when_clause from user_triggers
+ where trigger_name='biu_emp_deptno';
+===============================================================
+dbms_output包显示pl/sql块和子程序的调试信息
+set serveroutput on
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('打印三角形');
+  FOR i IN 1..9 LOOP
+    FOR j IN 1..i LOOP
+      DBMS_OUTPUT.PUT('*');
+    END LOOP for_j;
+    DBMS_OUTPUT.NEW_LINE;
+  END LOOP for_i;
+END;
+打印三角形
+*
+**
+***
+****
+*****
+******
+*******
+********
+*********
+
+PL/SQL 过程已成功完成。
+===============================================================
+1.DBMS_LOB 包提供用于处理大型对象的过程和函数
+2.DBMS_XMLQUERY 包用于将查询结果转换为 XML 格式
+DECLARE  result CLOB;
+  xmlstr VARCHAR2(32767);
+  line   VARCHAR2(2000);
+  line_no INTEGER := 1;
+BEGIN
+  result := DBMS_XMLQuery.getXml('SELECT * FROM test');
+  xmlstr := DBMS_LOB.SUBSTR(result,32767);
+ LOOP
+  EXIT WHEN xmlstr IS NULL;
+  line := SUBSTR(xmlstr,1,INSTR(xmlstr,CHR(10))-1);
+  DBMS_OUTPUT.PUT_LINE(line_no || ':' || line);
+  xmlstr := SUBSTR(xmlstr,INSTR(xmlstr,CHR(10))+1);
+  line_no := line_no + 1;
+ END LOOP;
+END;
+
+
+===============================================================
+一些常用的内置程序包：
+DBMS_OUTPUT 包输出 PL/SQL 程序的调试信息
+DBMS_LOB 包提供操作 LOB 数据的子程序
+DBMS_XMLQUERY 将查询结果转换为 XML 格式
+DBMS_RANDOM 提供随机数生成器
+UTL_FILE 用于读写操作</pr
+  
