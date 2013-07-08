@@ -1,0 +1,26 @@
+[INFO ] 2013-07-08 13:31:43 Method: com.aisino.util.common.XMLShellFactory.saveXml(XMLShellFactory.java:66)
+--begin save xml to out--
+  [INFO ] 2013-07-08 13:31:43 Method: com.aisino.util.common.XMLShellFactory.saveXml(XMLShellFactory.java:84)
+--finish save xml--
+
+  [INFO ] 2013-07-08 13:31:44 Method: com.aisino.util.ProXml.getInterface(ProXml.java:369)
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KCjxyb290PgogIDxOc3JxcnFjIGNsYXNzPSJOc3JxcnFjIj4KICAgIDxyZXF1ZXN0X05zcnFycWNzIGNsYXNzPSJSZXF1ZXN0X05zcnFycWM7IiBzaXplPSIyIj4KICAgICAgPFJlcXVlc3RfTnNycXJxYz4KICAgICAgICA8bnNyc2JoPue6s+eojuS6uuivhuWIq+WPtzE8L25zcnNiaD4KICAgICAgICA8bnNyZHpkYWg+57qz56iO5Lq655S15a2Q5qGj5qGI5Y+3MTwvbnNyZHpkYWg+CiAgICAgIDwvUmVxdWVzdF9Oc3JxcnFjPgogICAgICA8UmVxdWVzdF9Oc3JxcnFjPgogICAgICAgIDxuc3JzYmg+57qz56iO5Lq66K+G5Yir5Y+3MjwvbnNyc2JoPgogICAgICAgIDxuc3JkemRhaD7nurPnqI7kurrnlLXlrZDmoaPmoYjlj7cyPC9uc3JkemRhaD4KICAgICAgPC9SZXF1ZXN0X05zcnFycWM+CiAgICA8L3JlcXVlc3RfTnNycXJxY3M+CiAgPC9Oc3JxcnFjPgo8L3Jvb3Q+Cg==
+  [INFO ] 2013-07-08 13:31:44 Method: com.aisino.util.ProXml.getInterface(ProXml.java:387)
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+  <Nsrqrqc class="Nsrqrqc">
+    <request_Nsrqrqcs class="Request_Nsrqrqc;" size="2">
+      <Request_Nsrqrqc>
+        <nsrsbh>纳税人识别号1</nsrsbh>
+        <nsrdzdah>纳税人电子档案号1</nsrdzdah>
+      </Request_Nsrqrqc>
+      <Request_Nsrqrqc>
+        <nsrsbh>纳税人识别号2</nsrsbh>
+        <nsrdzdah>纳税人电子档案号2</nsrdzdah>
+      </Request_Nsrqrqc>
+    </request_Nsrqrqcs>
+  </Nsrqrqc>
+</root>
++=============��������
+  
